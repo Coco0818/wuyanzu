@@ -1,8 +1,14 @@
 <template>
-  <div></div>
+  <Home />
 </template>
 <script>
-export default {}
+import Home from '@/pages/Home'
+export default {
+  name: 'App',
+  components: {
+    Home,
+  },
+}
 </script>
 <style scoped>
 </style>

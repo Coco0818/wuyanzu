@@ -3,6 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+
+// 公共组件
+import Header from '@/components/Header'
+
+
+// 注册公共组件
+Vue.component('Header', Header)
 Vue.config.productionTip = false
 
 new Vue({
