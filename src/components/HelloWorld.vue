@@ -27,14 +27,19 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <CompanyList/>
   </div>
 </template>
 
 <script>
+import CompanyList from './CompanyList'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  components: {
+    CompanyList
   }
 }
 </script>
