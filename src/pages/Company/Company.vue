@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- 回到顶部 -->
+    <BackTop />
     <!-- 轮播模块 star -->
     <div class="company-container">
       <h3>什么值得投</h3>
@@ -14,40 +16,30 @@
               <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/CgpFT1kVdzeAJNbUAABJB7x9sm8374.png"
-                  />
+                  <img src="./images/Ciqc1F9QZJSAC0VBAACwLdjC9yo459.png" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
               </el-carousel-item>
@@ -56,40 +48,30 @@
               <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <!-- 每个公司 -->
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
 
                 <div class="banner-box-item">
-                  <img
-                    src="../../assets/images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg"
-                  />
+                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
                   <a href="javascript:;">博创科技</a>
                 </div>
               </el-carousel-item>
@@ -1090,8 +1072,12 @@
   </div>
 </template>
 <script>
+import BackTop from '../../components/BackTop'
 export default {
   name: "Company",
+  components:{
+    BackTop
+  },
   methods: {
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -1099,6 +1085,7 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+
   },
   data() {
     return {
@@ -1106,6 +1093,7 @@ export default {
       currentPage2: 5,
       currentPage3: 5,
       currentPage4: 4,
+      btnFlag: true
     };
   },
 };
@@ -1130,6 +1118,10 @@ export default {
   float: right;
 }
 
+
+.backtop:hover {
+  background-position: right top !important;
+}
 /* 轮播模块 star*/
 
 .company-container {
@@ -1218,7 +1210,7 @@ export default {
 /* 主题内容 star */
 
 .companyMain-container {
-  height: 500px;
+  overflow: hidden;
 }
 
 /* 筛选 */
@@ -1480,25 +1472,25 @@ export default {
 }
 /* 展开 */
 .company-nofollow {
-      width: 42px;
-height: 22px;
-    position: absolute;
-    right: 3px;
-    top: 78px;
-    cursor: pointer;
-    color: #999;
+  width: 42px;
+  height: 22px;
+  position: absolute;
+  right: 3px;
+  top: 78px;
+  cursor: pointer;
+  color: #999;
 }
 .company-nofollow i {
-    position: absolute;
-    top: 5px;
-    right: 0px;
-    font-size: 0;
-    height: 0;
-    width: 0;
-    border-width: 6px 6px 0;
-    border-style: solid dashed;
-    border-color: #00b38a transparent transparent;
-    overflow: hidden;
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  font-size: 0;
+  height: 0;
+  width: 0;
+  border-width: 6px 6px 0;
+  border-style: solid dashed;
+  border-color: #00b38a transparent transparent;
+  overflow: hidden;
 }
 /* 默认显示一行人才网,并高度99px */
 .company-default {
