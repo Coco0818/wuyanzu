@@ -10,7 +10,7 @@
 // 引入登录组件
 import Login from "./pages/Login";
 export default {
-  name: "APP",
+  name: "App",
   components: {
     Login,
     // Register,

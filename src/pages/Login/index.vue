@@ -284,6 +284,7 @@ input {
   background-color: #00b38a;
   width: 150px;
   height: 1px;
+  border: 1px solid #000
 }
 
 .content_box .tab_active:before,
@@ -338,15 +339,12 @@ input {
 .content_box .input {
   box-sizing: border-box;
   width: 290px;
-  border-radius: 0;
+  opacity: 0.5;
+
 }
 .content_box .input_white,
 .content_box .dropbtn_white {
-  border-left: 0;
-  border-top: 0;
-  border-right: 0;
   border-color: #ededed;
-  background: 0 0;
 }
 
 .input_white,
@@ -419,6 +417,9 @@ input {
   transition: 0.05s linear;
   margin-top: 20px;
 }
+.btn:hover{
+  cursor:pointer;
+}
 
 .content_box .divider {
   position: relative;
@@ -466,6 +467,12 @@ h5 {
   color: #00b38a;
   padding-right: 23px;
   background: url(./images/icon-arrow-right.png) right center no-repeat;
+
+}
+.register_now:hover{
+  text-decoration: underline; 
+  cursor:pointer;
+
 }
 a {
   background-color: transparent;
@@ -488,6 +495,7 @@ a {
   display: flex;
   justify-content: space-around;
 }
+
 .vender_login .vender_icon {
   display: inline-block;
   width: 20px;

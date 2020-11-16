@@ -475,7 +475,9 @@ export default {
   border-radius: 4px;
   opacity: .72;
 }
-
+.middle-banner:hover{
+  opacity: 1;
+}
 /*  */
 .middle-right{
   width: 360px;
