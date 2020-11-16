@@ -1073,30 +1073,43 @@
 </template>
 <script>
 import BackTop from '../../components/BackTop'
+// 引入api解构出接口
+// 引入api接口函数
+import { reqGetAllStationMsg } from '../../api'
+
 export default {
   name: "Company",
+    data() {
+      return {
+        currentPage1: 5,
+        currentPage2: 5,
+        currentPage3: 5,
+        currentPage4: 4,
+        btnFlag: true
+      };
+    },
   components:{
     BackTop
   },
   methods: {
+    // 分页
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-    },
-
+    }
   },
-  data() {
-    return {
-      currentPage1: 5,
-      currentPage2: 5,
-      currentPage3: 5,
-      currentPage4: 4,
-      btnFlag: true
-    };
-  },
-};
+  // async mounted(){
+  //   // 请求所有公司岗位信息
+  //   const result = await reqGetAllStationMsg()
+  //   console.log(result);
+  //   result.map((item) => {
+  //     return console.log(item);
+      
+  //   })
+  // }
+}
 </script>
 <style>
 /* 版心 */
@@ -1117,7 +1130,6 @@ export default {
 .company-fr {
   float: right;
 }
-
 
 .backtop:hover {
   background-position: right top !important;

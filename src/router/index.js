@@ -1,12 +1,20 @@
-import Vue from 'vue';
+// 引入登录和注册
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
-import VueRouter from 'vue-router';
-
-import routes from './routes';
-
-Vue.use(VueRouter)
-
-export default new VueRouter({
+export default ({
   mode: 'history',
-  routes
+  routes =[
+    {
+      // 登录 
+      path: '/login',
+      component: Login
+    },
+    {
+      // 注册 
+      path: '/register',
+      component: Register
+    },
+
+  ]
 })
