@@ -1,10 +1,20 @@
 <template>
   <div>
-    <Header />
+    <!-- <Register /> -->
+    <Login />
   </div>
 </template>
 <script>
-export default {}
+// 引入注册组件
+// import Register from "./pages/Register"
+// 引入登录组件
+import Login from "./pages/Login";
+export default {
+  name: "APP",
+  components: {
+    Login,
+    // Register,
+  },
+};
 </script>
-<style scoped>
-</style>
+<style rel="stylesheet" scoped></style>

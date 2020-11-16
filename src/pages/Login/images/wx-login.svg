@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="105px" height="43px" viewBox="0 0 105 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>气泡-快速登录</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M89.0017421,13.5961742 C89.4359262,14.1002845 90.4004673,14.6498949 91.8953655,15.2450053 L91.8953449,15.245057 C92.3058123,15.4084618 92.5060962,15.8736771 92.3426915,16.2841446 C92.2606004,16.4903546 92.0965259,16.6531894 91.889699,16.733714 C90.3980296,17.3144707 89.4353773,17.8633554 89.0017421,18.3803682 L89.0017421,25 C89.0017421,26.1045695 88.1063116,27 87.0017421,27 L7.00174212,27 C5.89717262,27 5.00174212,26.1045695 5.00174212,25 L5.00174212,7 C5.00174212,5.8954305 5.89717262,5 7.00174212,5 L87.0017421,5 C88.1063116,5 89.0017421,5.8954305 89.0017421,7 L89.0017421,13.5961742 Z" id="path-1"></path>
+        <filter x="-9.7%" y="-29.5%" width="119.3%" height="177.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="设计" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pc-登录" transform="translate(-667.000000, -154.000000)">
+            <g id="气泡-快速登录" transform="translate(667.000000, 154.000000)">
+                <g id="Combined-Shape" transform="translate(49.000871, 16.000000) scale(-1, 1) translate(-49.000871, -16.000000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke-opacity="0.2" stroke="#B5B5B5" stroke-width="1" d="M88.6228908,13.9224742 L88.5017421,13.7818143 L88.5017421,7 C88.5017421,6.17157288 87.8301692,5.5 87.0017421,5.5 L7.00174212,5.5 C6.17331499,5.5 5.50174212,6.17157288 5.50174212,7 L5.50174212,25 C5.50174212,25.8284271 6.17331499,26.5 7.00174212,26.5 L87.0017421,26.5 C87.8301692,26.5 88.5017421,25.8284271 88.5017421,25 L88.5017421,18.1984442 L88.6186506,18.0590571 C89.1211305,17.4599624 90.1436059,16.8769677 91.708296,16.2677816 C91.7858471,16.2375884 91.8473679,16.1765325 91.8781485,16.0992126 C91.9394208,15.9452984 91.8643137,15.7708296 91.7104335,15.7095483 C90.1454694,15.086545 89.1243517,14.5046964 88.6228908,13.9224742 Z"></path>
+                </g>
+                <text id="微信快速登录" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" fill="#B5B5B5">
+                    <tspan x="16" y="20">微信快速登录</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
