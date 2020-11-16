@@ -70,10 +70,9 @@
                   autocomplete="off"
                 />
               </div>
-              
+
               <div class="input_item clearfix">
-                <p  class="forgot_pwd"
-                  >忘记密码？</p>
+                <p class="forgot_pwd">忘记密码？</p>
               </div>
               <div
                 class="input_item btn_group clearfix sense_login_password"
@@ -84,7 +83,7 @@
                 <input
                   type="submit"
                   class="btn btn_green btn_active btn_block btn_lg"
-                  value="登&nbsp;录"
+                  value="登 录"
                   data-lg-tj-id="1j90"
                   data-lg-tj-no="idnull"
                   data-lg-tj-cid="idnull"
@@ -92,10 +91,7 @@
               </div>
             </form>
           </div>
-          
         </div>
-
-        
       </div>
       <div class="divider fl"></div>
       <div class="right_area fl" style="display: block;">
@@ -113,10 +109,10 @@
           <li class="vender_icon icon_wechat"></li>
           <li class="vender_icon icon_tencent"></li>
           <li class="vender_icon icon_baidu"></li>
-      </ul>
+        </ul>
       </div>
     </section>
-   
+
     <div style="display:none">
       <div class="popup" id="ajaxError" style="overflow:hidden;width:500px;">
         <h4 class="error_msg">网络出错啦</h4>
@@ -128,7 +124,7 @@
       id="verifyStyle"
       style="display: none"
       value="nolagou"
-    />   
+    />
     <div id="cboxOverlay" style="display: none;"></div>
     <div
       id="colorbox"
@@ -173,7 +169,7 @@ export default {
   name: "Login",
 };
 </script>
-<style rel='stylesheet' scoped>
+<style rel="stylesheet" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -290,7 +286,8 @@ input {
   height: 1px;
 }
 
-.content_box .tab_active:before, .content_box .tab_active:after {
+.content_box .tab_active:before,
+.content_box .tab_active:after {
   position: absolute;
   z-index: 2;
   top: -12px;
@@ -332,7 +329,8 @@ input {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   content: "";
   display: table;
 }
@@ -342,7 +340,8 @@ input {
   width: 290px;
   border-radius: 0;
 }
-.content_box .input_white, .content_box .dropbtn_white {
+.content_box .input_white,
+.content_box .dropbtn_white {
   border-left: 0;
   border-top: 0;
   border-right: 0;
@@ -350,11 +349,13 @@ input {
   background: 0 0;
 }
 
-.input_white, .dropbtn_white {
+.input_white,
+.dropbtn_white {
   border-color: #f8f8f8;
   background-color: #f8f8f8;
 }
-.input, .dropbtn {
+.input,
+.dropbtn {
   font-size: 14px;
   position: relative;
   z-index: 1;
@@ -367,7 +368,7 @@ input {
   outline: 0;
 }
 
-.content_box .input_item+.input_item {
+.content_box .input_item + .input_item {
   margin-top: 20px;
 }
 
@@ -383,12 +384,12 @@ input {
   z-index: 3;
 }
 
-.btn_green:hover, .btn_green.btn_active {
+.btn_green:hover,
+.btn_green.btn_active {
   color: #fff;
   border-color: #00b38a;
   background-color: #00b38a;
 }
-
 
 .btn_block {
   display: block;
@@ -413,9 +414,9 @@ input {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  -webkit-transition: .05s linear;
-  -o-transition: .05s linear;
-  transition: .05s linear;
+  -webkit-transition: 0.05s linear;
+  -o-transition: 0.05s linear;
+  transition: 0.05s linear;
   margin-top: 20px;
 }
 
@@ -437,10 +438,10 @@ input {
   top: 50%;
   padding: 2px;
   background-color: #fff;
-  -webkit-transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-  -o-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .content_box .right_area {
@@ -477,16 +478,17 @@ a {
   text-align: center;
 }
 
-.clearfix:before, .clearfix:after {
+.clearfix:before,
+.clearfix:after {
   content: "";
   display: table;
 }
 
-.vender_login{
+.vender_login {
   display: flex;
   justify-content: space-around;
 }
-.vender_login  .vender_icon {
+.vender_login .vender_icon {
   display: inline-block;
   width: 20px;
   height: 16px;
@@ -494,17 +496,16 @@ a {
   background-repeat: no-repeat;
 }
 
-.vender_login  .icon_sina {
+.vender_login .icon_sina {
   background-image: url(./images/icon-sina1.png);
 }
-.vender_login  .icon_wechat {
+.vender_login .icon_wechat {
   background-image: url(./images/icon-wechat1.png);
 }
-.vender_login  .icon_tencent {
+.vender_login .icon_tencent {
   background-image: url(./images/icon-tencent1.png);
 }
-.vender_login  .icon_baidu {
+.vender_login .icon_baidu {
   background-image: url(./images/icon-baidu1.png);
 }
-
 </style>
