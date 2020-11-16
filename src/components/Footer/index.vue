@@ -88,6 +88,7 @@ export default {}
 </script>
 <style lang="less" scoped>
 #footer {
+  // margin-top: 250px;
   background-color: #fff;
   clear: both;
   border-top: 1px solid #ebebeb;
