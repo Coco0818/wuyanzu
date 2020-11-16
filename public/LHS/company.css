@@ -65,10 +65,10 @@
   width: 46px;
   height: 240px;
   text-indent: -2000px;
-  background-image: url(//www.lgstatic.com/lg-www-fed/company-list/modules/banner/img/arrow_0030b9a.png);
+  background-image: url(./images/arrow_0030b9a.png);
   background-repeat: no-repeat;
   position: absolute;
-  top: 21px;
+  top: 30px;
   opacity: .2;
   left: -74px;
 }
@@ -83,10 +83,10 @@
   width: 46px;
   height: 240px;
   text-indent: -2000px;
-  background-image: url(//www.lgstatic.com/lg-www-fed/company-list/modules/banner/img/arrow_0030b9a.png);
+  background-image: url(./images/arrow_0030b9a.png);
   background-repeat: no-repeat;
   position: absolute;
-  top: 21px;
+  top: 30px;
   opacity: .2;
   right: -74px;
 }
@@ -114,7 +114,11 @@
   line-height: 15px;
   font-size: 13px;
 }
-
+.company-address span{
+  color: #555;
+    font-size: 13px;
+    font-weight: 600;
+}
 .company-address-list {
   width: 1038px;
   display: inline-block;
@@ -124,13 +128,20 @@
   padding: 4px 8px;
   cursor: pointer;
   text-decoration: none;
+  color: #555;
+  font-size: 13px;
+}
+/* 鼠标经过筛选内的地址a链接添加额外样式 */
+.company-address-list a:hover{
+  color: white;
+  background-color: #00b38a ;
 }
 
 /* 点击额外添加样式 */
 
 .company-address-list-active {
-  background-color: #00b38a;
-  color: white;
+  background-color: #00b38a !important;
+  color: white !important;
   text-decoration: none;
 }
 
