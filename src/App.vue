@@ -1,20 +1,18 @@
 <template>
   <div>
-    <!-- <Register /> -->
-    <Login />
+    <!-- <Home /> -->
+    <router-view />
   </div>
 </template>
 <script>
-// 引入注册组件
-// import Register from "./pages/Register"
-// 引入登录组件
-import Login from "./pages/Login";
+import Home from '@/pages/Home'
+
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Login,
-    // Register,
+    Home,
   },
-};
+}
 </script>
-<style rel="stylesheet" scoped></style>
+<style scoped>
+</style>

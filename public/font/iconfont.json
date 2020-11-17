@@ -1,0 +1,23 @@
+{
+  "id": "2203527",
+  "name": "实战",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "913005",
+      "name": "铃铛",
+      "font_class": "lingdang",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "3582972",
+      "name": "下箭头",
+      "font_class": "dowm",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    }
+  ]
+}
