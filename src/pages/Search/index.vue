@@ -21,26 +21,35 @@
     <!-- 搜索列表 -->
     <div class="search-content">
       <div class="search-content-left">
+        <PositionHeader />
         <div class="job">
           <ul class="job-ul">
-            <li class="job-ul-li">
+            <li
+              class="job-ul-li"
+              v-for="(position, index) in positions"
+              :key="position._id"
+            >
               <div class="job-ul-li-top">
                 <div class="job-position">
                   <div class="job-position-top">
                     <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
+                      >{{ position.positionName }}[{{ position.city }}]</a
                     >
                     <span class="job-position-top-time">15:53发布</span>
                     <div class="chat_me"></div>
                   </div>
                   <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
+                    <span class="job-position-money">{{
+                      position.Salary
+                    }}</span>
+                    {{ position.workingExperience }} {{ position.Eduction }}
                   </div>
                 </div>
                 <div class="job-company">
                   <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
+                    <a href="javascript:;" class="job-company-link">{{
+                      position.companyName
+                    }}</a>
                     <i class="job-company-mark">
                       <span style="display: none"
                         >该企业已上传营业执照并通过资质验证审核
@@ -48,13 +57,14 @@
                     </i>
                   </div>
                   <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
+                    {{ position.industrySector }} /
+                    {{ position.FinancingStage }} / {{ position.StaffSize }}
                   </div>
                 </div>
                 <div class="job-com_logo">
                   <a href="javascript:;">
                     <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
+                      :src="position.imgUrl"
                       alt=""
                       class="jon-com-logo-img"
                     />
@@ -63,492 +73,15 @@
               </div>
               <div class="job-ul-li-bottom">
                 <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
+                  <span
+                    v-for="(post, index) in position.postTag"
+                    :key="index"
+                    >{{ post }}</span
+                  >
                 </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
+                <div class="job-ul-li-bottom-right">
+                  {{ position.jobTemptation }}
                 </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
-              </div>
-            </li>
-            <li class="job-ul-li">
-              <div class="job-ul-li-top">
-                <div class="job-position">
-                  <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
-                      >web低能工程师[阴间]</a
-                    >
-                    <span class="job-position-top-time">15:53发布</span>
-                    <div class="chat_me"></div>
-                  </div>
-                  <div class="job-position-bottom">
-                    <span class="job-position-money">11k~15k</span>
-                    经验1-3年 本科
-                  </div>
-                </div>
-                <div class="job-company">
-                  <div class="job-company-name">
-                    <a href="javascript:;" class="job-company-link">腾讯</a>
-                    <i class="job-company-mark">
-                      <span style="display: none"
-                        >该企业已上传营业执照并通过资质验证审核
-                      </span>
-                    </i>
-                  </div>
-                  <div class="job-company-industry">
-                    游戏 / 天使轮 / 15-50人
-                  </div>
-                </div>
-                <div class="job-com_logo">
-                  <a href="javascript:;">
-                    <img
-                      src="//www.lgstatic.com/thumbnail_120x120/i/image/M00/3D/04/Ciqc1F8pCkeAEB4mAAAKiczPn0E302.jpg"
-                      alt=""
-                      class="jon-com-logo-img"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="job-ul-li-bottom">
-                <div class="job-ul-li-bottom-left">
-                  <span>1111</span>
-                  <span>1113232321</span>
-                  <span>111221</span>
-                  <span>1111</span>
-                </div>
-                <div class="job-ul-li-bottom-right">007 无限加班</div>
               </div>
             </li>
           </ul>
@@ -676,19 +209,121 @@
           </ul>
         </div>
       </div>
-      <div class="search-content-right"></div>
+      <div class="search-content-right">
+        <div class="history">
+          <div class="history-title">最近浏览过</div>
+          <ul class="history-position">
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+            <li class="history-position-item">
+              <div class="history-position-item-link">
+                <a href="javascrit:;" class="history-position-name"
+                  >web低能工程师</a
+                >
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import SearchKeyword from "@/components/SearchKeyword";
+import PositionHeader from "@/components/PositionHeader";
+import { reqPositions } from "@/api";
+import { mapState } from "vuex";
 export default {
   name: "search",
   components: {
     SearchKeyword,
+    PositionHeader,
   },
   data() {
     return {};
+  },
+  methods: {
+  },
+  async mounted() {
+    /* this.getPositions() */
+    this.$store.dispatch("getPositions");
+  },
+  computed: {
+    ...mapState({
+      positions: (state) => state.positions.positions,
+    }),
   },
 };
 </script>
@@ -696,6 +331,7 @@ export default {
 .search-header {
   height: 180px;
   background-color: #f2f5f4;
+  margin: 0 auto 35px;
 }
 .search-bar {
   width: 1200px;
@@ -751,12 +387,14 @@ export default {
   width: 1200px;
   margin: 0 auto;
   display: flex;
+  padding-bottom: 100px;
 }
 .search-content-left {
   width: 960px;
+  margin-right: 40px;
 }
 .search-content-left .job {
-  widows: 960px;
+  width: 960px;
 }
 .job-ul-li {
   position: relative;
@@ -865,6 +503,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-right: 10px;
 }
 .job-ul-li-bottom-right {
   width: 380px;
@@ -960,6 +599,55 @@ export default {
 }
 .recommend-city_ul-li a {
   color: #00b38a;
+}
+.search-content-right {
+  width: 210px;
+  float: right;
+}
+.history {
+  width: 210px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  background-color: #fafafa;
+}
+.history-title {
+  font-size: 18px;
+  margin: 0 0 2px 15px;
+  padding-top: 12px;
+}
+.history-position {
+  margin: 5px 5px 0;
+  background-color: #fff;
+}
+.history-position-item {
+  padding: 0 10px;
+  border-bottom: 1px dashed #e8e8e8;
+}
+.history-position-name {
+  text-decoration: none;
+  font-size: 14px;
+  padding-top: 13px;
+  height: 23px;
+  line-height: 23px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+}
+.salary {
+  color: #fd5f39;
+  height: 20px;
+  line-height: 20px;
+}
+.history-company-name {
+  font-size: 12px;
+  color: #999;
+  height: 24px;
+  line-height: 24px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .clearFix:after {
