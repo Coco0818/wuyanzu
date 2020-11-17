@@ -1,10 +1,15 @@
 <template>
   <div>
-    <Header />
+    <JobDetail />
   </div>
 </template>
 <script>
-export default {}
+import JobDetail from "@/pages/JobDetail/Detail";
+export default {
+  name: "App",
+  components: {
+    JobDetail,
+  },
+};
 </script>
-<style scoped>
-</style>
+<style scoped></style>
