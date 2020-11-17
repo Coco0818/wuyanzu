@@ -71,11 +71,53 @@
       <div class="r-nav">
         <div class="nav-wrap" style="height: 2700px">
           <div class="inner-nav">
-            <a href="" class="nav-item icon-item1"></a>
-            <a href="" class="nav-item icon-item2"></a>
-            <a href="" class="nav-item icon-item3"></a>
-            <a href="" class="nav-item icon-item4"></a>
-            <a href="" class="nav-item icon-item5"></a>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="收藏职位"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item1"> </a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="投递记录"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item2"></a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="职位订阅"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item3"></a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="面试邀约"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item4"></a>
+            </el-tooltip>
+
+            <el-tooltip class="item" placement="left-start" effect="light">
+              <div slot="content" class="share-app">
+                <div class="download-app">
+                  <img
+                    src="./images/download.png"
+                    alt=""
+                    style="width: 172px; height: 172px"
+                  />
+                </div>
+                <div class="scan" style="text-align: center">扫码下载APP</div>
+              </div>
+              <!-- <el-button>Top center</el-button> -->
+              <a href="" class="nav-item icon-item5"></a>
+            </el-tooltip>
           </div>
         </div>
       </div>
@@ -356,6 +398,45 @@ export default {
             height: 24px;
             background-size: 100% 100%;
           }
+          .item {
+            .share-app {
+              top: -40px;
+              left: -210px;
+              position: absolute;
+              z-index: 1;
+              visibility: hidden;
+              opacity: 0;
+              background-color: #fff;
+              padding: 8px;
+              padding-bottom: 12px;
+              transition: opacity 0.3s;
+              .download-app {
+                img {
+                  border-radius: 2px;
+                  padding-bottom: 12px;
+                  font-size: 16px;
+                  color: #333;
+                  text-align: center;
+                  background-color: #fff;
+                  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+                  width: 172px;
+                  height: 172px;
+                  background-image: url('./images/download.png');
+                  background-size: 100% 100%;
+                  margin: 0 auto;
+                }
+              }
+              .scan {
+                margin-top: 20px;
+                margin-bottom: 5px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #0c0c0c;
+                text-align: center;
+              }
+            }
+          }
+
           .icon-item1 {
             background-image: url('./images/icon1.png');
           }
