@@ -15,11 +15,52 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+<<<<<<< HEAD
+.icon-wendangdocument80:before {
+  content: "\e725";
+}
+
+.icon-ren:before {
+  content: "\e647";
+}
+
+.icon-home:before {
+  content: "\e652";
+}
+
+.icon-trend:before {
+  content: "\e680";
+}
+
+.icon-wechat:before {
+  content: "\e6b4";
+}
+
+.icon-Group-:before {
+  content: "\e688";
+}
+
+.icon-jinggao:before {
+  content: "\e715";
+}
+
+.icon-xiaochengxu:before {
+  content: "\e63e";
+}
+
+.icon-shoucang:before {
+  content: "\e73d";
+}
+
+.icon-four-squares:before {
+  content: "\ea3e";
+=======
 .icon-lingdang:before {
   content: "\e614";
 }
 
 .icon-dowm:before {
   content: "\e673";
+>>>>>>> master
 }
 

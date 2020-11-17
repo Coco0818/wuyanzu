@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
 // element-ui
 import ElementUI from 'element-ui';
@@ -26,7 +26,7 @@ Vue.component('Header', Header)
 
 
 new Vue({
-  render: h => h(App),
+  render: (h) => h(App),
   router,
-  store
-}).$mount('#app')
+  store,
+}).$mount("#app");
