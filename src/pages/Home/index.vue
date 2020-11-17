@@ -27,8 +27,9 @@
               <div class="menu-main" @mouseenter="showFirst(index)">
                 <div class="category-list">
                   <h2>{{ category1.category1Title }}</h2>
-                  <a href="##" v-for="(v, index) in 4" :key="index">
-                    <h3>JAVA</h3>
+                  <!-- 显示部分三级分类 -->
+                  <a href="##">
+                    <h3>11</h3>
                   </a>
 
                   <i class="arrow"></i>
@@ -55,33 +56,6 @@
                     >
                       <h3>{{ category3.title }}</h3>
                     </a>
-                    <!-- <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a>
-                    <a href="">
-                      <h3>JAVA</h3>
-                    </a> -->
                   </dd>
                 </dl>
               </div>
@@ -316,8 +290,6 @@
       <a class="list-more2" href="##">查看更多</a>
     </div>
 
-
-
     <Footer />
   </div>
 </template>
@@ -344,20 +316,20 @@ export default {
     this.getCompanyInfo()
     //三级分类
     const result = await reqCateGory()
-    console.log(result)
-    this.categoryList = result
+    // console.log(result.data)
+    this.categoryList = result.data
 
     const inter = await reqInterCompany()
-    this.internetCompanyInfo = inter.slice(0, 8)
+    this.internetCompanyInfo = inter.data.slice(0, 8)
   },
   methods: {
     // 请求所有公司信息
     async getCompanyInfo() {
       const result = await reqCompany()
-      this.companyInfo = result
-      this.hotCompanyList = result.slice(0, 6)
-      this.newCompanyList = result.slice(6, 12)
-      this.companyRank = result.slice(12, 18)
+      this.companyInfo = result.data
+      this.hotCompanyList = result.data.slice(0, 6)
+      this.newCompanyList = result.data.slice(6, 12)
+      this.companyRank = result.data.slice(12, 18)
     },
     showFirst(index) {
       this.isShow = true
@@ -939,6 +911,4 @@ a:hover {
     background-color: #d3dce6;
   }
 }
-
-
 </style>

@@ -37,7 +37,7 @@
         <!-- 右边 -->
         <div class="r-bar">
           <!--  未登录状态 -->
-          <!-- <ul class="account-bar">
+          <ul class="account-bar">
             <li class="upload">
               <a href="##">上传附件简历</a>
             </li>
@@ -50,9 +50,9 @@
             <li>
               <a href="##">注册</a>
             </li>
-          </ul> -->
+          </ul>
           <!-- 登录状态 -->
-          <ul class="account-bar">
+          <!-- <ul class="account-bar">
             <li class="msg">
               <a href="" class="iconfont icon-lingdang"></a>
             </li>
@@ -63,7 +63,7 @@
               <span>布丁Coco</span>
               <i></i>
             </li>
-          </ul>
+          </ul> -->
           <a href="##" class="r-os">进入企业版</a>
         </div>
       </div>
@@ -149,7 +149,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               padding: 0 21px;
-              color: #AFB5C0;
+              color: #afb5c0;
             }
           }
           .tabs-active {
@@ -172,31 +172,32 @@ export default {}
             text-align: center;
             float: left;
             // 未登录状态
-            // a {
-            //   display: inline-block;
-            //   height: 40px;
-            //   line-height: 40px;
-            //   color: #AFB5C0;
-            //   cursor: pointer;
-            // }
-            // span {
-            //   padding: 0 7px;
-            //   color: #5e6166;
-            //   line-height: 40px;
-            // }
-            // .login {
-            //   position: relative;
-            //   &::before {
-            //     content: '';
-            //     position: absolute;
-            //     top: 11px;
-            //     left: -26px;
-            //     width: 18px;
-            //     height: 18px;
-            //     background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png) no-repeat;
-            //     background-size: 100% 100%;
-            //   }
-            // }
+            a {
+              display: inline-block;
+              height: 40px;
+              line-height: 40px;
+              color: #afb5c0;
+              cursor: pointer;
+            }
+            span {
+              padding: 0 7px;
+              color: #5e6166;
+              line-height: 40px;
+            }
+            .login {
+              position: relative;
+              &::before {
+                content: '';
+                position: absolute;
+                top: 11px;
+                left: -26px;
+                width: 18px;
+                height: 18px;
+                background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png)
+                  no-repeat;
+                background-size: 100% 100%;
+              }
+            }
 
             // 登录状态
             a {
@@ -204,7 +205,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               padding: 0 16px;
-              color: #AFB5C0;
+              color: #afb5c0;
             }
           }
           .user {
@@ -218,7 +219,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               font-size: 14px;
-              color: #AFB5C0;
+              color: #afb5c0;
               max-width: 96px;
               padding-left: 0;
               padding-right: 0;
@@ -236,7 +237,7 @@ export default {}
               width: 0;
               border-width: 5px 4px 0;
               border-style: solid dashed;
-              border-color: #AFB5C0 transparent transparent;
+              border-color: #afb5c0 transparent transparent;
             }
           }
 
@@ -249,7 +250,7 @@ export default {}
         float: left;
         height: 40px;
         line-height: 40px;
-        color: #AFB5C0;
+        color: #afb5c0;
       }
     }
     // 右边固定导航栏
