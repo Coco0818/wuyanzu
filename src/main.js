@@ -20,6 +20,11 @@ Vue.component('Footer', Footer)
 
 Vue.config.productionTip = false
 
+
+// 全局的公共组件
+Vue.component('Header', Header)
+
+
 new Vue({
   render: h => h(App),
   router,

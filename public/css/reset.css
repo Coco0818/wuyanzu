@@ -12,7 +12,11 @@ th, td {
 body,
 button, input, select, textarea { /* for ie */
     /*font: 12px/1 Tahoma, Helvetica, Arial, "宋体", sans-serif;*/
+<<<<<<< HEAD
     font: 14px/1.3 "Microsoft YaHei",Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+=======
+    font: 12px/1.3 "Microsoft YaHei",Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif; /* 用 ascii 字符表示，使得在任何编码下都无问题 */
+>>>>>>> master
     color: #333;
 }
 
