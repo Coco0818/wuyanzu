@@ -651,7 +651,6 @@ form span.error {
 .middle-right form li:last-of-type {
   margin-bottom: 0;
 }
-
 .verify_tips .voice_btn {
   outline: none;
   text-decoration: none;
