@@ -1,21 +1,18 @@
 <template>
   <div>
-    <Search />
+    <Home />
   </div>
 </template>
 
 <script>
-import Search from "./pages/Search";
-export default {
-  name: "",
-  components: {
-    Search,
-  },
-  data() {
-    return {};
-  },
-};
-</script>
+import Home from '@/pages/Home'
 
-<style >
+export default {
+  name: 'App',
+  components: {
+    Home,
+  },
+}
+</script>
+<style scoped>
 </style>
