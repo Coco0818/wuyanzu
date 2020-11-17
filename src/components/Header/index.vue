@@ -42,7 +42,45 @@
               <a href="##">上传附件简历</a>
             </li>
             <li>
-              <a href="##" class="login">登录</a>
+              <a href="##" class="login" @click="centerDialogVisible = true"
+                >登录</a
+              >
+              <el-dialog
+                title="登录"
+                :visible.sync="centerDialogVisible"
+                width="436px"
+                center
+              >
+                <form action="##" @submit="go" class="loginForm">
+                  <!-- 用户名 密码 -->
+                  <div class="input-item">
+                    <div class="input-border">
+                      <input
+                        type="text"
+                        class="input"
+                        placeholder="请输入常用手机号/邮箱"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                  <div class="input-item">
+                    <div class="input-border">
+                      <input
+                        type="password"
+                        class="input"
+                        placeholder="请输入密码"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                  <div class="yanzhen">
+                    <div class="phoneLogin">手机验证登录</div>
+                    <a href="##" class="forget-pwd">忘记密码</a>
+                  </div>
+                  <button class="login-btn">登录</button>
+                  <div class="go-rigist">立即注册</div>
+                </form>
+              </el-dialog>
             </li>
             <li>
               <span>|</span>
@@ -83,7 +121,19 @@
   </header>
 </template>
 <script>
-export default {}
+export default {
+  name: 'Header',
+  data() {
+    return {
+      centerDialogVisible: false,
+    }
+  },
+  methods: {
+    go() {
+      console.log(1)
+    },
+  },
+}
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
 #header {
@@ -196,6 +246,74 @@ export default {}
                 background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png)
                   no-repeat;
                 background-size: 100% 100%;
+              }
+            }
+
+            .loginForm {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+              .input-item {
+                // position: relative;
+                width: 316px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                .input-border {
+                  border: 1px solid #fff;
+                  .input {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 50px;
+                    padding-left: 18px;
+                    background: 0 0;
+                    border-radius: 0;
+                    font-size: 14px;
+                    border: 0;
+                    background: #f4f4f4;
+                  }
+                }
+              }
+              .yanzhen {
+                clear: both;
+
+                .phoneLogin {
+                  float: left;
+                  cursor: pointer;
+                  margin-bottom: 25px;
+                  font-size: 14px;
+                  color: #00b38a;
+                }
+                .forget-pwd {
+                  // position: relative;
+                  float: right;
+                  font-size: 14px;
+                  display: block;
+                  text-align: right;
+                  text-decoration: none;
+                  color: #999;
+                }
+              }
+              .login-btn {
+                width: 316px;
+                height: 48px;
+                line-height: 48px;
+                font-size: 16px;
+                text-align: center;
+                color: #fff;
+                background-image: url(//www.lgstatic.com/lg-www-fed/common/widgets/passport/static/images/popup-sprite_e5ea04f.png);
+                background-repeat: no-repeat;
+                background-position: -20px -20px;
+                margin-bottom: 20px;
+                cursor: pointer;
+              }
+              .go-rigist {
+                width: 100%;
+                font-size: 16px;
+                color: #666;
+                text-align: center;
+                cursor: pointer;
               }
             }
 
