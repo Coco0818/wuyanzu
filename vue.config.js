@@ -4,7 +4,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/': {
-        target: 'http://192.168.16.52:8080', // 服务器地址
+        target: 'http://192.168.16.52:7777', // 服务器地址
         changeOrigin: true // 是否跨域
       }
     }

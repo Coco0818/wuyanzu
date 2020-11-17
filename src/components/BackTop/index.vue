@@ -31,7 +31,7 @@ export default {
         if (that.scrollTop === 0) {
           clearInterval(timer);
         }
-      }, 1000 / 50);
+      }, 1000 / 100);
     },
 
     // 为了计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏

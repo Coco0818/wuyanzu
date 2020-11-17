@@ -6,7 +6,19 @@ import Detail from '../pages/Detail'
 
 // 暴露出去
 export default [
-  Login,
-  Register,
-  Detail
+  {
+    // 登录 
+    path: '/login',
+    component: Login
+  },
+  {
+    // 注册 
+    path: '/register',
+    component: Register
+  },
+  {
+    // 详情
+    path: '/detail',
+    component: Detail
+  },
 ]

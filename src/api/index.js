@@ -1,5 +1,15 @@
-// 封装每个接口的api函数
-// 引入ajax 
-import ajax from './ajax'
-// 获取全部岗位信息API
-export const reqGetAllStationMsg = () => ajax.get(`/positions`)
+// 封装api
+
+import ajax from './ajax'
+
+// 所有信息
+export const reqPositions = () => ajax.get('/positions')
+
+// 三级分类
+export const reqCateGorys = () => ajax.get('/categorys')
+
+//  互联网热门公司
+export const reqCompanys = () => ajax.get('/companys')
+
+//  过滤栏
+export const reqFilters = () => ajax.get('/filters')

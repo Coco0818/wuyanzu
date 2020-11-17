@@ -1,28 +1,17 @@
-// 引入登录和注册
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import Detail from '../pages/Detail'
+// 引入Vue
+import Vue from 'vue'
+// 引入路由
+import VueRouter from 'vue-router'
+// 引入路由集合
+import routes from './routes'
 
+// 使用路由
+Vue.use(VueRouter)
 
-export default ({
-  mode: 'history',
-  routes = [
-    {
-      // 登录 
-      path: '/login',
-      component: Login
-    },
-    {
-      // 注册 
-      path: '/register',
-      component: Register
-    },
-    {
-      // 详情
-      path: '/detail',
-      component: Detail
-    },
-    
-
-  ]
+// 实例化路由并暴露出去
+const router = new VueRouter({
+  mode: 'history', // 去掉地址栏前面的#
+  routes
 })
+
+export default router

@@ -13,7 +13,8 @@
     "element-ui": "^2.14.1",
     "nprogress": "^0.2.0",
     "vue": "^2.6.11",
-    "vue-awesome-swiper": "^4.1.1"
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

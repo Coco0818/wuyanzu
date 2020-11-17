@@ -37,7 +37,7 @@
         <!-- 右边 -->
         <div class="r-bar">
           <!--  未登录状态 -->
-          <!-- <ul class="account-bar">
+          <ul class="account-bar">
             <li class="upload">
               <a href="##">上传附件简历</a>
             </li>
@@ -50,9 +50,9 @@
             <li>
               <a href="##">注册</a>
             </li>
-          </ul> -->
+          </ul>
           <!-- 登录状态 -->
-          <ul class="account-bar">
+          <!-- <ul class="account-bar">
             <li class="msg">
               <a href="" class="iconfont icon-lingdang"></a>
             </li>
@@ -63,7 +63,7 @@
               <span>布丁Coco</span>
               <i></i>
             </li>
-          </ul>
+          </ul> -->
           <a href="##" class="r-os">进入企业版</a>
         </div>
       </div>

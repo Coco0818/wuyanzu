@@ -609,7 +609,6 @@ li {
   text-align: center;
 }
 .jd_publisher div.border {
-  height: 70px;
   padding: 14px 10px;
   padding-left: 0;
   position: relative;

@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- 轮播模块 star -->
     <div class="company-container">
       <h3>什么值得投</h3>
@@ -10,68 +9,61 @@
         <div class="company-banner-list">
           <div class="block">
             <!-- 轮播父盒子 -->
-            <el-carousel height="300px" indicator-position="none">
+            <el-carousel
+              height="300px"
+              indicator-position="none"
+              :loop="false"
+              autoplay
+            >
               <!-- 轮播每一屏 -->
               <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Ciqc1F9QZJSAC0VBAACwLdjC9yo459.png" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
+                <div
+                  class="banner-box-item"
+                  v-for="(item, index) in newComArrOne"
+                  :key="index"
+                >
+                  <img :src="item.ImgUrl" />
+                  <a href="javascript:;">{{ item.comName }}</a>
                 </div>
               </el-carousel-item>
 
               <!-- 轮播每一屏 -->
               <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
+                <div
+                  class="banner-box-item"
+                  v-for="(item, index) in newComArrTwo"
+                  :key="index"
+                >
+                  <img :src="item.ImgUrl" />
+                  <a href="javascript:;">{{ item.comName }}</a>
                 </div>
+              </el-carousel-item>
 
+              <!-- 轮播每一屏 -->
+              <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
+                <div
+                  class="banner-box-item"
+                  v-for="(item, index) in newComArrThree"
+                  :key="index"
+                >
+                  <img :src="item.ImgUrl" />
+                  <a href="javascript:;">{{ item.comName }}</a>
                 </div>
+              </el-carousel-item>
 
+              <!-- 轮播每一屏 -->
+              <el-carousel-item class="banner-box">
                 <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <!-- 每个公司 -->
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
-                </div>
-
-                <div class="banner-box-item">
-                  <img src="./images/Cgp3O1i-Ud-ALm_EAAAQLj09AFI138.jpg" />
-                  <a href="javascript:;">博创科技</a>
+                <div
+                  class="banner-box-item"
+                  v-for="(item, index) in newComArrFour"
+                  :key="index"
+                >
+                  <img :src="item.ImgUrl" />
+                  <a href="javascript:;">{{ item.comName }}</a>
                 </div>
               </el-carousel-item>
             </el-carousel>
@@ -88,27 +80,27 @@
             <!-- 日期 -->
             <div class="banner-box-item-zero">
               <span style="color: #37ecb6">。。。。&nbsp; </span>
-              <span style="font-size: 16px">11/16</span>
+              <span style="font-size: 16px">11/17</span>
               <span style="color: #37ecb6">&nbsp; 。。。。</span>
             </div>
 
             <!-- 日期 -->
             <div class="banner-box-item-zero">
               <span style="color: #37ecb6">。。。。&nbsp; </span>
-              <span style="font-size: 16px">11/16</span>
+              <span style="font-size: 16px">11/18</span>
               <span style="color: #37ecb6">&nbsp; 。。。。</span>
             </div>
 
             <!-- 日期 -->
             <div class="banner-box-item-zero">
               <span style="color: #37ecb6">。。。。&nbsp; </span>
-              <span style="font-size: 16px">11/16</span>
+              <span style="font-size: 16px">11/19</span>
               <span style="color: #37ecb6">&nbsp; 。。。。</span>
             </div>
             <!-- 日期 -->
             <div class="banner-box-item-zero">
               <span style="color: #37ecb6">。。。。&nbsp; </span>
-              <span style="font-size: 16px">11/16</span>
+              <span style="font-size: 16px">11/20</span>
               <span style="color: #37ecb6">&nbsp; 。。。。</span>
             </div>
           </div>
@@ -125,23 +117,12 @@
           <!-- 公司地点 star -->
           <div class="company-address">
             <span class="company-fl">公司地点：</span>
-            <div class="company-address-list company-fl">
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;" class="company-address-list-active"
-                >深圳</a
-              >
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
+            <div class="company-address-list company-fl"
+              v-for="(item,index) in filterOne"
+              :key="index"
+            >
+            <!-- class="company-address-list-active" -->
+              <a href="javascript:;" :class="index==0?'company-address-list-active':''">{{item}}</a>
             </div>
             <a href="javascript:;" class="company-btn-more company-fr">
               更多
@@ -153,23 +134,12 @@
           <!-- 融资阶段： star -->
           <div class="company-address">
             <span class="company-fl">融资阶段：</span>
-            <div class="company-address-list company-fl">
-              <a href="javascript:;" class="company-address-list-active"
-                >不限</a
+            <div 
+              class="company-address-list company-fl"
+              v-for="(item,index) in filterTwo"
+                :key="index"
               >
-              <a href="javascript:;">未融资</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
+              <a href="javascript:;" :class="index==0?'company-address-list-active':''">{{item}}</a>
             </div>
           </div>
           <!--融资阶段： end -->
@@ -177,23 +147,12 @@
           <!-- 公司规模： star -->
           <div class="company-address">
             <span class="company-fl">公司规模：</span>
-            <div class="company-address-list company-fl">
-              <a href="javascript:;" class="company-address-list-active"
-                >不限</a
-              >
-              <a href="javascript:;">未融资</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
+            <div class="company-address-list company-fl"
+              v-for="(item,index) in filterThree"
+                :key="index"
+            >
+              
+              <a href="javascript:;" :class="index==0?'company-address-list-active':''">{{item}}</a>
             </div>
           </div>
           <!--公司规模： end -->
@@ -201,23 +160,11 @@
           <!-- 行业领域： star -->
           <div class="company-address">
             <span class="company-fl">行业领域：</span>
-            <div class="company-address-list company-fl">
-              <a href="javascript:;" class="company-address-list-active"
-                >不限</a
-              >
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
-              <a href="javascript:;">深圳</a>
+            <div class="company-address-list company-fl"
+              v-for="(item,index) in filterFour"
+                :key="index"
+            >
+              <a href="javascript:;" :class="index==0?'company-address-list-active':''">{{item}}</a>
             </div>
             <a href="javascript:;" class="company-btn-more company-fr">
               更多
@@ -249,431 +196,28 @@
         <div class="companyList-container">
           <ul>
             <!-- 腾讯模块 star -->
-            <li>
+            <li v-for="item in allStation" :key="item.id">
               <div class="companyList-top">
                 <p>
-                  <img src="./images/ia_100000025.jpg" alt="" />
+                  <img :src="item.ImgUrl" alt="" />
                 </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
+                <h3>{{ item.comName }}</h3>
+                <h4 class="companyList-top-one">{{ item.indusStage }}</h4>
+                <h4 class="companyList-top-two wordCut">
+                  {{ item.advantage ? item.advantage : "无" }}
+                </h4>
               </div>
               <div class="companyList-bottom">
                 <a href="javascript:;">
-                  <p class="companyList-green">133</p>
+                  <p class="companyList-green">{{ item.commentNum }}</p>
                   <p class="companyList-line">面试评价</p>
                 </a>
                 <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
+                  <p class="companyList-green">{{ item.positionNum }}</p>
                   <p class="companyList-line">在招职位</p>
                 </a>
                 <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000026.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000027.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000028.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000029.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000030.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000031.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000032.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000033.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000034.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000035.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000036.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000037.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000038.png" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000039.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
-                  <p>简历处理率</p>
-                </a>
-              </div>
-            </li>
-            <!-- 腾讯模块 end -->
-
-            <!-- 腾讯模块 star -->
-            <li>
-              <div class="companyList-top">
-                <p>
-                  <img src="./images/ia_100000040.jpg" alt="" />
-                </p>
-                <h3>腾讯</h3>
-                <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-                <h4 class="companyList-top-two">用户为本，科技向善</h4>
-              </div>
-              <div class="companyList-bottom">
-                <a href="javascript:;">
-                  <p class="companyList-green">133</p>
-                  <p class="companyList-line">面试评价</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">2586</p>
-                  <p class="companyList-line">在招职位</p>
-                </a>
-                <a href="javascript:;">
-                  <p class="companyList-green">57%</p>
+                  <p class="companyList-green">{{ item.perNum }}</p>
                   <p>简历处理率</p>
                 </a>
               </div>
@@ -687,11 +231,11 @@
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page.sync="currentPage3"
-            :page-size="100"
+            :current-page="currentPage"
+            :page-size="pageSize"
             layout="prev, pager, next, jumper"
-            :total="1000"
-            class="companyList-pages-center"
+            :total="pageTotal"
+            background
           >
           </el-pagination>
         </div>
@@ -1073,38 +617,62 @@
 <script>
 // 引入api解构出接口
 // 引入api接口函数
-import { reqGetAllStationMsg } from '../../api'
+import { reqCompanys,reqFilters } from "../../api";
 
 export default {
   name: "Company",
-    data() {
-      return {
-        currentPage1: 5,
-        currentPage2: 5,
-        currentPage3: 5,
-        currentPage4: 4,
-        btnFlag: true
-      };
-    },
+  data() {
+    return {
+      btnFlag: true,
+      allStation: [], // 所有公司信息
+      allFilters: [],// 所有过滤栏
+      pageSize: 8, // 每页条数
+      pageTotal: 32, // 总条数
+      currentPage: 1, // 默认第一页
+      newComArrOne: [], // 轮播第一屏
+      newComArrTwo: [], // 轮播第二屏
+      newComArrThree: [], // 轮播第三屏
+      newComArrFour: [], // 轮播第四屏
+      
+      // 过滤栏4个
+      filterOne:[],
+      filterTwo:[],
+      filterThree:[],
+      filterFour:[],
+    };
+  },
   methods: {
     // 分页
-    handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+    handleSizeChange: function (size) {
+      this.pagesize = size; //当前显示页数
+      console.log(this.pagesize); //每页下拉显示数据
     },
-    handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
-    }
+    handleCurrentChange: function (currentPage) {
+      this.currentPage = currentPage; //第几页
+      console.log(this.currentPage); //点击第几页
+    },
   },
-  // async mounted(){
-  //   // 请求所有公司岗位信息
-  //   const result = await reqGetAllStationMsg()
-  //   console.log(result);
-  //   result.map((item) => {
-  //     return console.log(item);
-      
-  //   })
-  // }
-}
+  async mounted() {
+    // 请求所有公司岗位信息
+    const resultOne = await reqCompanys();
+    this.allStation = resultOne.data;
+    // 轮播图每一屏的数据
+    this.newComArrOne = this.allStation.slice(0, 5);
+    this.newComArrTwo = this.allStation.slice(6, 11);
+    this.newComArrThree = this.allStation.slice(12, 17);
+    this.newComArrFour = this.allStation.slice(24, 29);
+
+    // 请求过滤数据
+    const resultTwo = await reqFilters()
+    this.allFilters = resultTwo.data;
+    this.filterOne = this.allFilters[0].cityName.slice(0,15)
+    this.filterTwo = this.allFilters[0].componySize;
+    this.filterThree = this.allFilters[0].financeStages;
+    this.filterFour = this.allFilters[0].industry.slice(1,11);
+    // console.log(this.filterOne);
+    //  cityName componySize   financeStages  industry
+  },
+};
 </script>
 <style>
 /* 版心 */
@@ -1340,7 +908,7 @@ export default {
   height: 270px;
   margin-top: 16px;
   margin-right: 16px;
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
 }
 
 .companyList-container ul li:hover {
@@ -1353,7 +921,7 @@ export default {
   margin: 0 13px;
   padding: 20px 0 14px;
   text-align: center;
-  border-bottom: 1px dashed #E0E0E0;
+  border-bottom: 1px dashed #e0e0e0;
   position: relative;
 }
 
@@ -1382,7 +950,12 @@ export default {
   margin: 5px auto 0;
   color: #555;
 }
-
+.wordCut {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+}
 .companyList-bottom a {
   width: 90px;
   position: relative;
@@ -1409,7 +982,7 @@ export default {
   content: "";
   height: 30px;
   width: 1px;
-  background: #EDEDED;
+  background: #ededed;
 }
 
 /* 公司列表 end */
@@ -1438,7 +1011,7 @@ export default {
 /* 头部 */
 
 .company-hotList dl dt {
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #e8e8e8;
   font-size: 16px;
   color: #333;
   margin-bottom: 21px;
