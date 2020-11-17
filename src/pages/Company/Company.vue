@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- 回到顶部 -->
-    <BackTop />
+
     <!-- 轮播模块 star -->
     <div class="company-container">
       <h3>什么值得投</h3>
@@ -1072,7 +1071,6 @@
   </div>
 </template>
 <script>
-import BackTop from '../../components/BackTop'
 // 引入api解构出接口
 // 引入api接口函数
 import { reqGetAllStationMsg } from '../../api'
@@ -1088,9 +1086,6 @@ export default {
         btnFlag: true
       };
     },
-  components:{
-    BackTop
-  },
   methods: {
     // 分页
     handleSizeChange(val) {
