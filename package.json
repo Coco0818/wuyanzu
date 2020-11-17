@@ -43,7 +43,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-irregular-whitespace":"off"
+      "no-irregular-whitespace": "off"
     }
   },
   "browserslist": [
