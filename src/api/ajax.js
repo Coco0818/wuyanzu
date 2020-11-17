@@ -1,20 +1,20 @@
-import axios from 'axios'
+import axios from "axios";
 const ajax = axios.create({
-  baseURL: '/',
+  baseURL: "/",
   timeout: 2000,
-})
+});
 
 ajax.interceptors.request.use((config) => {
-  return config
-})
+  return config;
+});
 
 ajax.interceptors.response.use(
   (res) => {
-    return res.data
+    return res.data;
   },
   (err) => {
-    alert(Promise.reject(err.message))
+    alert(Promise.reject(err.message));
   }
-)
+);
 
-export default ajax
+export default ajax;
