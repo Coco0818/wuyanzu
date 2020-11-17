@@ -42,51 +42,13 @@
               <a href="##">上传附件简历</a>
             </li>
             <li>
-              <a href="##" class="login" @click="centerDialogVisible = true"
-                >登录</a
-              >
-              <el-dialog
-                title="登录"
-                :visible.sync="centerDialogVisible"
-                width="436px"
-                center
-              >
-                <form action="##" @submit="go" class="loginForm">
-                  <!-- 用户名 密码 -->
-                  <div class="input-item">
-                    <div class="input-border">
-                      <input
-                        type="text"
-                        class="input"
-                        placeholder="请输入常用手机号/邮箱"
-                        autocomplete="off"
-                      />
-                    </div>
-                  </div>
-                  <div class="input-item">
-                    <div class="input-border">
-                      <input
-                        type="password"
-                        class="input"
-                        placeholder="请输入密码"
-                        autocomplete="off"
-                      />
-                    </div>
-                  </div>
-                  <div class="yanzhen">
-                    <div class="phoneLogin">手机验证登录</div>
-                    <a href="##" class="forget-pwd">忘记密码</a>
-                  </div>
-                  <button class="login-btn">登录</button>
-                  <div class="go-rigist">立即注册</div>
-                </form>
-              </el-dialog>
+              <a href="javascript:;" class="login" @click="goLogin">登录</a>
             </li>
             <li>
               <span>|</span>
             </li>
             <li>
-              <a href="##">注册</a>
+              <a href="##" @click="goRegister">注册</a>
             </li>
           </ul>
           <!-- 登录状态 -->
@@ -129,8 +91,11 @@ export default {
     }
   },
   methods: {
-    go() {
-      console.log(1)
+    goLogin() {
+      this.$router.push('/login')
+    },
+    goRegister() {
+      this.$router.push('/register')
     },
   },
 }

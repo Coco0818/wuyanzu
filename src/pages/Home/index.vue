@@ -48,7 +48,7 @@ import HotContent from './HotContent'
 import TypNav from './TypNav'
 import JobTap from './JobTap'
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     HotContent,
     TypNav,

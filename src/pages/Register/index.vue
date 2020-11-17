@@ -12,11 +12,7 @@
         <div class="register-header-right">
           <div class="show_qrcode_app">
             <!-- <i class="icon_app"></i> -->
-            <img
-              class="icon_app"
-              src="./images/register_phone.png"
-              alt=""
-            />
+            <img class="icon_app" src="./images/register_phone.png" alt="" />
             <span>拉勾APP</span>
           </div>
         </div>
@@ -50,58 +46,34 @@
             <div class="select-content">
               <div class="select-search-lab">
                 <span class="search-lab active">技术</span>
-                <span class="search-lab ">产品</span>
-                <span class="search-lab ">设计</span>
-                <span class="search-lab ">运营</span>
-                <span class="search-lab ">销售</span>
-                <span class="search-lab ">市场</span>
+                <span class="search-lab">产品</span>
+                <span class="search-lab">设计</span>
+                <span class="search-lab">运营</span>
+                <span class="search-lab">销售</span>
+                <span class="search-lab">市场</span>
               </div>
               <div class="select-search-content">
-                <img
-                  class="middle-banner"
-                  src="./images/i_baidu.png"
-                  alt=""
-                />
+                <img class="middle-banner" src="./images/i_baidu.png" alt="" />
                 <img
                   class="middle-banner"
                   src="./images/i_meituan.png"
                   alt=""
                 />
-                <img
-                  class="middle-banner"
-                  src="./images/i_wangyi.png"
-                  alt=""
-                />
+                <img class="middle-banner" src="./images/i_wangyi.png" alt="" />
                 <img
                   class="middle-banner"
                   src="./images/i_xindongfang.png"
                   alt=""
                 />
-                <img
-                  class="middle-banner"
-                  src="./images/i_beike.png"
-                  alt=""
-                />
+                <img class="middle-banner" src="./images/i_beike.png" alt="" />
                 <img
                   class="middle-banner"
                   src="./images/i_haoweilai.png"
                   alt=""
                 />
-                <img
-                  class="middle-banner"
-                  src="./images/i_bank.png"
-                  alt=""
-                />
-                <img
-                  class="middle-banner"
-                  src="./images/i_qu.png"
-                  alt=""
-                />
-                <img
-                  class="middle-banner"
-                  src="./images/i_dd.png"
-                  alt=""
-                />
+                <img class="middle-banner" src="./images/i_bank.png" alt="" />
+                <img class="middle-banner" src="./images/i_qu.png" alt="" />
+                <img class="middle-banner" src="./images/i_dd.png" alt="" />
                 <img
                   class="middle-banner"
                   src="./images/i_bilibili.png"
@@ -112,16 +84,8 @@
                   src="./images/i_jingshan.png"
                   alt=""
                 />
-                <img
-                  class="middle-banner"
-                  src="./images/i_mayi.png"
-                  alt=""
-                />
-                <img
-                  class="middle-banner"
-                  src="./images/i_jd.png"
-                  alt=""
-                />
+                <img class="middle-banner" src="./images/i_mayi.png" alt="" />
+                <img class="middle-banner" src="./images/i_jd.png" alt="" />
               </div>
             </div>
           </div>
@@ -133,7 +97,7 @@
               <ul>
                 <li>
                   <span class="area_code">0086</span>
-                  <div class="area_code_list" style="display: none;">
+                  <div class="area_code_list" style="display: none">
                     <dl class="code_list_main">
                       <dt>常用</dt>
                       <dd>中国<span>0086</span></dd>
@@ -255,14 +219,7 @@
               </div>
             </form>
             <div class="login_btn">
-              <a
-                href="#"
-                target="_blank"
-                data-lg-tj-id="1kxx"
-                data-lg-tj-no="0004"
-                data-lg-tj-cid="idnull"
-                >已有帐号，直接登录</a
-              >
+              <a href="javascript:;" @click="goLogin">已有帐号，直接登录</a>
             </div>
           </div>
         </div>
@@ -316,8 +273,13 @@
 </template>
 <script>
 export default {
-  name: "Register",
-};
+  name: 'Register',
+  methods: {
+    goLogin() {
+      this.$router.push('/login')
+    },
+  },
+}
 </script>
 <style  rel="stylesheet" scoped>
 * {
@@ -329,25 +291,25 @@ export default {
   min-width: 1024px;
 }
 
- .register-header {
+.register-header {
   background: #fff;
 }
 
- .register-header .register-header-bg {
+.register-header .register-header-bg {
   width: 1000px;
   height: 60px;
   margin: 0 auto;
   overflow: hidden;
 }
 
- .register-header .register-header-bg .register-header-img {
+.register-header .register-header-bg .register-header-img {
   float: left;
   margin: 15px 0;
   width: 222px;
   height: 34px;
 }
 
- .register-header .register-header-bg .register-header-right {
+.register-header .register-header-bg .register-header-right {
   /* position: relative; */
   font-size: 14px;
   color: #999;
@@ -356,44 +318,42 @@ export default {
   line-height: 60px;
 }
 
-
-  .icon_app {
+.icon_app {
   display: inline-block;
   width: 15px;
   height: 15px;
 }
 
 .register-middle {
-    min-height: 694px;
-    background: #00b38a;
-    background-image: url(./images/register_bg.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    width: 100%;
-    background-size: auto 112px;
+  min-height: 694px;
+  background: #00b38a;
+  background-image: url(./images/register_bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+  background-size: auto 112px;
 }
 
- .register-middle-container {
+.register-middle-container {
   width: 1000px;
   margin: 0 auto;
 }
- .register-middle-container .register-middle-img {
+.register-middle-container .register-middle-img {
   display: block;
   /* margin: 28px 0 8px; */
   padding: 28px 0 8px;
   height: 34px;
 }
 
- .register-middle-container .register-middle-home {
+.register-middle-container .register-middle-home {
   overflow: hidden;
 }
 
- .register-middle-home .home-left {
+.register-middle-home .home-left {
   float: left;
   width: 610px;
   height: 470px;
 }
-
 
 .home-left-seach {
   height: 46px;
@@ -471,15 +431,15 @@ export default {
   height: 424px;
 }
 
-.select-search-content .middle-banner{
+.select-search-content .middle-banner {
   border-radius: 4px;
-  opacity: .72;
+  opacity: 0.72;
 }
-.middle-banner:hover{
+.middle-banner:hover {
   opacity: 1;
 }
 /*  */
-.middle-right{
+.middle-right {
   width: 360px;
   float: right;
   background: #fff;
@@ -489,7 +449,7 @@ export default {
   box-sizing: border-box;
 }
 
-.middle-title{
+.middle-title {
   font-size: 24px;
   text-align: center;
   font-weight: 600;
@@ -498,15 +458,15 @@ export default {
   margin-bottom: 47px;
 }
 
-.middle-green{
+.middle-green {
   color: #00b38a;
 }
 
-.middle-green:after{
-  content: "";
+.middle-green:after {
+  content: '';
   width: 24px;
   height: 3px;
-  opacity: .3;
+  opacity: 0.3;
   background: #333;
   display: block;
   position: absolute;
@@ -515,7 +475,7 @@ export default {
   transform: translateX(-50%);
 }
 
-#phone_form{
+#phone_form {
   display: block;
 }
 
@@ -524,11 +484,10 @@ export default {
   margin-bottom: 24px;
 }
 
-#phone_form ul li{
+#phone_form ul li {
   position: relative;
- margin-bottom: 27px;
+  margin-bottom: 27px;
 }
-
 
 .area_code {
   position: absolute;
@@ -545,13 +504,14 @@ export default {
 
 .area_code:after {
   position: absolute;
-  content: "";
+  content: '';
   right: 8px;
   top: 14px;
   display: block;
   width: 10px;
   height: 10px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAANFJREFUOBHtkr0NwjAQheNkCqZhDyoax4IiDJCaAYIEyK6oKDwEq5n3FJyI4BiHNBQ56Wzf36fTnbNskb+bgDDGrNHVHXosy/LyS4dg7FFXQze5EKLAY+WcO2utq6lA1rCWDLJyKeUDjh0MB2czBfrKbVhLBlnCd4SgQuCKAH0HpdTJx0L3EIZ8zbwOSCMVOgb7AKZAY7AgMAb9BhsFhqD0QboF+Jm17v58m2Hvbl+DmWZ+m2MwVkWBTMCn3eLyG6/w+W+w54m1tqDOoyzVqRN4AgXLjC5IHionAAAAAElFTkSuQmCC) no-repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAANFJREFUOBHtkr0NwjAQheNkCqZhDyoax4IiDJCaAYIEyK6oKDwEq5n3FJyI4BiHNBQ56Wzf36fTnbNskb+bgDDGrNHVHXosy/LyS4dg7FFXQze5EKLAY+WcO2utq6lA1rCWDLJyKeUDjh0MB2czBfrKbVhLBlnCd4SgQuCKAH0HpdTJx0L3EIZ8zbwOSCMVOgb7AKZAY7AgMAb9BhsFhqD0QboF+Jm17v58m2Hvbl+DmWZ+m2MwVkWBTMCn3eLyG6/w+W+w54m1tqDOoyzVqRN4AgXLjC5IHionAAAAAElFTkSuQmCC)
+    no-repeat;
   background-size: contain;
 }
 
@@ -593,7 +553,7 @@ export default {
   border-bottom: 1px solid #ff6a6a;
 }
 
-.middle-right form input:not([type=button]) {
+.middle-right form input:not([type='button']) {
   display: block;
   width: 100%;
   height: 38px;
@@ -605,7 +565,7 @@ export default {
   outline: none;
 }
 
-.area_code_list+input {
+.area_code_list + input {
   padding-left: 72px;
 }
 
@@ -622,7 +582,7 @@ form span.error {
   display: none;
 }
 
-.middle-right form input:not([type=button]) {
+.middle-right form input:not([type='button']) {
   display: block;
   width: 100%;
   height: 38px;
@@ -638,7 +598,8 @@ form span.error {
   padding-right: 110px;
 }
 
-.reflash, .yzm {
+.reflash,
+.yzm {
   position: absolute;
   right: 0;
   top: 1px;
@@ -656,7 +617,8 @@ form span.error {
   height: 38px;
 }
 
-.reflash, .yzm {
+.reflash,
+.yzm {
   position: absolute;
   right: 0;
   top: 1px;
@@ -681,7 +643,6 @@ form span.error {
   border-radius: 3px;
 }
 
-
 .verify_tips {
   margin: 21px 0 0;
   color: #777;
@@ -690,7 +651,7 @@ form span.error {
 .middle-right form li:last-of-type {
   margin-bottom: 0;
 }
- 
+
 .verify_tips .voice_btn {
   outline: none;
   text-decoration: none;
@@ -701,7 +662,8 @@ form span.error {
   font-size: 14px;
 }
 
-.verify_tips_count_down, .verify_tips_main {
+.verify_tips_count_down,
+.verify_tips_main {
   display: none;
 }
 
@@ -713,7 +675,7 @@ form span.error {
   font-size: 16px;
   color: #fff;
   text-align: center;
-  background-image: linear-gradient(90deg,#09cb9d,#02b389);
+  background-image: linear-gradient(90deg, #09cb9d, #02b389);
   border-radius: 3px;
 }
 
@@ -743,14 +705,14 @@ form span.error {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: " ";
+  content: ' ';
   clear: both;
   height: 0;
 }
 
-.register-footer{
-    padding: 35px 20px;
-    background: #fff;
+.register-footer {
+  padding: 35px 20px;
+  background: #fff;
 }
 
 .register-footer .info {
@@ -762,7 +724,7 @@ form span.error {
   zoom: 1;
 }
 
-.register-footer .info{
+.register-footer .info {
   list-style: none;
 }
 
@@ -804,7 +766,7 @@ form span.error {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: " ";
+  content: ' ';
   clear: both;
   height: 0;
 }

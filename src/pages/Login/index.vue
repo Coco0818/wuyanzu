@@ -3,7 +3,7 @@
     <input type="hidden" value="" id="isVisiable_request_form_verifyCode" />
     <!-- 页面主体START -->
     <header class="sso_header">
-      <a href="http://www.lagou.com" class="logo "> </a>
+      <a href="http://www.lagou.com" class="logo"> </a>
     </header>
     <section class="content_box cleafix">
       <!--右上角二维码展示-->
@@ -17,7 +17,7 @@
         <div class="mobile-info"></div>
       </div>
       <div class="left_area fl">
-        <div class="form-content" style="display: block;">
+        <div class="form-content" style="display: block">
           <div class="form_head">
             <ul class="form_head clearfix">
               <li
@@ -44,7 +44,7 @@
                 class="input_item clearfix"
                 data-propertyname="username"
                 data-controltype="Phone"
-                style="display: block;"
+                style="display: block"
               >
                 <input
                   type="text"
@@ -59,7 +59,7 @@
                 class="input_item clearfix"
                 data-propertyname="password"
                 data-controltype="Password"
-                style="display: block;"
+                style="display: block"
               >
                 <input
                   type="password"
@@ -78,7 +78,7 @@
                 class="input_item btn_group clearfix sense_login_password"
                 data-propertyname="submit"
                 data-controltype="Botton"
-                style="display: block;"
+                style="display: block"
               >
                 <input
                   type="submit"
@@ -94,15 +94,9 @@
         </div>
       </div>
       <div class="divider fl"></div>
-      <div class="right_area fl" style="display: block;">
+      <div class="right_area fl" style="display: block">
         <h5>还没有账号:</h5>
-        <a
-          class="register_now"
-          data-lg-tj-id="1ja0"
-          data-lg-tj-no="idnull"
-          data-lg-tj-cid="idnull"
-          >立即注册</a
-        >
+        <a class="register_now" @click="goRegister">立即注册</a>
         <h5>使用以下账号直接登录:</h5>
         <ul class="vender_login clearfix">
           <li class="vender_icon icon_sina"></li>
@@ -113,8 +107,8 @@
       </div>
     </section>
 
-    <div style="display:none">
-      <div class="popup" id="ajaxError" style="overflow:hidden;width:500px;">
+    <div style="display: none">
+      <div class="popup" id="ajaxError" style="overflow: hidden; width: 500px">
         <h4 class="error_msg">网络出错啦</h4>
       </div>
     </div>
@@ -125,49 +119,60 @@
       style="display: none"
       value="nolagou"
     />
-    <div id="cboxOverlay" style="display: none;"></div>
+    <div id="cboxOverlay" style="display: none"></div>
     <div
       id="colorbox"
       class=""
       role="dialog"
       tabindex="-1"
-      style="display: none;"
+      style="display: none"
     >
       <div id="cboxWrapper">
         <div>
-          <div id="cboxTopLeft" style="float: left;"></div>
-          <div id="cboxTopCenter" style="float: left;"></div>
-          <div id="cboxTopRight" style="float: left;"></div>
+          <div id="cboxTopLeft" style="float: left"></div>
+          <div id="cboxTopCenter" style="float: left"></div>
+          <div id="cboxTopRight" style="float: left"></div>
         </div>
-        <div style="clear: left;">
-          <div id="cboxMiddleLeft" style="float: left;"></div>
-          <div id="cboxContent" style="float: left;">
-            <div id="cboxTitle" style="float: left;"></div>
-            <div id="cboxCurrent" style="float: left;"></div>
+        <div style="clear: left">
+          <div id="cboxMiddleLeft" style="float: left"></div>
+          <div id="cboxContent" style="float: left">
+            <div id="cboxTitle" style="float: left"></div>
+            <div id="cboxCurrent" style="float: left"></div>
             <button type="button" id="cboxPrevious"></button
             ><button type="button" id="cboxNext"></button
             ><button id="cboxSlideshow"></button>
-            <div id="cboxLoadingOverlay" style="float: left;"></div>
-            <div id="cboxLoadingGraphic" style="float: left;"></div>
+            <div id="cboxLoadingOverlay" style="float: left"></div>
+            <div id="cboxLoadingGraphic" style="float: left"></div>
           </div>
-          <div id="cboxMiddleRight" style="float: left;"></div>
+          <div id="cboxMiddleRight" style="float: left"></div>
         </div>
-        <div style="clear: left;">
-          <div id="cboxBottomLeft" style="float: left;"></div>
-          <div id="cboxBottomCenter" style="float: left;"></div>
-          <div id="cboxBottomRight" style="float: left;"></div>
+        <div style="clear: left">
+          <div id="cboxBottomLeft" style="float: left"></div>
+          <div id="cboxBottomCenter" style="float: left"></div>
+          <div id="cboxBottomRight" style="float: left"></div>
         </div>
       </div>
       <div
-        style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"
+        style="
+          position: absolute;
+          width: 9999px;
+          visibility: hidden;
+          display: none;
+          max-width: none;
+        "
       ></div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Login",
-};
+  name: 'Login',
+  methods: {
+    goRegister() {
+      this.$router.push('/register')
+    },
+  },
+}
 </script>
 <style rel="stylesheet" scoped>
 * {
@@ -179,7 +184,7 @@ li {
   list-style: none;
 }
 input {
-  font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", SimSun;
+  font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', SimSun;
 }
 
 .sso_header {
@@ -284,7 +289,7 @@ input {
   background-color: #00b38a;
   width: 150px;
   height: 1px;
-  border: 1px solid #000
+  border: 1px solid #000;
 }
 
 .content_box .tab_active:before,
@@ -294,7 +299,7 @@ input {
   top: -12px;
   left: 50%;
   margin-left: -3px;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   line-height: 0;
@@ -332,7 +337,7 @@ input {
 }
 .clearfix:before,
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -340,7 +345,6 @@ input {
   box-sizing: border-box;
   width: 290px;
   opacity: 0.5;
-
 }
 .content_box .input_white,
 .content_box .dropbtn_white {
@@ -417,8 +421,8 @@ input {
   transition: 0.05s linear;
   margin-top: 20px;
 }
-.btn:hover{
-  cursor:pointer;
+.btn:hover {
+  cursor: pointer;
 }
 
 .content_box .divider {
@@ -434,7 +438,7 @@ input {
 
 .content_box .divider:after {
   position: absolute;
-  content: "or";
+  content: 'or';
   left: 50%;
   top: 50%;
   padding: 2px;
@@ -467,12 +471,10 @@ h5 {
   color: #00b38a;
   padding-right: 23px;
   background: url(./images/icon-arrow-right.png) right center no-repeat;
-
 }
-.register_now:hover{
-  text-decoration: underline; 
-  cursor:pointer;
-
+.register_now:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 a {
   background-color: transparent;
@@ -487,7 +489,7 @@ a {
 
 .clearfix:before,
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
 }
 
