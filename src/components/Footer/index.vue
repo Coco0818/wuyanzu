@@ -84,10 +84,13 @@
   </div>
 </template>
 <script>
-export default {}
+export default {
+  name: 'Footer',
+}
 </script>
 <style lang="less" scoped>
 #footer {
+  // margin-top: 250px;
   background-color: #fff;
   clear: both;
   border-top: 1px solid #ebebeb;
@@ -104,7 +107,7 @@ export default {}
       display: flex;
 
       .footer-left {
-        border-right: 1px solid #E8E8E8;
+        border-right: 1px solid #e8e8e8;
         padding-right: 130px;
         a {
           display: flex;
@@ -115,8 +118,8 @@ export default {}
           position: relative;
           padding: 10px 0 8px;
           width: 180px;
-          border: 1px solid #00B38A;
-          color: #00B38A;
+          border: 1px solid #00b38a;
+          color: #00b38a;
           text-align: center;
           margin-bottom: 16px;
           display: flex;
@@ -205,7 +208,7 @@ export default {}
       font-size: 14px;
       line-height: 12px;
       text-align: center;
-      background: #FAFAFA;
+      background: #fafafa;
       height: 100px;
       overflow: hidden;
       a {
@@ -245,7 +248,7 @@ export default {}
           }
           .weifa-phone {
             margin: 0 0 0 20px;
-            border: 1px solid #D5DADF;
+            border: 1px solid #d5dadf;
             display: flex;
             align-items: center;
             padding: 8px 20px;

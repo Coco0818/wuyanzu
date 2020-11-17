@@ -42,13 +42,13 @@
               <a href="##">上传附件简历</a>
             </li>
             <li>
-              <a href="##" class="login">登录</a>
+              <a href="javascript:;" class="login" @click="goLogin">登录</a>
             </li>
             <li>
               <span>|</span>
             </li>
             <li>
-              <a href="##">注册</a>
+              <a href="##" @click="goRegister">注册</a>
             </li>
           </ul>
           <!-- 登录状态 -->
@@ -83,7 +83,22 @@
   </header>
 </template>
 <script>
-export default {}
+export default {
+  name: 'Header',
+  data() {
+    return {
+      centerDialogVisible: false,
+    }
+  },
+  methods: {
+    goLogin() {
+      this.$router.push('/login')
+    },
+    goRegister() {
+      this.$router.push('/register')
+    },
+  },
+}
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
 #header {
@@ -149,7 +164,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               padding: 0 21px;
-              color: #AFB5C0;
+              color: #afb5c0;
             }
           }
           .tabs-active {
@@ -172,31 +187,100 @@ export default {}
             text-align: center;
             float: left;
             // 未登录状态
-            // a {
-            //   display: inline-block;
-            //   height: 40px;
-            //   line-height: 40px;
-            //   color: #AFB5C0;
-            //   cursor: pointer;
-            // }
-            // span {
-            //   padding: 0 7px;
-            //   color: #5e6166;
-            //   line-height: 40px;
-            // }
-            // .login {
-            //   position: relative;
-            //   &::before {
-            //     content: '';
-            //     position: absolute;
-            //     top: 11px;
-            //     left: -26px;
-            //     width: 18px;
-            //     height: 18px;
-            //     background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png) no-repeat;
-            //     background-size: 100% 100%;
-            //   }
-            // }
+            a {
+              display: inline-block;
+              height: 40px;
+              line-height: 40px;
+              color: #afb5c0;
+              cursor: pointer;
+            }
+            span {
+              padding: 0 7px;
+              color: #5e6166;
+              line-height: 40px;
+            }
+            .login {
+              position: relative;
+              &::before {
+                content: '';
+                position: absolute;
+                top: 11px;
+                left: -26px;
+                width: 18px;
+                height: 18px;
+                background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png)
+                  no-repeat;
+                background-size: 100% 100%;
+              }
+            }
+
+            .loginForm {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+              .input-item {
+                // position: relative;
+                width: 316px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #fff;
+                .input-border {
+                  border: 1px solid #fff;
+                  .input {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 50px;
+                    padding-left: 18px;
+                    background: 0 0;
+                    border-radius: 0;
+                    font-size: 14px;
+                    border: 0;
+                    background: #f4f4f4;
+                  }
+                }
+              }
+              .yanzhen {
+                clear: both;
+
+                .phoneLogin {
+                  float: left;
+                  cursor: pointer;
+                  margin-bottom: 25px;
+                  font-size: 14px;
+                  color: #00b38a;
+                }
+                .forget-pwd {
+                  // position: relative;
+                  float: right;
+                  font-size: 14px;
+                  display: block;
+                  text-align: right;
+                  text-decoration: none;
+                  color: #999;
+                }
+              }
+              .login-btn {
+                width: 316px;
+                height: 48px;
+                line-height: 48px;
+                font-size: 16px;
+                text-align: center;
+                color: #fff;
+                background-image: url(//www.lgstatic.com/lg-www-fed/common/widgets/passport/static/images/popup-sprite_e5ea04f.png);
+                background-repeat: no-repeat;
+                background-position: -20px -20px;
+                margin-bottom: 20px;
+                cursor: pointer;
+              }
+              .go-rigist {
+                width: 100%;
+                font-size: 16px;
+                color: #666;
+                text-align: center;
+                cursor: pointer;
+              }
+            }
 
             // 登录状态
             a {
@@ -204,7 +288,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               padding: 0 16px;
-              color: #AFB5C0;
+              color: #afb5c0;
             }
           }
           .user {
@@ -218,7 +302,7 @@ export default {}
               height: 40px;
               line-height: 40px;
               font-size: 14px;
-              color: #AFB5C0;
+              color: #afb5c0;
               max-width: 96px;
               padding-left: 0;
               padding-right: 0;
@@ -236,7 +320,7 @@ export default {}
               width: 0;
               border-width: 5px 4px 0;
               border-style: solid dashed;
-              border-color: #AFB5C0 transparent transparent;
+              border-color: #afb5c0 transparent transparent;
             }
           }
 
@@ -249,7 +333,7 @@ export default {}
         float: left;
         height: 40px;
         line-height: 40px;
-        color: #AFB5C0;
+        color: #afb5c0;
       }
     }
     // 右边固定导航栏

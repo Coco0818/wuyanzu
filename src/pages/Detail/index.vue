@@ -5,25 +5,25 @@
     <div class="position-content clearfix ">
       <div class="position-content-l">
         <div class="job-name" title="前端工程师">
-          <h4 class="company">字节跳动招聘</h4>
+          <h4 class="company">{{detailInfo[index].companyName}}</h4>
           <h1 class="name">
             <span class="position-name-wrap">
-              <span class="position-head-wrap-name">前端工程师</span>
+              <span class="position-head-wrap-name">{{detailInfo[index].positionName}}</span>
             </span>
           </h1>
           <div class="marEdit"></div>
         </div>
         <dd class="job_request">
           <h3>
-            <span class="salary">20k-40k </span>
-            <span>/深圳 /</span>
-            <span> 经验1-3年 /</span>
-            <span>本科及以上 /</span>
+            <span class="salary">{{detailInfo[index].Salary}} </span>
+            <span>{{detailInfo[index].city}}</span>
+            <span>/{{detailInfo[index].Education}} /</span>
+            <span> {{detailInfo[index].workingExperience}}/</span>
             <span>全职</span>
           </h3>
           <!-- 职位标签 -->
           <ul class="position-label clearfix">
-            <li class="labels">web前端</li>
+            <li class="labels">{{detailInfo[index].industrySector}}</li>
           </ul>
           <p class="publish_time">03:49&nbsp; 发布于拉勾网</p>
         </dd>
@@ -60,13 +60,12 @@
         <dt class="join_tc_icon">
           <dd class="job-advantage">
             <span class="advantage">职位诱惑：</span>
-            <p>大公司待遇好</p>
+            <p>{{detailInfo[index].jobTemptation}}</p>
           </dd>
           <dd class="job_bt">
             <h3 class="description">职位描述：</h3>
             <div class="job-detail">
-              <p>熟悉JAVA,Spring，SpringBoot，SpringMVC，Zookeeper，微服务，Redis/Mybatis</p>
-              <p>熟悉Oracle、MySQL等当前主流数据库中至少一种</p>
+              <p>{{detailInfo[index].jobDescription}}</p>
             </div>
           </dd>
           <dd class="job-addres">
@@ -82,10 +81,10 @@
           <dd class="jd_publisher">
             <h3>职位发布者:</h3>
             <div class="border">
-              <img src="./images/ia_100000012.png" alt="">
+              <img :src= "detailInfo[index].HR.head" alt="">
               <div class="publisher_name">
                 <a title="杨琳姐">
-                  <span class="name">杨林杰</span>
+                  <span class="name">{{detailInfo[index].HR.name}}</span>
                   <span class="chat_me"></span>
                 </a>
                 <span class="pos"> 项目助理 </span>
@@ -132,11 +131,11 @@
       <dl class="job_company">
         <dt>
           <a href="javascript:;">
-            <img src="./images/ia_100000013.png" alt="" class="b2">
+            <img :src="detailInfo[index].imgUrl" alt="" class="b2">
             <div class="job_company_content">
               <h3>
                 <em class="fl-cn">
-                  创维电器
+                  {{detailInfo[index].companyName}}
                 </em>
                 <i class="icon-approve icon-glyph-valid"></i>
               </h3>
@@ -145,22 +144,21 @@
         </dt>
         <dd>
           <ul class="c_feature">
-
             <li>
-              <i class="icon-glyph-fourSquare iconfont">&#xea3e;</i>
-              <h4 class="c_feature_name">移动互联网</h4>
+              <i class="icon-four-squares iconfont"></i>
+              <h4 class="c_feature_name">{{detailInfo[index].industrySector}}</h4>
             </li>
             <li>
-              <i class="icon-glyph-fourSquare iconfont">&#xe680;</i>
-              <h4 class="c_feature_name">上市公司</h4>
+              <i class="icon-trend iconfont"></i>
+              <h4 class="c_feature_name">{{detailInfo[index].FinancingStage}}</h4>
             </li>
             <li>
-              <i class="icon-glyph-fourSquare iconfont">&#xe647;</i>
-              <h4 class="c_feature_name">创维集团(上市公司)</h4>
+              <i class="icon-ren iconfont"></i>
+              <h4 class="c_feature_name">{{detailInfo[index].StaffSize}}</h4>
             </li>
             <li>
-              <i class="icon-glyph-fourSquare iconfont">&#xe652;</i>
-              <h4 class="c_feature_name">http://www.skypad.cn</h4>
+              <i class="icon-home iconfont"></i>
+              <h4 class="c_feature_name">{{detailInfo[index].companyUrl}}</h4>
             </li>
           </ul>
         </dd>
@@ -303,12 +301,35 @@
   </div>
 </template>
 <script>
+// 引入axios
+import {reqPositions} from "../../api"
 export default {
-  name: 'Detail'
+  name: 'Detail',
+
+  data(){
+     return {
+       detailInfo:[],  //接收详情页动态数据
+       index: 0  // 接收详情页的某一条公司数据
+     }
+  },
+  
+  // 页面渲染完成后发送请求详情页数据
+ async mounted(){
+   
+     const result = await reqPositions();
+    //  console.log(result);
+     if(result.code===20000){
+        //  console.log(this.$data.detailInfo);
+         this.$data.detailInfo = result.data;
+        //  console.log(this.$data.detailInfo[0].companyName);
+         
+     }else{
+       alert("详情页请求失败："+result.message)
+     }
+  }
 }
 </script>
-<style>
-
+<style rel="stylesheet/css" >
 /* 投简历 star */
 * {
   margin: 0;
@@ -608,23 +629,24 @@ li {
   font-weight: 700;
   text-align: center;
 }
-.jd_publisher div.border {
+.jd_publisher .border {
+  height: 70px;
   padding: 14px 10px;
   padding-left: 0;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
-.jd_publisher div.border img {
+.jd_publisher .border img {
   position: absolute;
   left: 0;
   top: 14px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  background-size: 60px 60px;
-  width: 60px;
-  height: 60px;
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
 }
 .jd_publisher .publisher_name {
   float: left;
@@ -646,7 +668,7 @@ li {
   color: #333;
   width: 25px;
   height: 25px;
-  margin: 8px 0 0 5px;
+  margin: 20px 0 0 5px;
   background: url('./images/ia_100000072.png') no-repeat 0 0;
   cursor: pointer;
 }
@@ -657,7 +679,7 @@ li {
   float: left;
   font-size: 14px;
   color: #999;
-  margin: 5px 0 5px 65px;
+  margin: -10px 0 5px 65px;
   max-width: 120px;
   white-space: nowrap;
   overflow: hidden;
@@ -670,14 +692,14 @@ li {
   border-radius: 50%;
   margin-left: 3px;
   margin-right: 3px;
-  margin-top: 14px;
+  margin-top: 12px;
   background: #999;
 }
 .jd_publisher .publisher_name span.time {
   float: left;
   color: #999;
   font-size: 14px;
-  margin: 5px 0;
+  margin: -10px 0;
 }
 
 .interview_experience {
@@ -769,6 +791,12 @@ li {
   width: 245px;
   margin-left: 31px;
   margin-top: 45px;
+}
+
+
+.c_feature .icon-four-squares{
+  font-size: 16px !important;
+  color: #555
 }
 
 .job_company>dt {
@@ -915,6 +943,8 @@ button, input, optgroup, select, textarea {
     margin-bottom: 28px;
     text-align: center;
 }
+
+
 /* 内容 end */
 
 </style>
