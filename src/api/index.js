@@ -17,5 +17,11 @@ export const reqFilters = () => ajax.get('/filters')
 // 注册
 export const reqRegister = (phone,password) => ajax.post(`/register`,{phone,password})
 
-// 登录
+// 密码登录
 export const reqLogin = (phone,password) => ajax.post(`/login`,{phone,password})
+
+// 点击获取验证码
+export const reqgetCode = (phone) => ajax.post(`/getCode`, phone)
+
+// 验证码登录
+export const reqVerifyCodeLogin = (phone,verifyCode) => ajax.post(`/verifyCode`, {phone,verifyCode})
