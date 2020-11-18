@@ -6,22 +6,24 @@
         <!-- 左边 -->
         <div class="l-bar">
           <a href="" class="logo"></a>
-          <ul class="l-bar-tabs">
+          <ul class="l-bar-tabs" @click="sum">
             <li class="bar-city">
               <span>深圳站</span>
               <i></i>
             </li>
-            <li class="tabs-active">
-              <a href="">首页</a>
+            <li>
+              <a href="javascript:;" @click="goHome" class="tabs-active"
+                >首页</a
+              >
             </li>
             <li>
-              <a href="">公司</a>
+              <a href="javascript:;" @click="goCompany">公司</a>
             </li>
             <li>
-              <a href="">校园招聘</a>
+              <a href="javascript:;" @click="go">校园招聘</a>
             </li>
             <li>
-              <a href="">职位</a>
+              <a href="" @click="goSearch">职位</a>
             </li>
             <li>
               <a href="">言职</a>
@@ -138,6 +140,29 @@ export default {
     },
     goRegister() {
       this.$router.push('/register')
+    },
+    goHome() {
+      this.$router.push('/')
+    },
+    goSearch() {
+      this.$router.push('/search')
+    },
+    goCompany() {
+      this.$router.push('/company')
+    },
+    sum(e) {
+      e.preventDefault()
+      // console.log(e)
+      // console.log(e.path[2].childNodes)
+      const arr = [].slice.call(e.path[2].childNodes, 1)
+      arr.forEach((item) => {
+        console.dir(item)
+        item.childNodes[0].className = ''
+      })
+      e.target.className = 'tabs-active'
+    },
+    go() {
+      this.$router.push('/myoffer')
     },
   },
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <!-- 搜索框 -->
     <div class="search-wrapper">
       <div class="search-keyword">
@@ -36,15 +35,14 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-
       <JobTap />
     </div>
     <HotContent />
-    <Footer />
+    <BackTop />
   </div>
 </template>
 <script>
-import HotContent from './HotContent'
+import HotContent from '@/components/HotContent'
 import TypNav from './TypNav'
 import JobTap from './JobTap'
 export default {

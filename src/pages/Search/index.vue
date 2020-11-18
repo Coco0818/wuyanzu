@@ -28,6 +28,7 @@
               class="job-ul-li"
               v-for="(position, index) in positions"
               :key="position._id"
+              @click="goDetail"
             >
               <div class="job-ul-li-top">
                 <div class="job-position">
@@ -87,124 +88,39 @@
           </ul>
         </div>
         <div class="recommend">
-          <a href="javascript:;" class="expansion"
-            >收起
-            <i class="i-up"></i>
-          </a>
           <div class="recommend-comp">推荐公司：</div>
           <ul class="recommend-comp_ul clearFix">
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">美柚</a>
             </li>
             <li class="recommend-comp_ul-li">
               <a href="javascript:;" class="recommend-comp_ul-li-a"
-                >aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb</a
+                >喜马拉雅fm</a
               >
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">微盟</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">淘粉吧</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">熊猫TV</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">易到用车</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">腾讯</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">阿里巴巴</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">百度</a>
             </li>
             <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-          </ul>
-          <div class="recommend-city">推荐城市：</div>
-          <ul class="recommend-city_ul clearFix">
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">腾讯</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">阿里巴巴</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
+              <a href="javascript:;" class="recommend-comp_ul-li-a">唯品会</a>
             </li>
           </ul>
         </div>
@@ -231,69 +147,6 @@
                 <div class="history-company-name">腾讯</div>
               </div>
             </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
@@ -301,31 +154,34 @@
   </div>
 </template>
 <script>
-import SearchKeyword from "@/components/SearchKeyword";
-import PositionHeader from "@/components/PositionHeader";
-import { reqPositions } from "@/api";
-import { mapState } from "vuex";
+import SearchKeyword from '@/components/SearchKeyword'
+import PositionHeader from '@/components/PositionHeader'
+import { reqPositions } from '@/api'
+import { mapState } from 'vuex'
 export default {
-  name: "search",
+  name: 'search',
   components: {
     SearchKeyword,
     PositionHeader,
   },
   data() {
-    return {};
+    return {}
   },
   methods: {
+    goDetail() {
+      this.$router.push('/detail')
+    },
   },
-  async mounted() {
+  mounted() {
     /* this.getPositions() */
-    this.$store.dispatch("getPositions");
+    this.$store.dispatch('getPositions')
   },
   computed: {
     ...mapState({
       positions: (state) => state.positions.positions,
     }),
   },
-};
+}
 </script>
 <style scoped>
 .search-header {
@@ -392,6 +248,7 @@ export default {
 .search-content-left {
   width: 960px;
   margin-right: 40px;
+  margin-top: -30px;
 }
 .search-content-left .job {
   width: 960px;
@@ -442,7 +299,8 @@ export default {
   vertical-align: middle;
   width: 25px;
   height: 25px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png)
+    no-repeat 0 0;
   cursor: pointer;
   margin-left: 2px;
 }
@@ -462,7 +320,8 @@ export default {
   width: 16px;
   height: 18px;
   margin-left: 0.5em;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png)
+    no-repeat 0 0;
   vertical-align: middle;
   cursor: pointer;
 }
@@ -556,7 +415,8 @@ export default {
   width: 12px;
   height: 7px;
   margin-left: 2px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/recommendCompanyCity/img/arrow_up_544eb78.png) 0 0 no-repeat;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/recommendCompanyCity/img/arrow_up_544eb78.png)
+    0 0 no-repeat;
 }
 .recommend-comp {
   margin-top: 12px;
@@ -651,7 +511,7 @@ export default {
 }
 
 .clearFix:after {
-  content: "\200B";
+  content: '\200B';
   display: block;
   height: 0;
   clear: both;

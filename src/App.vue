@@ -1,23 +1,46 @@
 <template>
   <div>
-    <!-- <Home /> -->
-    <router-view />
+    <Header v-if="isShow" />
+    <!-- <MyOffer /> -->
+    <keep-alive include="MyOffer,Education">
+      <router-view />
+    </keep-alive>
+    <Footer v-if="isShow" />
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-import Home from "@/pages/Home";
+import Education from './pages/Education'
+import MyOffer from './pages/MyOffer'
 
-=======
-import Home from '@/pages/Home'
->>>>>>> 7f1792cac23343585df0be97a78b25249c207a74
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Home,
+    Education,
+    MyOffer,
   },
-};
+  data() {
+    return {
+      isShow: true,
+    }
+  },
+  watch: {
+    $route: 'changeState',
+  },
+  methods: {
+    changeState() {
+      if (
+        this.$route.path === '/myoffer' ||
+        this.$route.path === '/education'
+      ) {
+        this.isShow = false
+      } else {
+        this.isShow = true
+      }
+      // console.log(this.$route.path)
+    },
+  },
+}
 </script>
 <style scoped>
 </style>

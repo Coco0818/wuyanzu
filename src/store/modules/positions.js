@@ -1,4 +1,4 @@
-import { reqPositions } from "@/api";
+import { reqPositions } from '@/api'
 
 export default {
   state: {
@@ -6,18 +6,18 @@ export default {
   },
   mutations: {
     RECEIVE_POSITIONS(state, positions) {
-      state.positions = positions;
+      state.positions = positions
     },
   },
   actions: {
     async getPositions({ commit }) {
-      const result = await reqPositions();
+      const result = await reqPositions()
 
-      console.log(result);
-      if (result.data.code === 20000) {
-        commit("RECEIVE_POSITIONS", result.data.data);
+      console.log(result)
+      if (result.code === 20000) {
+        commit('RECEIVE_POSITIONS', result.data)
       }
     },
   },
   getters: {},
-};
+}
