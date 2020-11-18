@@ -303,9 +303,23 @@
   </div>
 </template>
 <script>
-
+import{mapState} from "vuex"
 export default {
-  name: 'Detail'
+  name: 'Detail',
+  data(){
+    return{jobDetail:{}};
+  },
+  methods:{
+    
+  },
+  mounted(){
+    this.$store.dispatch('getPositions')
+  },
+  computed:{
+    ...mapState({
+      positions:(state)=>state.positions.positions
+    })
+  }
 }
 </script>
 <style>
@@ -610,7 +624,6 @@ li {
   text-align: center;
 }
 .jd_publisher div.border {
-  height: 70px;
   padding: 14px 10px;
   padding-left: 0;
   position: relative;
@@ -666,7 +679,7 @@ li {
   text-overflow: ellipsis;
 }
 .jd_publisher .publisher_name span.circle {
-  float: left;
+  /* float: left; */
   display: inline-block;
   border: 1px solid #999;
   border-radius: 50%;

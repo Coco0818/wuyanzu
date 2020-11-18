@@ -1,6 +1,6 @@
 import axios from "axios";
 const ajax = axios.create({
-  baseURL: "/",
+  baseURL: "/api",
   timeout: 2000,
 });
 
