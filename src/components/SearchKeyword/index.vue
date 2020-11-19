@@ -31,6 +31,7 @@ export default {
   border-color: #fff;
   border: 1px solid #E8E8E8;
   border-right: 0;
+  
 }
 .search-input:focus {
   outline: none;
@@ -44,6 +45,7 @@ export default {
   height: 46px;
   padding: 15px 55px;
   border: 0;
+  outline: none;
 }
 .search-button:hover {
   background-color: #00a58a;

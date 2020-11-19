@@ -26,7 +26,7 @@
           <ul class="job-ul">
             <li
               class="job-ul-li"
-              v-for="(position, index) in positions"
+              v-for="position in newSearchArr"
               :key="position._id"
             >
               <div class="job-ul-li-top">
@@ -86,212 +86,163 @@
             </li>
           </ul>
         </div>
+        <div style="height: 120px">
+          <Pagination
+            :handleSizeChange="handleSizeChange"
+            :handleCurrentChange="handleCurrentChange"
+          />
+        </div>
         <div class="recommend">
-          <a href="javascript:;" class="expansion"
-            >收起
-            <i class="i-up"></i>
+          <a
+            href="javascript:;"
+            class="expansion"
+            @click="showRecoment(true)"
+            v-text="btnText"
+          >
           </a>
-          <div class="recommend-comp">推荐公司：</div>
-          <ul class="recommend-comp_ul clearFix">
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a"
-                >aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb</a
-              >
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-comp_ul-li">
-              <a href="javascript:;" class="recommend-comp_ul-li-a">aaa</a>
-            </li>
-          </ul>
-          <div class="recommend-city">推荐城市：</div>
-          <ul class="recommend-city_ul clearFix">
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">腾讯</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">阿里巴巴</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-            <li class="recommend-city_ul-li">
-              <a href="javascript:;" class="recommend-city_ul-li-a">aaa</a>
-            </li>
-          </ul>
+          <a
+            href="javascript:;"
+            class="expansion"
+            @click="showRecoment(false)"
+            v-show="recomentIsShow"
+            v-text="btnText"
+          >
+          </a>
+          <!-- 推荐公司父盒子 -->
+          <div class="recoment-fatherOne">
+            <div class="recommend-comp">推荐公司：</div>
+            <ul class="recommend-comp_ul clearFix">
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">美柚</a>
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a"
+                  >喜马拉雅fm</a
+                >
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">微盟</a>
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">淘粉吧</a>
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">熊猫TV</a>
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a"
+                  >易到用车</a
+                >
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">小红唇</a>
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a"
+                  >汽车超人</a
+                >
+              </li>
+              <li class="recommend-comp_ul-li">
+                <a href="javascript:;" class="recommend-comp_ul-li-a">蚂蜂窝</a>
+              </li>
+            </ul>
+          </div>
+          <!-- 推荐城市父盒子 -->
+          <div class="recoment-fatherTwo" v-show="recomentIsShow">
+            <div class="recommend-city">推荐城市：</div>
+            <ul class="recommend-city_ul clearFix">
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a">腾讯</a>
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >阿里巴巴</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >北京找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >北京招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >上海找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >上海招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >杭州找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >杭州招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >广州找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >广州招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >深圳找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >深圳招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >深圳找工作</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >成都招聘</a
+                >
+              </li>
+              <li class="recommend-city_ul-li">
+                <a href="javascript:;" class="recommend-city_ul-li-a"
+                  >成都找工作</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="search-content-right">
         <div class="history">
           <div class="history-title">最近浏览过</div>
-          <ul class="history-position">
+          <ul
+            class="history-position"
+            v-for="(brower, index) in SearchFour"
+            :key="index"
+          >
             <li class="history-position-item">
               <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
+                <a href="javascrit:;" class="history-position-name">{{
+                  brower.positionName
+                }}</a>
+                <div class="salary">{{ brower.Salary }}</div>
+                <div class="history-company-name">{{ brower.companyName }}</div>
               </div>
             </li>
           </ul>
@@ -304,7 +255,6 @@
 import SearchKeyword from "@/components/SearchKeyword";
 import PositionHeader from "@/components/PositionHeader";
 import { reqPositions } from "@/api";
-import { mapState } from "vuex";
 export default {
   name: "search",
   components: {
@@ -312,22 +262,74 @@ export default {
     PositionHeader,
   },
   data() {
-    return {};
+    return {
+      // 搜索分页四个
+      SearchOne: [],
+      SearchTwo: [],
+      SearchThree: [],
+      SearchFour: [],
+      currentPage: 1,
+
+      // 存分页
+      AllSearchArr: [],
+      // 新数据数组
+      newSearchArr: [],
+
+      // 默认不显示收起
+      recomentIsShow: false,
+
+      // 展开默认显示的文本
+      btnText: "展开",
+
+      // 展开上下箭头默认图片
+      TopImg: "./images/arrow_down_7b6f2e2.png",
+    };
   },
   methods: {
+    // 分页
+    handleSizeChange: function (size) {
+      this.pagesize = size; //当前显示页数
+    },
+    handleCurrentChange: function (currentPage) {
+      this.currentPage = currentPage; //第几页
+      this.newSearchArr = this.AllSearchArr[currentPage - 1];
+    },
+
+    // 推荐公司显示和隐藏
+    showRecoment(visible) {
+      this.recomentIsShow = visible;
+      if (this.recomentIsShow) {
+        this.btnText = "展开";
+      } else {
+        this.btnText = "收起";
+      }
+    },
   },
   async mounted() {
-    /* this.getPositions() */
-    this.$store.dispatch("getPositions");
-  },
-  computed: {
-    ...mapState({
-      positions: (state) => state.positions.positions,
-    }),
+    // 所有岗位信息
+    const result = await reqPositions();
+    this.companyArr = result.data;
+    // 分页器四个
+    this.SearchOne = this.companyArr.slice(0, 7);
+    this.SearchTwo = this.companyArr.slice(8, 15);
+    this.SearchThree = this.companyArr.slice(16, 24);
+    this.SearchFour = this.companyArr.slice(22, 30);
+
+    console.log(this.SearchFour);
+    // 四个按钮总数组
+    this.AllSearchArr = [
+      this.SearchOne,
+      this.SearchTwo,
+      this.SearchThree,
+      this.SearchFour,
+    ];
+    // 默认第一页是大数组里的第一个数组
+    this.newSearchArr = this.AllSearchArr[0];
+    // console.log(this.companyArr);
   },
 };
 </script>
-<style scoped>
+<style>
 .search-header {
   height: 180px;
   background-color: #f2f5f4;
@@ -442,7 +444,8 @@ export default {
   vertical-align: middle;
   width: 25px;
   height: 25px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png)
+    no-repeat 0 0;
   cursor: pointer;
   margin-left: 2px;
 }
@@ -462,7 +465,8 @@ export default {
   width: 16px;
   height: 18px;
   margin-left: 0.5em;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png)
+    no-repeat 0 0;
   vertical-align: middle;
   cursor: pointer;
 }
@@ -548,15 +552,6 @@ export default {
   top: 73px;
   right: 0px;
   color: #999;
-}
-.i-up {
-  position: relative;
-  top: -1px;
-  display: inline-block;
-  width: 12px;
-  height: 7px;
-  margin-left: 2px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/recommendCompanyCity/img/arrow_up_544eb78.png) 0 0 no-repeat;
 }
 .recommend-comp {
   margin-top: 12px;

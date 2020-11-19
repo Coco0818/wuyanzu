@@ -10,6 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 // 公共组件
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Pagination from '@/components/Pagination'
+
 
 // 使用element-ui
 Vue.use(ElementUI);
@@ -17,6 +19,7 @@ Vue.use(ElementUI);
 // 注册公共组件
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
+Vue.component('Pagination', Pagination)  // 分页
 
 Vue.config.productionTip = false
 

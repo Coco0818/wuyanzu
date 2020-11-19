@@ -1,7 +1,8 @@
 <template>
   <div>
-    <!-- <Home /> -->
+    <Header/>
     <router-view />
+    <Footer/>
   </div>
 </template>
 
@@ -9,9 +10,6 @@
 import Home from '@/pages/Home'
 export default {
   name: "App",
-  components: {
-    Home,
-  },
 };
 </script>
 <style scoped>
