@@ -4,21 +4,16 @@
     <!-- 公司地点 star -->
     <div class="company-address">
       <span class="company-fl">公司地点：</span>
-      <div class="company-address-list company-fl">
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;" class="company-address-list-active">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
+      <div
+        class="company-address-list company-fl"
+        v-for="(item, index) in filterOne"
+        :key="index"
+      >
+        <a
+          href="javascript:;"
+          :class="index == 0 ? 'company-address-list-active' : ''"
+          >{{ item }}</a
+        >
       </div>
       <a href="javascript:;" class="company-btn-more company-fr">
         更多
@@ -30,21 +25,16 @@
     <!-- 融资阶段： star -->
     <div class="company-address">
       <span class="company-fl">融资阶段：</span>
-      <div class="company-address-list company-fl">
-        <a href="javascript:;" class="company-address-list-active">不限</a>
-        <a href="javascript:;">未融资</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
+      <div
+        class="company-address-list company-fl"
+        v-for="(item, index) in filterTwo"
+        :key="index"
+      >
+        <a
+          href="javascript:;"
+          :class="index == 0 ? 'company-address-list-active' : ''"
+          >{{ item }}</a
+        >
       </div>
     </div>
     <!--融资阶段： end -->
@@ -52,21 +42,16 @@
     <!-- 公司规模： star -->
     <div class="company-address">
       <span class="company-fl">公司规模：</span>
-      <div class="company-address-list company-fl">
-        <a href="javascript:;" class="company-address-list-active">不限</a>
-        <a href="javascript:;">未融资</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
+      <div
+        class="company-address-list company-fl"
+        v-for="(item, index) in filterThree"
+        :key="index"
+      >
+        <a
+          href="javascript:;"
+          :class="index == 0 ? 'company-address-list-active' : ''"
+          >{{ item }}</a
+        >
       </div>
     </div>
     <!--公司规模： end -->
@@ -74,21 +59,16 @@
     <!-- 行业领域： star -->
     <div class="company-address">
       <span class="company-fl">行业领域：</span>
-      <div class="company-address-list company-fl">
-        <a href="javascript:;" class="company-address-list-active">不限</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
-        <a href="javascript:;">深圳</a>
+      <div
+        class="company-address-list company-fl"
+        v-for="(item, index) in filterFour"
+        :key="index"
+      >
+        <a
+          href="javascript:;"
+          :class="index == 0 ? 'company-address-list-active' : ''"
+          >{{ item }}</a
+        >
       </div>
       <a href="javascript:;" class="company-btn-more company-fr">
         更多
@@ -100,10 +80,29 @@
 </template>
 
 <script>
+import { reqFilters } from "../../api";
 export default {
   name: "positionheader",
   data() {
-    return {};
+    return {
+      allStation: [], // 所有公司信息
+      allFilters: [], // 所有过滤栏
+
+      // 过滤栏4个
+      filterOne: [],
+      filterTwo: [],
+      filterThree: [],
+      filterFour: [],
+    };
+  },
+  async mounted() {
+    // 请求过滤数据
+    const resultTwo = await reqFilters();
+    this.allFilters = resultTwo.data;
+    this.filterOne = this.allFilters[0].cityName.slice(0, 15);
+    this.filterTwo = this.allFilters[0].componySize;
+    this.filterThree = this.allFilters[0].financeStages;
+    this.filterFour = this.allFilters[0].industry.slice(1, 11);
   },
 };
 </script>

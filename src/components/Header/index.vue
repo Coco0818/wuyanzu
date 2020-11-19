@@ -95,11 +95,8 @@ export default {
       this.$router.push("/login");
     },
     goRegister() {
-      this.$router.push("/register");
-    },
-    goSearch() {
-      this.$router.push("/search");
-    },
+      this.$router.push('/register')
+    }
   },
 };
 </script>
