@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <!-- 搜索框 -->
     <div class="search-wrapper">
       <div class="search-keyword">
@@ -40,7 +39,6 @@
       <JobTap />
     </div>
     <HotContent />
-    <Footer />
   </div>
 </template>
 <script>
