@@ -57,7 +57,7 @@
             </div>
             <el-upload
               class="avatar-uploader"
-              action="https://jsonplaceholder.typicode.com/posts/"
+              :action="`http://192.168.16.52:7777/api/uploadAvatar/${myphone}`"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload"
@@ -70,11 +70,19 @@
           <div class="sex__3bWHO wrap__nkWgh">
             <div class="label__3M__f">性别</div>
             <div class="radioBox__2ThsS">
-              <div class="sel__2je1b action__25ZH5">
+              <div
+                class="sel__2je1b"
+                :class="changeSex ? 'sex-active' : ''"
+                @click="getSex('男')"
+              >
                 <span>男</span>
                 <i class="selIcon__2KhNI"></i>
               </div>
-              <div class="sel__2je1b">
+              <div
+                class="sel__2je1b"
+                :class="changeSex ? '' : 'sex-active'"
+                @click="getSex('女')"
+              >
                 <span>女</span>
                 <i class="selIcon__2KhNI"></i>
               </div>
@@ -83,16 +91,11 @@
           <!-- 出生日期 -->
           <div class="block">
             <div class="inputItemWrap__1ksRm">
-              <label for="firstInput" class="inputLabel__2dAMi">出生日期</label
-              ><br />
-              <el-date-picker
-                v-model="value1"
-                value-format="yyyy-M-dd"
-                type="date"
-                placeholder="选择日期"
-                @change="changeBirthday"
-              >
-              </el-date-picker>
+              <el-form>
+                <el-form-item label="年龄">
+                  <el-input v-model="age"></el-input>
+                </el-form-item>
+              </el-form>
             </div>
           </div>
           <!-- 级联选择器 -->
@@ -112,12 +115,20 @@
           <div class="sex__3bWHO wrap__nkWgh">
             <div class="label__3M__f">身份</div>
             <div class="radioBox__2ThsS">
-              <div class="sel__2je1b">
+              <div
+                class="sel__2je1b"
+                :class="changeIdentity ? 'sex-active' : ''"
+                @click="getIdentity('职场人士')"
+              >
                 <span>职场人士 (已参加工作)</span>
                 <i class="selIcon__2KhNI"></i>
               </div>
 
-              <div class="sel__2je1b">
+              <div
+                class="sel__2je1b"
+                :class="!changeIdentity ? 'sex-active' : ''"
+                @click="getIdentity('学生')"
+              >
                 <span>学生 (在校生，应届生)</span>
                 <i class="selIcon__2KhNI"></i>
               </div>
@@ -165,6 +176,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'MyOffer',
   data() {
@@ -172,6 +184,11 @@ export default {
       value1: '',
       city: '',
       username: '',
+      age: '',
+      sex: '',
+      identity: '',
+      changeSex: true,
+      changeIdentity: true,
       // 下拉框配置
       options: [
         {
@@ -222,12 +239,34 @@ export default {
       imageUrl: '',
     }
   },
-  actived(data) {
-    console.log(data)
+  computed: {
+    ...mapState({
+      myphone: (state) => state.users.myPhone,
+    }),
   },
   methods: {
+    getSex(str) {
+      this.sex = str
+      if (str === '男') {
+        this.changeSex = true
+      } else {
+        this.changeSex = false
+      }
+    },
+    getIdentity(str) {
+      this.identity = str
+      if (str === '职场人士') {
+        this.changeIdentity = true
+      } else {
+        this.changeIdentity = false
+      }
+    },
     goNext() {
-      this.$router.push('/education')
+      const { city, username, age, sex } = this
+      this.$router.push({
+        path: '/education',
+        params: { city, username, age, sex },
+      })
     },
 
     handleChange(value) {
@@ -260,6 +299,11 @@ html,
 body {
   height: 100%;
   width: 100%;
+}
+.sex-active {
+  color: #00b38a !important;
+  background: #00b38a;
+  border-color: #00b38a !important;
 }
 .registerComplete {
   width: 100%;

@@ -26,7 +26,7 @@
           <ul class="job-ul">
             <li
               class="job-ul-li"
-              v-for="(position, index) in positions"
+              v-for="position in positions"
               :key="position._id"
               @click="goDetail"
             >

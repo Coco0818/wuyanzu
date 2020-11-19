@@ -42,6 +42,7 @@
                       name="name"
                       type="text"
                       placeholder="请输入"
+                      v-model="university"
                     />
                   </div>
                 </div>
@@ -64,6 +65,7 @@
                       name="name"
                       type="text"
                       placeholder="请输入"
+                      v-model="profession"
                     />
                   </div>
                 </div>
@@ -75,37 +77,25 @@
           <!-- 学历水平 -->
           <div class="name__3KdNs">
             <div class="inputItemWrap__2ta1o" style="width: 310px">
-              <label for="name" class="inputLabel__2pEIO">学历水平</label><br />
-              <el-col :span="12" style="padding-top: 11px">
-                <el-dropdown trigger="click">
-                  <span class="el-dropdown-link">
-                    请选择<i class="el-icon-arrow-down el-icon--right"></i>
-                  </span>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>博士</el-dropdown-item>
-                    <el-dropdown-item>硕士</el-dropdown-item>
-                    <el-dropdown-item>本科</el-dropdown-item>
-                    <el-dropdown-item>大专</el-dropdown-item>
-                    <el-dropdown-item>中专</el-dropdown-item>
-                  </el-dropdown-menu>
-                </el-dropdown>
+              <el-col :span="12" style="padding-top: 12px">
+                <div class="block">
+                  <label for="firstInput" class="inputLabel__2dAMi"
+                    >学历水平</label
+                  >
+                  <br />
+                  <el-cascader
+                    :options="options"
+                    @change="handleChange"
+                    style="margin-top: 10px"
+                  ></el-cascader>
+                </div>
               </el-col>
             </div>
-          </div>
-
-          <!-- 时间段 -->
-          <div class="name__3KdNs">
-            <div class="block" style="margin-top: 42px">
-              <span class="demonstration">时间段</span>
-              <el-date-picker
-                v-model="value1"
-                type="daterange"
-                range-separator=" - "
-                start-placeholder="入学时间"
-                end-placeholder="毕业时间"
-              >
-              </el-date-picker>
-            </div>
+            <el-form style="margin-top: 20px">
+              <el-form-item label="理想薪资">
+                <el-input v-model="salary"></el-input>
+              </el-form-item>
+            </el-form>
           </div>
 
           <!-- 上一步 -->
@@ -128,17 +118,51 @@
   </div>
 </template>
 <script>
+import MyOffer from '../MyOffer'
 export default {
   name: 'Education',
+  components: {
+    MyOffer,
+  },
   data() {
     return {
       value1: '',
       success: true,
+      salary: '',
+      university: '',
+      education: '',
+      profession: '',
+      options: [
+        {
+          value: '初中',
+          label: '初中',
+        },
+        {
+          value: '高中',
+          label: '高中',
+        },
+        {
+          value: '专科',
+          label: '专科',
+        },
+        {
+          value: '本科',
+          label: '本科',
+        },
+        {
+          value: '硕士',
+          label: '硕士',
+        },
+        {
+          value: '博士',
+          label: '博士',
+        },
+      ],
     }
   },
   methods: {
     handleChange(value) {
-      console.log(value)
+      this.education = value[0]
     },
     goBack() {
       this.$router.back()
@@ -146,6 +170,7 @@ export default {
     goSearch() {
       this.success = false
       setTimeout(() => {
+        this.$destroy('MyOffer,Education')
         this.$router.push('/search')
         this.success = true
       }, 3000)

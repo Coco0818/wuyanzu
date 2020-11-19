@@ -20,7 +20,7 @@
               <a href="javascript:;" @click="goCompany">公司</a>
             </li>
             <li>
-              <a href="javascript:;" @click="go">校园招聘</a>
+              <a href="javascript:;">校园招聘</a>
             </li>
             <li>
               <a href="" @click="goSearch">职位</a>
@@ -39,7 +39,20 @@
         <!-- 右边 -->
         <div class="r-bar">
           <!--  未登录状态 -->
-          <ul class="account-bar">
+          <!-- 登录状态 -->
+          <ul class="account-bar" v-if="myPhone">
+            <li class="msg">
+              <a href="" class="iconfont icon-lingdang"></a>
+            </li>
+            <li @click="goMyOffer">
+              <a href="javascript:;">我的简历</a>
+            </li>
+            <li class="user">
+              <span>{{ userName }}</span>
+              <i></i>
+            </li>
+          </ul>
+          <ul class="account-bar" v-else>
             <li class="upload">
               <a href="##">上传附件简历</a>
             </li>
@@ -53,19 +66,7 @@
               <a href="##" @click="goRegister">注册</a>
             </li>
           </ul>
-          <!-- 登录状态 -->
-          <!-- <ul class="account-bar">
-            <li class="msg">
-              <a href="" class="iconfont icon-lingdang"></a>
-            </li>
-            <li>
-              <a href="">我的简历</a>
-            </li>
-            <li class="user">
-              <span>布丁Coco</span>
-              <i></i>
-            </li>
-          </ul> -->
+
           <a href="##" class="r-os">进入企业版</a>
         </div>
       </div>
@@ -127,6 +128,7 @@
   </header>
 </template>
 <script>
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'Header',
   data() {
@@ -134,6 +136,16 @@ export default {
       centerDialogVisible: false,
     }
   },
+  computed: {
+    ...mapState({
+      myPhone: (state) => state.users.myPhone,
+    }),
+
+    ...mapGetters({
+      userName: 'getUserName',
+    }),
+  },
+
   methods: {
     goLogin() {
       this.$router.push('/login')
@@ -161,7 +173,7 @@ export default {
       })
       e.target.className = 'tabs-active'
     },
-    go() {
+    goMyOffer() {
       this.$router.push('/myoffer')
     },
   },
@@ -248,7 +260,6 @@ export default {
         .account-bar {
           float: left;
           margin-right: 52px;
-
           li {
             position: relative;
             text-align: center;
