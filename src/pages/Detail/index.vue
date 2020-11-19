@@ -309,24 +309,24 @@
 </template>
 <script>
 // 引入axios
-import { reqDetail } from "../../api";
+import { reqDetail } from '../../api'
 export default {
-  name: "Detail",
+  name: 'Detail',
 
   data() {
     return {
       detailInfo: {}, //接收详情页动态数据
       index: 0, // 接收详情页的某一条公司数据
-    };
+    }
   },
   async beforeCreate() {},
   async created() {},
   // 页面渲染完成后发送请求详情页数据
   async mounted() {
-    const id = this.$route.params.id;
-    const result = await reqDetail(id);
-    this.detailInfo = result[0];
-    console.log(this.detailInfo);
+    const id = this.$route.params.id
+    const result = await reqDetail(id)
+    this.detailInfo = result.data[0]
+    console.log(this.detailInfo)
     /* const result = await reqPositions();
     //  console.log(result);
      if(result.code===20000){
@@ -338,7 +338,7 @@ export default {
        alert("详情页请求失败："+result.message)
      } */
   },
-};
+}
 </script>
 <style rel="stylesheet/css" >
 /* 投简历 star */
@@ -369,7 +369,7 @@ li {
 
 .clearfix:before,
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -682,7 +682,7 @@ li {
   width: 25px;
   height: 25px;
   margin: 20px 0 0 5px;
-  background: url("./images/ia_100000072.png") no-repeat 0 0;
+  background: url('./images/ia_100000072.png') no-repeat 0 0;
   cursor: pointer;
 }
 
@@ -741,14 +741,14 @@ li {
   color: #555;
 }
 .interview_experience .reviews-area .list-empty {
-  margin: 80px 0;
+  margin: 40px 0 0;
   text-align: center;
 }
 .interview_experience .reviews-area .list-empty i {
   display: inline-block;
   height: 45px;
   width: 45px;
-  background-image: url("./images/unhappy_d9b5db5.png");
+  background-image: url('./images/unhappy_d9b5db5.png');
   vertical-align: middle;
   margin-right: 15px;
 }
@@ -775,7 +775,7 @@ li {
   width: 10px;
   height: 6px;
   margin-left: 2px;
-  background: url("./images/arrow_down_c415674.png") 0 0 no-repeat;
+  background: url('./images/arrow_down_c415674.png') 0 0 no-repeat;
 }
 .popular_company {
   overflow: hidden;
@@ -838,7 +838,7 @@ li {
   width: 16px;
   height: 18px;
   margin-left: 0;
-  background: url("./images/ia_100000075.png") no-repeat 0 0;
+  background: url('./images/ia_100000075.png') no-repeat 0 0;
   color: #fff;
   vertical-align: bottom;
 }
@@ -890,7 +890,7 @@ li {
   cursor: pointer;
 }
 .jobs_similar_header span:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 11px;
   left: 83px;
@@ -908,8 +908,8 @@ textarea {
   padding: 0;
   border: 1px solid #ededed;
   border-radius: 0;
-  font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial,
-    "Helvetica Neue", Helvetica;
+  font-family: 'Hiragino Sans GB', 'Microsoft Yahei', SimSun, Arial,
+    'Helvetica Neue', Helvetica;
 }
 .jobs_similar_detail .similar_list {
   margin-top: -12px;
