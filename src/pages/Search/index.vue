@@ -136,10 +136,6 @@
                 <a href="javascript:;" class="recommend-comp_ul-li-a"
                   >易到用车</a
                 >
-                <<<<<<< HEAD
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-                =======
               </li>
               <li class="recommend-comp_ul-li">
                 <a href="javascript:;" class="recommend-comp_ul-li-a">小红唇</a>
@@ -250,7 +246,6 @@
                 }}</a>
                 <div class="salary">{{ brower.Salary }}</div>
                 <div class="history-company-name">{{ brower.companyName }}</div>
-                >>>>>>> 0706d1955474e2085db824587343532a0d53fb53
               </div>
             </li>
           </ul>

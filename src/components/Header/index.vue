@@ -96,6 +96,10 @@ export default {
     },
     goRegister() {
       this.$router.push('/register')
+    },
+    goSearch(){
+      this.$router.push('/search')
+
     }
   },
 };

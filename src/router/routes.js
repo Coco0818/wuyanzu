@@ -10,9 +10,6 @@ import Search from '@/pages/Search'
 import Company from '@/pages/Company'
 import Detail from '@/pages/Detail'
 
-import Search from "@/pages/Search";
-
-import Detail from "@/pages/Detail";
 // 暴露出去
 export default [
   {
@@ -24,11 +21,14 @@ export default [
     component: Login,
   },
   {
+    path: "/company",
+    components: Company
+  },
+  {
     path: "/register",
     component: Register,
   },
   {
-<<<<<<< HEAD
     path: "/search",
     component: Search,
   },
@@ -39,21 +39,5 @@ export default [
   {
     path: "/",
     redirect: "/",
-=======
-    path: '/search',
-    component: Search,
-  },
-  {
-    path: '/company',
-    component: Company,
-  },
-  {
-    path: '/detail',
-    component: Detail,
-  },
-  {
-    path: '/',
-    redirect: '/',
->>>>>>> 0706d1955474e2085db824587343532a0d53fb53
   },
 ];
