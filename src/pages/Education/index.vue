@@ -119,6 +119,7 @@
 </template>
 <script>
 import MyOffer from '../MyOffer'
+import { reqUploadUserInfo } from '@/api'
 export default {
   name: 'Education',
   components: {
@@ -126,7 +127,6 @@ export default {
   },
   data() {
     return {
-      value1: '',
       success: true,
       salary: '',
       university: '',
@@ -166,9 +166,24 @@ export default {
     },
     goBack() {
       this.$router.back()
+      console.log(this.$route)
     },
-    goSearch() {
+    async goSearch() {
       this.success = false
+
+      const userInfo = {
+        name: this.$route.query.username,
+        sex: this.$route.query.sex,
+        city: this.$route.query.city,
+        identity: this.$route.query.identity, // 身份
+        Email: this.$route.query.eMail,
+        University: this.university,
+        Education: this.education,
+        age: this.$route.query.age,
+        Salary: this.salary,
+        profession: this.profession,
+      }
+      await reqUploadUserInfo(userInfo, 13697083850)
       setTimeout(() => {
         this.$destroy('MyOffer,Education')
         this.$router.push('/search')

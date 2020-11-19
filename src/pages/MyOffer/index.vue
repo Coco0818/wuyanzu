@@ -43,14 +43,13 @@
                     <input
                       error="1"
                       id="name"
-                      autocomplete="off"
                       name="name"
                       type="text"
                       placeholder="请输入"
                       v-model="username"
                     />
                   </div>
-                  <div class="errorTips__3l6aR">请输入</div>
+                  <div class="errorTips__3l6aR" v-if="!username">请输入</div>
                 </div>
                 <div class="errorTips__3l6aR"></div>
               </div>
@@ -156,6 +155,7 @@
                   name="email"
                   type="text"
                   placeholder="请填写，用于接受面试通知等信息"
+                  v-model="eMail"
                 />
               </div>
             </div>
@@ -187,6 +187,7 @@ export default {
       age: '',
       sex: '',
       identity: '',
+      eMail: '',
       changeSex: true,
       changeIdentity: true,
       // 下拉框配置
@@ -262,10 +263,10 @@ export default {
       }
     },
     goNext() {
-      const { city, username, age, sex } = this
+      const { city, username, age, sex, identity, eMail } = this
       this.$router.push({
         path: '/education',
-        params: { city, username, age, sex },
+        query: { city, username, age, sex, identity, eMail },
       })
     },
 

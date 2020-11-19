@@ -5,24 +5,24 @@
       <!-- 基本信息 -->
       <div class="resume-a clearFix">
         <div class="head-pic">
-          <img src="./images/default_boy_headpic3.png" alt="" />
+          <img :src="headPic.imgUrl" />
         </div>
         <div class="my-msg">
-          <h2 class="name">姓名</h2>
+          <h2 class="name">{{ myResumeInfo.name }}</h2>
           <ul class="info-list">
-            <li class="fl">学校<span>|</span></li>
-            <li class="fl">学历<span>|</span></li>
-            <li class="fl">毕业生<span>|</span></li>
-            <li class="fl">年龄<span>|</span></li>
+            <li class="fl">{{ myResumeInfo.University }}<span>|</span></li>
+            <li class="fl">{{ myResumeInfo.Education }}<span>|</span></li>
+            <li class="fl">{{ myResumeInfo.identity }}<span>|</span></li>
+            <li class="fl">{{ myResumeInfo.age }}<span>|</span></li>
           </ul>
           <ul class="tel-list">
             <li class="fl">
               <img class="tel-icon" src="./images/phone.png" alt="" />
-              <span>手机</span>
+              <span>{{ myResumeInfo.phone }}</span>
             </li>
             <li class="fl">
               <img class="mail-icon" src="./images/email.png" alt="" />
-              <span>邮箱</span>
+              <span>{{ myResumeInfo.Email }}</span>
             </li>
           </ul>
         </div>
@@ -45,11 +45,11 @@
         <h2 class="title">求职意向</h2>
         <ul class="expectJobses">
           <li>
-            <span>职位</span>
+            <span>前端工程师</span>
             <span>|</span>
-            <span>地址</span>
+            <span>{{ myResumeInfo.city }}</span>
             <span>|</span>
-            <span>薪资</span>
+            <span>{{ myResumeInfo.Salary }}</span>
           </li>
         </ul>
       </div>
@@ -70,18 +70,18 @@
         <h2 class="title">教育经历</h2>
         <div class="project-item">
           <div class="title-pic">
-            <img src="./images/default_boy_headpic3.png" alt="" />
+            <img :src="headPic.imgUrl" alt="" />
             <div>
-              <span class="school">学校</span>
+              <span class="school">{{ myResumeInfo.University }}</span>
               <div class="text-dsc">
-                <span>学历</span>
+                <span>{{ myResumeInfo.profession }}</span>
                 <span></span>
                 <span> / </span>
-                <span class="teshu">学校</span>
+                <span class="teshu">{{ myResumeInfo.Education }}</span>
               </div>
             </div>
             <div class="time">
-              <span>2017.09-2020.06</span>
+              <span>2010.09-2018.06</span>
             </div>
           </div>
         </div>
@@ -187,7 +187,25 @@
   </div>
 </template>
 <script>
-export default {}
+import { reqMyResume } from '@/api'
+export default {
+  name: 'MyResume',
+  data() {
+    return {
+      myResumeInfo: {},
+      headPic: {},
+    }
+  },
+  async mounted() {
+    const result = await reqMyResume(13697083850)
+    if (result.code === 20000) {
+      this.myResumeInfo = result.data[0]
+      this.headPic = result.data[1]
+    } else {
+      alert('请求失败')
+    }
+  },
+}
 </script>
 <style lang="less" scoped>
 .clearFix {
