@@ -32,7 +32,10 @@
               <div class="job-ul-li-top">
                 <div class="job-position">
                   <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
+                    <a
+                      href="javascript:;"
+                      class="job-position-top-link"
+                      @click="goDetail(position._id)"
                       >{{ position.positionName }}[{{ position.city }}]</a
                     >
                     <span class="job-position-top-time">15:53发布</span>
@@ -231,69 +234,6 @@
                 <div class="history-company-name">腾讯</div>
               </div>
             </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
-            <li class="history-position-item">
-              <div class="history-position-item-link">
-                <a href="javascrit:;" class="history-position-name"
-                  >web低能工程师</a
-                >
-                <div class="salary">25k-50k</div>
-                <div class="history-company-name">腾讯</div>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
@@ -315,6 +255,9 @@ export default {
     return {};
   },
   methods: {
+    goDetail(id) {
+      this.$router.push("/detail/" + id);
+    },
   },
   async mounted() {
     /* this.getPositions() */
@@ -442,7 +385,8 @@ export default {
   vertical-align: middle;
   width: 25px;
   height: 25px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/icon-chat_4a70ffc.png)
+    no-repeat 0 0;
   cursor: pointer;
   margin-left: 2px;
 }
@@ -462,7 +406,8 @@ export default {
   width: 16px;
   height: 18px;
   margin-left: 0.5em;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png) no-repeat 0 0;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/positions/img/approve_aae725a.png)
+    no-repeat 0 0;
   vertical-align: middle;
   cursor: pointer;
 }
@@ -556,7 +501,8 @@ export default {
   width: 12px;
   height: 7px;
   margin-left: 2px;
-  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/recommendCompanyCity/img/arrow_up_544eb78.png) 0 0 no-repeat;
+  background: url(//www.lgstatic.com/lg-www-fed/search-result/modules/recommendCompanyCity/img/arrow_up_544eb78.png)
+    0 0 no-repeat;
 }
 .recommend-comp {
   margin-top: 12px;

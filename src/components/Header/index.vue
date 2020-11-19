@@ -21,7 +21,7 @@
               <a href="">校园招聘</a>
             </li>
             <li>
-              <a href="">职位</a>
+              <a href="javascript:;" @click="goSearch">职位</a>
             </li>
             <li>
               <a href="">言职</a>
@@ -84,21 +84,24 @@
 </template>
 <script>
 export default {
-  name: 'Header',
+  name: "Header",
   data() {
     return {
       centerDialogVisible: false,
-    }
+    };
   },
   methods: {
     goLogin() {
-      this.$router.push('/login')
+      this.$router.push("/login");
     },
     goRegister() {
-      this.$router.push('/register')
+      this.$router.push("/register");
+    },
+    goSearch() {
+      this.$router.push("/search");
     },
   },
-}
+};
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
 #header {
@@ -123,7 +126,7 @@ export default {
           float: left;
           width: 43px;
           height: 40px;
-          background-image: url('./images/logo.png');
+          background-image: url("./images/logo.png");
           background-repeat: no-repeat;
           background-position: -10px -1px;
           background-size: 64px 128px;
@@ -202,7 +205,7 @@ export default {
             .login {
               position: relative;
               &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 top: 11px;
                 left: -26px;
@@ -357,20 +360,20 @@ export default {
             background-size: 100% 100%;
           }
           .icon-item1 {
-            background-image: url('./images/icon1.png');
+            background-image: url("./images/icon1.png");
           }
           .icon-item2 {
-            background-image: url('./images/icon2.png');
+            background-image: url("./images/icon2.png");
           }
           .icon-item3 {
-            background-image: url('./images/icon3.png');
+            background-image: url("./images/icon3.png");
           }
           .icon-item4 {
             margin-bottom: 80px;
-            background-image: url('./images/icon4.png');
+            background-image: url("./images/icon4.png");
           }
           .icon-item5 {
-            background-image: url('./images/icon5.png');
+            background-image: url("./images/icon5.png");
           }
         }
       }

@@ -1,322 +1,333 @@
 <template>
   <div>
       <!-- 头部 star -->
-  <div class="position-head" data-companyid="62">
-    <div class="position-content clearfix ">
-      <div class="position-content-l">
-        <div class="job-name" title="前端工程师">
-          <h4 class="company">{{detailInfo[index].companyName}}</h4>
-          <h1 class="name">
-            <span class="position-name-wrap">
-              <span class="position-head-wrap-name">{{detailInfo[index].positionName}}</span>
-            </span>
-          </h1>
-          <div class="marEdit"></div>
+    <div class="position-head" data-companyid="62">
+      <div class="position-content clearfix ">
+        <div class="position-content-l">
+          <div class="job-name" title="前端工程师">
+            <h4 class="company">{{detailInfo.companyName}}</h4>
+            <h1 class="name">
+              <span class="position-name-wrap">
+                <span class="position-head-wrap-name">{{detailInfo.positionName}}</span>
+              </span>
+            </h1>
+            <div class="marEdit"></div>
+          </div>
+          <dd class="job_request">
+            <h3>
+              <span class="salary">{{detailInfo.Salary}} </span>
+              <span>{{detailInfo.city}}</span>
+              <span>/{{detailInfo.workingExperience}} /</span>
+              <span> {{detailInfo.Education}}/</span>
+              <span>全职</span>
+            </h3>
+            <!-- 职位标签 -->
+            <ul class="position-label clearfix">
+              <li class="labels" v-for="(tag,index) in detailInfo.postTag" :key="index">{{tag}}</li>
+            </ul>
+            <p class="publish_time">03:49&nbsp; 发布于拉勾网</p>
+          </dd>
         </div>
-        <dd class="job_request">
-          <h3>
-            <span class="salary">{{detailInfo[index].Salary}} </span>
-            <span>{{detailInfo[index].city}}</span>
-            <span>/{{detailInfo[index].Education}} /</span>
-            <span> {{detailInfo[index].workingExperience}}/</span>
-            <span>全职</span>
-          </h3>
-          <!-- 职位标签 -->
-          <ul class="position-label clearfix">
-            <li class="labels">{{detailInfo[index].industrySector}}</li>
-          </ul>
-          <p class="publish_time">03:49&nbsp; 发布于拉勾网</p>
-        </dd>
-      </div>
 
-      <i class="icon-connect"></i>
+        <i class="icon-connect"></i>
 
-      <div class="position-content-r">
+        <div class="position-content-r">
 
-        <div class="position-deal">
-          <a class="jd_collection">收藏</a>
-          <a class="send-CV-btn">投个简历</a>
-        </div>
-        <!-- 简历状态 -->
-        <div class="resume-select">
-          <a class="resume-select-fl" href="###" target="_blank">
-            <i class="fl-img"></i>
-            <span>完善在线简历</span>
-          </a>
-          <a class="resume-select-ri" href="###" target="_blank">
-            <i class="ri-img"></i>
-            <span>上传附件</span>
-          </a>
+          <div class="position-deal">
+            <a class="jd_collection">收藏</a>
+            <a class="send-CV-btn">投个简历</a>
+          </div>
+          <!-- 简历状态 -->
+          <div class="resume-select">
+            <a class="resume-select-fl" href="###" target="_blank">
+              <i class="fl-img"></i>
+              <span>完善在线简历</span>
+            </a>
+            <a class="resume-select-ri" href="###" target="_blank">
+              <i class="ri-img"></i>
+              <span>上传附件</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- 头部 end -->
+    <!-- 头部 end -->
 
-  <!-- 左边部分 star -->
-  <div class="container">
-    <div class="content_l">
-      <div class="job_detail">
-        <dt class="join_tc_icon">
-          <dd class="job-advantage">
-            <span class="advantage">职位诱惑：</span>
-            <p>{{detailInfo[index].jobTemptation}}</p>
-          </dd>
-          <dd class="job_bt">
-            <h3 class="description">职位描述：</h3>
-            <div class="job-detail">
-              <p>{{detailInfo[index].jobDescription}}</p>
+    <!-- 左边部分 star -->
+    <div class="container">
+      <div class="content_l">
+        <div class="job_detail">
+          <dt class="join_tc_icon">
+            <dd class="job-advantage">
+              <span class="advantage">职位诱惑：</span>
+              <p>{{detailInfo.jobTemptation}}</p>
+            </dd>
+            <dd class="job_bt">
+              <h3 class="description">职位描述：</h3>
+              <div class="job-detail">
+                <p>{{detailInfo.jobDescription}}</p>
+              </div>
+            </dd>
+            <dd class="job-addres">
+              <h3 class="address">工作地址</h3>
+              <div class="work_addr">
+                <a href="javascript:;">{{detailInfo.city}}</a>
+                <a href="javascript:;" id="mapPreview">查看地图</a>
+              </div>
+            </dd>
+            <dd class="jd_publisher">
+              <h3>职位发布者:</h3>
+              <div class="border">
+                <img v-if="!detailInfo.HR" src="" alt="">
+                <img v-else :src="detailInfo.HR.head" alt="">
+                <div class="publisher_name">
+                  <a title="杨琳姐">
+                    <span class="name" v-if="!detailInfo.HR"></span>
+                    <span v-else class="name">{{detailInfo.HR.name}}</span>
+                    <span class="chat_me"></span>
+                  </a>
+                  <span class="pos"> 项目助理 </span>
+                  <span class="circle"></span>
+                  <span class="time" id="timeInfo">今日活跃</span>
+                </div>
+              </div>
+            </dd>
+          </dt>
+          <dl class="interview_experience module-container">
+            <div class="module-title">
+              面试评价
             </div>
-          </dd>
-          <dd class="job-addres">
-            <h3 class="address">工作地址</h3>
-            <div class="work_addr">
-              <a href="javascript:;">深圳</a> -
-              <a href="javascript:;">南山区</a> - 
-              <a href="javascript:;">科技园</a>
-              - 南山科技园
-              <a href="javascript:;" id="mapPreview">查看地图</a>
-            </div>
-          </dd>
-          <dd class="jd_publisher">
-            <h3>职位发布者:</h3>
-            <div class="border">
-              <img :src= "detailInfo[index].HR.head" alt="">
-              <div class="publisher_name">
-                <a title="杨琳姐">
-                  <span class="name">{{detailInfo[index].HR.name}}</span>
-                  <span class="chat_me"></span>
-                </a>
-                <span class="pos"> 项目助理 </span>
-                <span class="circle"></span>
-                <span class="time" id="timeInfo">今日活跃</span>
+            <div class="reviews-area">
+              <div class="list-empty">
+                <i></i>
+                <span>该职位尚未收到面试评价</span>
               </div>
             </div>
-          </dd>
-        </dt>
-        <dl class="interview_experience module-container">
-          <div class="module-title">
-            面试评价
-          </div>
-          <div class="reviews-area">
-            <div class="list-empty">
-              <i></i>
-              <span>该职位尚未收到面试评价</span>
-            </div>
-          </div>
-        </dl>
-        <div class="popular_recom hide-recom">
-          <div class="expansion">
-            展开
-            <i></i>
-          </div>
-          <dl class="popular_company">
-            <dt>推荐公司：</dt>
-            <dd>
-              <a target="_blank" href="javascript:;">瑞可甜心</a>
-              <a target="_blank" href="javascript:;">北京微橡科技有限公司</a>
-              <a target="_blank" href="javascript:;">峰尚</a>
-              <a target="_blank" href="javascript:;">天云软件</a>
-              <a target="_blank" href="javascript:;">健翔医院</a>
-              <a target="_blank" href="javascript:;">愿程教育</a>
-            </dd>
           </dl>
+          <div class="popular_recom hide-recom">
+            <div class="expansion">
+              展开
+              <i></i>
+            </div>
+            <dl class="popular_company">
+              <dt>推荐公司：</dt>
+              <dd>
+                <a target="_blank" href="javascript:;">瑞可甜心</a>
+                <a target="_blank" href="javascript:;">北京微橡科技有限公司</a>
+                <a target="_blank" href="javascript:;">峰尚</a>
+                <a target="_blank" href="javascript:;">天云软件</a>
+                <a target="_blank" href="javascript:;">健翔医院</a>
+                <a target="_blank" href="javascript:;">愿程教育</a>
+              </dd>
+            </dl>
+          </div>
         </div>
       </div>
-    </div>
-  <!-- 左边部分 end -->
+    <!-- 左边部分 end -->
 
-    <!-- 右边部分 star -->
-    <div class="content_r">
-      <dl class="job_company">
-        <dt>
-          <a href="javascript:;">
-            <img :src="detailInfo[index].imgUrl" alt="" class="b2">
-            <div class="job_company_content">
-              <h3>
-                <em class="fl-cn">
-                  {{detailInfo[index].companyName}}
-                </em>
-                <i class="icon-approve icon-glyph-valid"></i>
-              </h3>
-            </div>
-          </a>
-        </dt>
-        <dd>
-          <ul class="c_feature">
-            <li>
-              <i class="icon-four-squares iconfont"></i>
-              <h4 class="c_feature_name">{{detailInfo[index].industrySector}}</h4>
-            </li>
-            <li>
-              <i class="icon-trend iconfont"></i>
-              <h4 class="c_feature_name">{{detailInfo[index].FinancingStage}}</h4>
-            </li>
-            <li>
-              <i class="icon-ren iconfont"></i>
-              <h4 class="c_feature_name">{{detailInfo[index].StaffSize}}</h4>
-            </li>
-            <li>
-              <i class="icon-home iconfont"></i>
-              <h4 class="c_feature_name">{{detailInfo[index].companyUrl}}</h4>
-            </li>
-          </ul>
-        </dd>
-      </dl>
-
-      <div class="jobs_similar" id="jobs_similar">
-        <h4 class="jobs_similar_header">
-          <span>相似职位</span>
-        </h4>
-        <input type="hidden" value="true" id="similarPosition">
-        <div class="jobs_similar_content" id="jobs_similar_content">
-          <div class="jobs_similar_detail" id="jobs_similar_detail" data-lg-tj-track-code="jobs_similar"
-            data-lg-tj-track-type="1">
-            <ul class="similar_list reset">
-              <!--source=rec-->
-              <li class="similar_list_item  clearfix" data-jobid="7330519">
-                <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="0"
-                  data-lg-tj-id="9600" data-lg-tj-no="0001" data-lg-tj-cid="7330519" data-lg-tj-abt="default|0"
-                  data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
-                  data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
-                  <div class="similar_list_item_logo">
-                    <img class="lazy_img"
-                      data-original="http://www.lgstatic.com/i/image2/M01/AB/70/CgotOVvtLkWAaHG7AAAtqT2isAE445.png"
-                      alt="科楠科技" width="56" height="56"
-                      src="http://www.lgstatic.com/i/image2/M01/AB/70/CgotOVvtLkWAaHG7AAAtqT2isAE445.png"
-                      style="display: block;">
-                  </div>
-                  <div class="similar_list_item_pos">
-                    <h2 title="硬件工程师">硬件工程师</h2>
-                    <p>10k-18k</p>
-
-
-                    <p class="similar_company_name" title="科楠科技 [深圳·南山区]">
-                      科楠科技 [深圳·南山区]
-                    </p>
-                  </div>
-                </a>
+      <!-- 右边部分 star -->
+      <div class="content_r">
+        <dl class="job_company">
+          <dt>
+            <a href="javascript:;">
+              <img :src="detailInfo.imgUrl" alt="" class="b2">
+              <div class="job_company_content">
+                <h3>
+                  <em class="fl-cn">
+                    {{detailInfo.companyName}}
+                  </em>
+                  <i class="icon-approve icon-glyph-valid"></i>
+                </h3>
+              </div>
+            </a>
+          </dt>
+          <dd>
+            <ul class="c_feature">
+              <li>
+                <i class="icon-four-squares iconfont"></i>
+                <h4 class="c_feature_name">
+                  {{detailInfo.industrySector}}
+                </h4>
               </li>
-              <li class="similar_list_item  clearfix" data-jobid="7910234">
-                <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="1"
-                  data-lg-tj-id="9600" data-lg-tj-no="0002" data-lg-tj-cid="7910234" data-lg-tj-abt="default|0"
-                  data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
-                  data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
-                  <div class="similar_list_item_logo">
-                    <img class="lazy_img"
-                      data-original="http://www.lgstatic.com/i/image/M00/BE/12/CgqKkVjLi3yATrXvAAGEYg5z3tw116.png"
-                      alt="深信服科技集团" width="56" height="56"
-                      src="http://www.lgstatic.com/i/image/M00/BE/12/CgqKkVjLi3yATrXvAAGEYg5z3tw116.png"
-                      style="display: block;">
-                  </div>
-                  <div class="similar_list_item_pos">
-                    <h2 title="硬件安全工程师">硬件安全工程师</h2>
-                    <p>15k-30k·14薪</p>
-
-
-                    <p class="similar_company_name" title="深信服科技集团 [深圳·南山区]">
-                      深信服科技集团 [深圳·南山区]
-                    </p>
-                  </div>
-                </a>
+              <li>
+                <i class="icon-trend iconfont"></i>
+                <h4 class="c_feature_name">
+                  {{detailInfo.FinancingStage}}
+                </h4>
               </li>
-              <li class="similar_list_item  clearfix" data-jobid="7924719">
-                <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="2"
-                  data-lg-tj-id="9600" data-lg-tj-no="0003" data-lg-tj-cid="7924719" data-lg-tj-abt="default|0"
-                  data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
-                  data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
-                  <div class="similar_list_item_logo">
-                    <img class="lazy_img"
-                      data-original="http://www.lgstatic.com/i/image/M00/2D/0F/CgqKkVc63sGAIIFHAAAZPE6r9G0051.jpg"
-                      alt="普渡科技" width="56" height="56"
-                      src="http://www.lgstatic.com/i/image/M00/2D/0F/CgqKkVc63sGAIIFHAAAZPE6r9G0051.jpg"
-                      style="display: block;">
-                  </div>
-                  <div class="similar_list_item_pos">
-                    <h2 title="Android开发工程师（机器人&amp;智能硬件）">Android开发工程师（机器人&amp;智能硬件）</h2>
-                    <p>15k-30k</p>
-
-
-                    <p class="similar_company_name" title="普渡科技 [深圳·科技园]">
-                      普渡科技 [深圳·科技园]
-                    </p>
-                  </div>
-                </a>
+              <li>
+                <i class="icon-ren iconfont"></i>
+                <h4 class="c_feature_name">
+                  {{detailInfo.companyName}}
+                </h4>
               </li>
-              <li class="similar_list_item  clearfix" data-jobid="7044080">
-                <a class="position_link clearfix" href="javascript" target="_blank" data-index="3" data-lg-tj-id="9600"
-                  data-lg-tj-no="0004" data-lg-tj-cid="7044080" data-lg-tj-abt="default|0"
-                  data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
-                  data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
-                  <div class="similar_list_item_logo">
-                    <img class="lazy_img"
-                      data-original="http://www.lgstatic.com/i/image/M00/22/B9/Ciqc1F7sbSOAPvJsAAD-EFH95mc021.jpg"
-                      alt="翌日科技" width="56" height="56"
-                      src="http://www.lgstatic.com/i/image/M00/22/B9/Ciqc1F7sbSOAPvJsAAD-EFH95mc021.jpg"
-                      style="display: block;">
-                  </div>
-                  <div class="similar_list_item_pos">
-                    <h2 title="硬件工程师">硬件工程师</h2>
-                    <p>15k-25k</p>
-
-
-                    <p class="similar_company_name" title="翌日科技 [深圳·新安]">
-                      翌日科技 [深圳·新安]
-                    </p>
-                  </div>
-                </a>
-              </li>
-              <li class="similar_list_item  clearfix" data-jobid="6652238">
-                <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="4"
-                  data-lg-tj-id="9600" data-lg-tj-no="0005" data-lg-tj-cid="6652238" data-lg-tj-abt="default|0"
-                  data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
-                  data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
-                  <div class="similar_list_item_logo">
-                    <img class="lazy_img"
-                      data-original="http://www.lgstatic.com/i/image2/M01/02/95/CgoB5lyRtoeAYVvdAABK_PoyKfI850.png"
-                      alt="火火兔" width="56" height="56"
-                      src="http://www.lgstatic.com/i/image2/M01/02/95/CgoB5lyRtoeAYVvdAABK_PoyKfI850.png"
-                      style="display: block;">
-                  </div>
-                  <div class="similar_list_item_pos">
-                    <h2 title="硬件工程师">硬件工程师</h2>
-                    <p>10k-18k</p>
-
-
-                    <p class="similar_company_name" title="火火兔 [深圳·西丽]">
-                      火火兔 [深圳·西丽]
-                    </p>
-                  </div>
-                </a>
+              <li>
+                <i class="icon-home iconfont"></i>
+                <h4 class="c_feature_name">
+                  {{detailInfo.companyUrl}}
+                </h4>
               </li>
             </ul>
-            <a href="javascript:;" class="jobs_similar_footer" target="_blank" data-lg-tj-id="9700"
-              data-lg-tj-no="idnull" data-lg-tj-cid="idnull">查看更多相似职位</a>
+          </dd>
+        </dl>
+
+        <div class="jobs_similar" id="jobs_similar">
+          <h4 class="jobs_similar_header">
+            <span>相似职位</span>
+          </h4>
+          <input type="hidden" value="true" id="similarPosition">
+          <div class="jobs_similar_content" id="jobs_similar_content">
+            <div class="jobs_similar_detail" id="jobs_similar_detail" data-lg-tj-track-code="jobs_similar"
+              data-lg-tj-track-type="1">
+              <ul class="similar_list reset">
+                <!--source=rec-->
+                <li class="similar_list_item  clearfix" data-jobid="7330519">
+                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="0"
+                    data-lg-tj-id="9600" data-lg-tj-no="0001" data-lg-tj-cid="7330519" data-lg-tj-abt="default|0"
+                    data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
+                    data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
+                    <div class="similar_list_item_logo">
+                      <img class="lazy_img"
+                        data-original="http://www.lgstatic.com/i/image2/M01/AB/70/CgotOVvtLkWAaHG7AAAtqT2isAE445.png"
+                        alt="科楠科技" width="56" height="56"
+                        src="http://www.lgstatic.com/i/image2/M01/AB/70/CgotOVvtLkWAaHG7AAAtqT2isAE445.png"
+                        style="display: block;">
+                    </div>
+                    <div class="similar_list_item_pos">
+                      <h2 title="硬件工程师">硬件工程师</h2>
+                      <p>10k-18k</p>
+
+
+                      <p class="similar_company_name" title="科楠科技 [深圳·南山区]">
+                        科楠科技 [深圳·南山区]
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="similar_list_item  clearfix" data-jobid="7910234">
+                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="1"
+                    data-lg-tj-id="9600" data-lg-tj-no="0002" data-lg-tj-cid="7910234" data-lg-tj-abt="default|0"
+                    data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
+                    data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
+                    <div class="similar_list_item_logo">
+                      <img class="lazy_img"
+                        data-original="http://www.lgstatic.com/i/image/M00/BE/12/CgqKkVjLi3yATrXvAAGEYg5z3tw116.png"
+                        alt="深信服科技集团" width="56" height="56"
+                        src="http://www.lgstatic.com/i/image/M00/BE/12/CgqKkVjLi3yATrXvAAGEYg5z3tw116.png"
+                        style="display: block;">
+                    </div>
+                    <div class="similar_list_item_pos">
+                      <h2 title="硬件安全工程师">硬件安全工程师</h2>
+                      <p>15k-30k·14薪</p>
+
+
+                      <p class="similar_company_name" title="深信服科技集团 [深圳·南山区]">
+                        深信服科技集团 [深圳·南山区]
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="similar_list_item  clearfix" data-jobid="7924719">
+                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="2"
+                    data-lg-tj-id="9600" data-lg-tj-no="0003" data-lg-tj-cid="7924719" data-lg-tj-abt="default|0"
+                    data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
+                    data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
+                    <div class="similar_list_item_logo">
+                      <img class="lazy_img"
+                        data-original="http://www.lgstatic.com/i/image/M00/2D/0F/CgqKkVc63sGAIIFHAAAZPE6r9G0051.jpg"
+                        alt="普渡科技" width="56" height="56"
+                        src="http://www.lgstatic.com/i/image/M00/2D/0F/CgqKkVc63sGAIIFHAAAZPE6r9G0051.jpg"
+                        style="display: block;">
+                    </div>
+                    <div class="similar_list_item_pos">
+                      <h2 title="Android开发工程师（机器人&amp;智能硬件）">Android开发工程师（机器人&amp;智能硬件）</h2>
+                      <p>15k-30k</p>
+
+
+                      <p class="similar_company_name" title="普渡科技 [深圳·科技园]">
+                        普渡科技 [深圳·科技园]
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="similar_list_item  clearfix" data-jobid="7044080">
+                  <a class="position_link clearfix" href="javascript" target="_blank" data-index="3" data-lg-tj-id="9600"
+                    data-lg-tj-no="0004" data-lg-tj-cid="7044080" data-lg-tj-abt="default|0"
+                    data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
+                    data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
+                    <div class="similar_list_item_logo">
+                      <img class="lazy_img"
+                        data-original="http://www.lgstatic.com/i/image/M00/22/B9/Ciqc1F7sbSOAPvJsAAD-EFH95mc021.jpg"
+                        alt="翌日科技" width="56" height="56"
+                        src="http://www.lgstatic.com/i/image/M00/22/B9/Ciqc1F7sbSOAPvJsAAD-EFH95mc021.jpg"
+                        style="display: block;">
+                    </div>
+                    <div class="similar_list_item_pos">
+                      <h2 title="硬件工程师">硬件工程师</h2>
+                      <p>15k-25k</p>
+
+
+                      <p class="similar_company_name" title="翌日科技 [深圳·新安]">
+                        翌日科技 [深圳·新安]
+                      </p>
+                    </div>
+                  </a>
+                </li>
+                <li class="similar_list_item  clearfix" data-jobid="6652238">
+                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="4"
+                    data-lg-tj-id="9600" data-lg-tj-no="0005" data-lg-tj-cid="6652238" data-lg-tj-abt="default|0"
+                    data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
+                    data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
+                    <div class="similar_list_item_logo">
+                      <img class="lazy_img"
+                        data-original="http://www.lgstatic.com/i/image2/M01/02/95/CgoB5lyRtoeAYVvdAABK_PoyKfI850.png"
+                        alt="火火兔" width="56" height="56"
+                        src="http://www.lgstatic.com/i/image2/M01/02/95/CgoB5lyRtoeAYVvdAABK_PoyKfI850.png"
+                        style="display: block;">
+                    </div>
+                    <div class="similar_list_item_pos">
+                      <h2 title="硬件工程师">硬件工程师</h2>
+                      <p>10k-18k</p>
+
+
+                      <p class="similar_company_name" title="火火兔 [深圳·西丽]">
+                        火火兔 [深圳·西丽]
+                      </p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <a href="javascript:;" class="jobs_similar_footer" target="_blank" data-lg-tj-id="9700"
+                data-lg-tj-no="idnull" data-lg-tj-cid="idnull">查看更多相似职位</a>
+            </div>
           </div>
         </div>
       </div>
+      <!-- 右边部分 end -->
     </div>
-    <!-- 右边部分 end -->
-  </div>
-  </div>
+    </div>
 </template>
 <script>
 // 引入axios
-import {reqPositions} from "../../api"
+import { reqDetail } from "../../api";
 export default {
-  name: 'Detail',
+  name: "Detail",
 
-  data(){
-     return {
-       detailInfo:[],  //接收详情页动态数据
-       index: 0  // 接收详情页的某一条公司数据
-     }
+  data() {
+    return {
+      detailInfo: {}, //接收详情页动态数据
+      index: 0, // 接收详情页的某一条公司数据
+    };
   },
-  
+  async beforeCreate() {},
+  async created() {},
   // 页面渲染完成后发送请求详情页数据
- async mounted(){
-   
-     const result = await reqPositions();
+  async mounted() {
+    const id = this.$route.params.id;
+    const result = await reqDetail(id);
+    this.detailInfo = result[0];
+    console.log(this.detailInfo);
+    /* const result = await reqPositions();
     //  console.log(result);
      if(result.code===20000){
         //  console.log(this.$data.detailInfo);
@@ -325,9 +336,9 @@ export default {
          
      }else{
        alert("详情页请求失败："+result.message)
-     }
-  }
-}
+     } */
+  },
+};
 </script>
 <style rel="stylesheet/css" >
 /* 投简历 star */
@@ -537,7 +548,7 @@ li {
 
 /* 左边部分开始 */
 
-.content_l{
+.content_l {
   float: left;
   position: relative;
   padding-top: 26px;
@@ -571,7 +582,9 @@ li {
   margin-bottom: 0;
   padding-bottom: 0;
 }
-.job_bt h3.description, .leader-interview .description, .team-leader .description {
+.job_bt h3.description,
+.leader-interview .description,
+.team-leader .description {
   font-size: 16px;
   font-weight: 700;
   color: #333;
@@ -583,7 +596,7 @@ li {
   margin: 1em 0;
   font-size: 14px;
 }
-.address{
+.address {
   font-size: 16px;
   padding-bottom: 10px;
 }
@@ -593,7 +606,7 @@ li {
   margin-bottom: 10px;
   overflow: hidden;
 }
-#mapPreview{
+#mapPreview {
   float: right;
 }
 .job_detail .job-address .address {
@@ -669,10 +682,9 @@ li {
   width: 25px;
   height: 25px;
   margin: 20px 0 0 5px;
-  background: url('./images/ia_100000072.png') no-repeat 0 0;
+  background: url("./images/ia_100000072.png") no-repeat 0 0;
   cursor: pointer;
 }
-
 
 .jd_publisher .publisher_name span.pos {
   clear: left;
@@ -736,7 +748,7 @@ li {
   display: inline-block;
   height: 45px;
   width: 45px;
-  background-image: url('./images/unhappy_d9b5db5.png');
+  background-image: url("./images/unhappy_d9b5db5.png");
   vertical-align: middle;
   margin-right: 15px;
 }
@@ -763,16 +775,15 @@ li {
   width: 10px;
   height: 6px;
   margin-left: 2px;
-  background: url('./images/arrow_down_c415674.png') 0 0 no-repeat;
+  background: url("./images/arrow_down_c415674.png") 0 0 no-repeat;
 }
-.popular_company{
+.popular_company {
   overflow: hidden;
   font-size: 14px;
 }
 .popular_recom dt {
   float: left;
   color: #bebebe;
-  
 }
 .popular_recom dd {
   margin: 0 70px;
@@ -793,16 +804,15 @@ li {
   margin-top: 45px;
 }
 
-
-.c_feature .icon-four-squares{
+.c_feature .icon-four-squares {
   font-size: 16px !important;
-  color: #555
+  color: #555;
 }
 
-.job_company>dt {
-    position: relative;
-    padding-bottom: 25px;
-    margin-bottom: -10px;
+.job_company > dt {
+  position: relative;
+  padding-bottom: 25px;
+  margin-bottom: -10px;
 }
 .job_company .b2 {
   border: 2px solid #f2f2f2;
@@ -813,7 +823,7 @@ li {
   bottom: 5px;
   padding: 20px 0;
 }
-.job_company dt a img{
+.job_company dt a img {
   width: 100px;
   height: 100px;
 }
@@ -828,7 +838,7 @@ li {
   width: 16px;
   height: 18px;
   margin-left: 0;
-  background: url('./images/ia_100000075.png') no-repeat 0 0;
+  background: url("./images/ia_100000075.png") no-repeat 0 0;
   color: #fff;
   vertical-align: bottom;
 }
@@ -889,12 +899,17 @@ li {
   border-bottom: 1px solid #e8e8e8;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   margin: 0;
   padding: 0;
   border: 1px solid #ededed;
   border-radius: 0;
-  font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+  font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial,
+    "Helvetica Neue", Helvetica;
 }
 .jobs_similar_detail .similar_list {
   margin-top: -12px;
@@ -918,9 +933,8 @@ button, input, optgroup, select, textarea {
 .similar_list_item_logo {
   width: 60px;
   margin-right: 12px;
-  
 }
-.similar_list_item_logo img{
+.similar_list_item_logo img {
   float: left;
 }
 .similar_list_item_pos {
@@ -935,16 +949,16 @@ button, input, optgroup, select, textarea {
 }
 
 .jobs_similar_footer {
-    display: block;
-    color: #555;
-    height: 35px;
-    line-height: 35px;
-    background: #fafafa url(//www.lgstatic.com/lg-www-fed/job-detail/modules/job-recommend/img/similar_position_triangle_544444c.png) no-repeat 205px 10px;
-    margin-bottom: 28px;
-    text-align: center;
+  display: block;
+  color: #555;
+  height: 35px;
+  line-height: 35px;
+  background: #fafafa
+    url(//www.lgstatic.com/lg-www-fed/job-detail/modules/job-recommend/img/similar_position_triangle_544444c.png)
+    no-repeat 205px 10px;
+  margin-bottom: 28px;
+  text-align: center;
 }
 
-
 /* 内容 end */
-
 </style>
