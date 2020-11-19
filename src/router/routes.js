@@ -6,6 +6,8 @@ import Home from '@/pages/Home'
 import Register from '@/pages/Register'
 // 引入登录组件
 import Login from '@/pages/Login'
+import Search from '@/pages/Search'
+import Company from '@/pages/Company'
 
 // 暴露出去
 export default [
@@ -20,6 +22,14 @@ export default [
   {
     path: '/register',
     component: Register,
+  },
+  {
+    path: '/search',
+    component: Search,
+  },
+  {
+    path: '/company',
+    component: Company,
   },
   {
     path: '/',

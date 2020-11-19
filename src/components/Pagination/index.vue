@@ -31,20 +31,25 @@ export default {
       pageTotal: 32, // 总条数
       currentPage: 1, // 默认第一页
 
-       // 分页四个
+      // 公司页面分页四个
       PageOneArr: [],
       PageTwoArr: [],
       PageThreeArr: [],
       PageFourArr: [],
       // 存分页
       AllPageArr: [],
-      // 新数据数组
-      // newPageArr: []
+
+      // 搜索分页四个
+      SearchOne: [],
+      SearchTwo: [],
+      SearchThree: [],
+      SearchFour: [],
+
+       // 存分页
+      AllSearchArr: [],
+
     };
-  },
-  methods: {
-    
-  },
+  }
 };
 </script>
 <style scoped>

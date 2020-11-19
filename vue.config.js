@@ -1,5 +1,5 @@
 module.exports = {
-  lintOnSave: false, // 关闭eslint语法检查
+  lintOnSave: false, // 干掉eslint语法检查
   devServer: {
     proxy: {
       '/api': {
@@ -8,4 +8,4 @@ module.exports = {
       },
     },
   },
-}
+};

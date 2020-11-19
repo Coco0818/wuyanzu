@@ -1,18 +1,15 @@
 <template>
   <div>
-    <Home />
+    <Header/>
     <router-view />
+    <Footer/>
   </div>
 </template>
-<script>
-import Home from '@/pages/Home'
 
+<script>
 export default {
-  name: 'App',
-  components: {
-    Home,
-  },
-}
+  name: "App",
+};
 </script>
 <style scoped>
 </style>

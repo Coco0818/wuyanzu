@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <!-- 轮播模块 star -->
     <div class="company-container">
       <h3>什么值得投</h3>
@@ -252,8 +251,6 @@
         <!-- 热门内容 end-->
       </div>
     </div>
-    <!-- 主体内容 end-->
-    <Footer />
   </div>
 </template>
 <script>
@@ -266,8 +263,7 @@ import HotContent from "../Home/HotContent";
 export default {
   name: "Company",
   components: {
-    HotContent,
-    Pagination
+    HotContent
   },
   data() {
     return {
@@ -288,7 +284,7 @@ export default {
       filterThree: [],
       filterFour: [],
 
-       // 分页四个
+      // 分页四个
       PageOneArr: [],
       PageTwoArr: [],
       PageThreeArr: [],
