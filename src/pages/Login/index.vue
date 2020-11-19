@@ -7,86 +7,179 @@
     </header>
     <section class="content_box cleafix">
       <!--右上角二维码展示-->
-      <div
-        class="qr_code_content"
-        data-lg-tj-id="1jkz"
-        data-lg-tj-no="idnull"
-        data-lg-tj-cid="idnull"
-      >
+      <div class="qr_code_content">
         <div class="qr_code_img"></div>
         <div class="mobile-info"></div>
       </div>
+      <!-- 主体左边部分 -->
       <div class="left_area fl">
         <div class="form-content" style="display: block">
+          <!-- 头部 -->
           <div class="form_head">
             <ul class="form_head clearfix">
-              <li
-                class="active"
-                data-lg-tj-id="1Us0"
-                data-lg-tj-no="idnull"
-                data-lg-tj-cid="idnull"
-              >
+              <li class="active" @click="isPhoneLogin = !isPhoneLogin">
                 密码登录
               </li>
-              <li
-                data-lg-tj-id="1Ut0"
-                data-lg-tj-no="idnull"
-                data-lg-tj-cid="idnull"
-              >
+              <li @click="isPhoneLogin = !isPhoneLogin">
                 验证码登录
               </li>
             </ul>
-            <span class="tab_active"></span>
+            <span :class="isPhoneLogin ? 'tab_active' : 'tab_active1'"></span>
           </div>
-          <div class="form_body" data-view="passwordLogin">
+          <!-- 输入框 密码登录部分 -->
+          <div class="form_body" :class="isPhoneLogin ? 'isShow' : ''">
             <form class="active" action="javascript:;">
-              <div
-                class="input_item clearfix"
-                data-propertyname="username"
-                data-controltype="Phone"
-                style="display: block"
-              >
+              <div class="input_item clearfix">
                 <input
                   type="text"
                   class="input input_white HtoC_JS"
                   name=""
                   placeholder="请输入常用手机号/邮箱"
-                  data-required="required"
                   autocomplete="off"
+                  v-model="phone"
+                  @blur="vefChange(phone)"
                 />
+                <span class="input_tips" :class="isVefPhone ? 'vefShow' : ''"
+                  >请输入已验证手机/邮箱</span
+                >
               </div>
-              <div
-                class="input_item clearfix"
-                data-propertyname="password"
-                data-controltype="Password"
-                style="display: block"
-              >
+              <div class="input_item clearfix">
                 <input
                   type="password"
                   class="input input_white HtoC_JS"
                   name=""
                   placeholder="请输入密码"
-                  data-required="required"
                   autocomplete="off"
+                  v-model="password"
+                  @blur="vefChange(password)"
                 />
+                <span
+                  class="input_tips"
+                  ref="tipsPassword"
+                  :class="isVefPassword ? 'vefShow' : ''"
+                  >密码错误</span
+                >
               </div>
 
               <div class="input_item clearfix">
                 <p class="forgot_pwd">忘记密码？</p>
               </div>
-              <div
-                class="input_item btn_group clearfix sense_login_password"
-                data-propertyname="submit"
-                data-controltype="Botton"
-                style="display: block"
-              >
+              <div class="input_item btn_group clearfix sense_login_password">
                 <input
                   type="submit"
                   class="btn btn_green btn_active btn_block btn_lg"
                   value="登 录"
-                  data-lg-tj-id="1j90"
-                  data-lg-tj-no="idnull"
-                  data-lg-tj-cid="idnull"
+                  @click="goLogin"
+                />
+              </div>
+            </form>
+          </div>
+          <!-- 输入框 验证码登录部分 -->
+          <div
+            class="form_body"
+            ref="codeLogin"
+            :class="isPhoneLogin ? '' : 'isShow'"
+          >
+            <form action="javascript:;">
+              <div class="input_item clearfix">
+                <span class="area_code" @click="viewAreaNum">0086</span>
+                <div
+                  class="area_code_list"
+                  style="display: none;"
+                  ref="AreaNum"
+                  @click="disviewAreaNum"
+                >
+                  <dl class="code_list_main">
+                    <dt>常用</dt>
+                    <dd>中国<span>0086</span></dd>
+                    <dd>中国香港<span>00852</span></dd>
+                    <dd>中国台湾<span>00886</span></dd>
+                    <dd>中国澳门<span>00853</span></dd>
+                    <dd>美国<span>001</span></dd>
+                    <dt>A</dt>
+                    <dd>澳大利亚<span>0061</span></dd>
+                    <dd>中国澳门<span>00853</span></dd>
+                    <dd>爱尔兰<span>00353</span></dd>
+                    <dt>B</dt>
+                    <dd>巴西<span>0055</span></dd>
+                    <dt>D</dt>
+                    <dd>德国<span>0049</span></dd>
+                    <dt>E</dt>
+                    <dd>俄罗斯<span>007</span></dd>
+                    <dt>F</dt>
+                    <dd>法国<span>0033</span></dd>
+                    <dt>H</dt>
+                    <dd>韩国<span>0082</span></dd>
+                    <dd>荷兰<span>0031</span></dd>
+                    <dt>J</dt>
+                    <dd>加拿大<span>001</span></dd>
+                    <dt>M</dt>
+                    <dd>马来西亚<span>0060</span></dd>
+                    <dd>美国<span>001</span></dd>
+                    <dt>R</dt>
+                    <dd>日本<span>0081</span></dd>
+                    <dt>T</dt>
+                    <dd>中国台湾<span>00886</span></dd>
+                    <dd>泰国<span>0066</span></dd>
+                    <dt>X</dt>
+                    <dd>中国香港<span>00852</span></dd>
+                    <dd>新加坡<span>0065</span></dd>
+                    <dd>新西兰<span>0064</span></dd>
+                    <dt>Y</dt>
+                    <dd>印度<span>0091</span></dd>
+                    <dd>英国<span>0044</span></dd>
+                    <dd>越南<span>0084</span></dd>
+                    <dd>印度尼西亚<span>0062</span></dd>
+                    <dt>Z</dt>
+                    <dd>中国<span>0086</span></dd>
+                  </dl>
+                  <p class="tips">
+                    如果没有找到您的所在归属地，请拨打客服电话4006282835解决。
+                  </p>
+                </div>
+
+                <input
+                  type="text"
+                  class="input input_white HtoC_JS"
+                  name=""
+                  placeholder="请输入常用手机号"
+                  autocomplete="off"
+                  v-model="phone"
+                  @blur="vefChange(phone)"
+                />
+                <span class="input_tips" :class="isVefPhone ? 'vefShow' : ''"
+                  >请输入正确的手机号</span
+                >
+              </div>
+              <div class="input_item clearfix" :class="isPhoneLogin"></div>
+              <div class="input_item">
+                <div class="input_group clearfix">
+                  <input
+                    type="text"
+                    class="input input_white "
+                    name=""
+                    placeholder="请输入验证码"
+                    autocomplete="off"
+                    v-model="verifyCode"
+                    @blur="vefChange(verifyCode)"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn_active last_child sense_msg_code"
+                    value="获取验证码"
+                    @click="goVerifyCodeLogin"
+                  />
+                </div>
+                <span class="input_tips" :class="isVefCode ? 'vefShow' : ''"
+                  >验证码错误</span
+                >
+              </div>
+              <div class="input_item btn_group clearfix sense_login_code">
+                <input
+                  type="submit"
+                  class="btn btn_green btn_active btn_block btn_lg"
+                  value="登 录"
+                  @click="goVerifyCodeLogin"
                 />
               </div>
             </form>
@@ -107,84 +200,405 @@
       </div>
     </section>
 
-    <div style="display: none">
-      <div class="popup" id="ajaxError" style="overflow: hidden; width: 500px">
-        <h4 class="error_msg">网络出错啦</h4>
-      </div>
-    </div>
     <!-- 页面主体END -->
-    <input
-      type="hidden"
-      id="verifyStyle"
-      style="display: none"
-      value="nolagou"
-    />
-    <div id="cboxOverlay" style="display: none"></div>
-    <div
-      id="colorbox"
-      class=""
-      role="dialog"
-      tabindex="-1"
-      style="display: none"
-    >
-      <div id="cboxWrapper">
-        <div>
-          <div id="cboxTopLeft" style="float: left"></div>
-          <div id="cboxTopCenter" style="float: left"></div>
-          <div id="cboxTopRight" style="float: left"></div>
-        </div>
-        <div style="clear: left">
-          <div id="cboxMiddleLeft" style="float: left"></div>
-          <div id="cboxContent" style="float: left">
-            <div id="cboxTitle" style="float: left"></div>
-            <div id="cboxCurrent" style="float: left"></div>
-            <button type="button" id="cboxPrevious"></button
-            ><button type="button" id="cboxNext"></button
-            ><button id="cboxSlideshow"></button>
-            <div id="cboxLoadingOverlay" style="float: left"></div>
-            <div id="cboxLoadingGraphic" style="float: left"></div>
-          </div>
-          <div id="cboxMiddleRight" style="float: left"></div>
-        </div>
-        <div style="clear: left">
-          <div id="cboxBottomLeft" style="float: left"></div>
-          <div id="cboxBottomCenter" style="float: left"></div>
-          <div id="cboxBottomRight" style="float: left"></div>
-        </div>
-      </div>
-      <div
-        style="
-          position: absolute;
-          width: 9999px;
-          visibility: hidden;
-          display: none;
-          max-width: none;
-        "
-      ></div>
-    </div>
   </div>
 </template>
 <script>
+// 引入登录接口
+import { reqLogin, reqgetCode, reqVerifyCodeLogin } from "../../api";
 export default {
-  name: 'Login',
+  name: "Login",
+
+  data() {
+    return {
+      // phone: 13120202020,
+      phone: null,
+      password: null,
+      verifyCode: null,
+      isPhoneLogin: true, // 密码登录页面/验证码登录页面切换
+      isVefPhone: false, //  手机号码正则
+      isVefPassword: false, // 密码正则
+      isVefCode: false, //  验证码正则
+    };
+  },
+
   methods: {
+    // 点击0086选择区号
+    viewAreaNum() {
+      this.$refs.AreaNum.style.display = "block";
+    },
+    disviewAreaNum() {
+      this.$refs.AreaNum.style.display = "none";
+    },
+
+    // 验证手机号和密码
+    vefChange(e) {
+      // 手机号的正则
+      const vefPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
+      // 密码的正则--> 只能输入6到16位的数字+字母(两者都要有)
+      const vefPassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+      // 验证码的正则
+      const vefCode = /^\d{6}$/;
+      // 获取手机号和密码
+      const { phone, password, verifyCode } = this;
+      switch (e) {
+        case phone:
+          console.log(phone);
+          if (!vefPhone.test(phone)) {
+            // 获取提示验证错误的样式
+            // this.$refs.tipsPhone.style.display = "block";
+            this.isVefPhone = true;
+            // console.log(121);
+          } else {
+            // this.$refs.tipsPhone.style.display = "none";
+            this.isVefPhone = false;
+          }
+          break;
+        case password:
+          if (!vefPassword.test(password)) {
+            this.isVefPassword = true;
+          } else {
+            this.isVefPassword = false;
+          }
+          break;
+        case verifyCode:
+          if (!vefCode.test(verifyCode)) {
+            this.isVefCode = true;
+          } else {
+            this.isVefCode = false;
+          }
+          break;
+      }
+    },
+    // 跳转回到注册页面
     goRegister() {
-      this.$router.push('/register')
+      this.$router.push("/register");
+    },
+    // 点击密码登录，发送请求，登录成功跳转回详情页组件
+    async goLogin() {
+      // 调用密码登录接口
+      // 获取手机号和密码
+      const { phone, password } = this;
+      // 发送请求
+      const result = await reqLogin(phone, password);
+      console.log(result);
+      if (result.code === 20000) {
+        // 登录成功，则跳转到详情页面
+        this.$router.push("/");
+        // 登录成功会返回一个成功的手机号
+        console.log(result.data.phone);
+      } else {
+        alert("输入手机号或密码错误");
+      }
+    },
+    // 点击验证码登录
+    async goVerifyCodeLogin() {
+      // 调用密码登录接口
+      // 获取手机号和密码
+      const { phone, verifyCode } = this;
+      // 发送请求
+      const result = await reqVerifyCodeLogin(phone, verifyCode);
+      console.log(result);
+      if (result.code === 20000) {
+        // 登录成功，则跳转到详情页面
+        this.$router.push("/");
+      } else {
+        alert("输入手机号或验证码错误");
+      }
     },
   },
-}
+};
 </script>
 <style rel="stylesheet" scoped>
 * {
   margin: 0;
   padding: 0;
 }
+.vefShow {
+  display: block !important;
+}
+.input_tips {
+  position: relative;
+  z-index: 2;
+  display: none;
+  margin-top: 5px;
+  line-height: 18px;
+  font-size: 12px;
+  color: #fd5f39;
+  background-size: 14px;
+}
+.isShow {
+  display: block !important;
+}
+.form_body {
+  display: none;
+}
 ul,
 li {
   list-style: none;
 }
+.content_box .input_item {
+  position: relative;
+}
+.input_item:first-child {
+  z-index: 2;
+}
+.content_box .input {
+  box-sizing: border-box;
+  width: 290px;
+  border-radius: 0;
+}
+.input_group {
+  overflow: hidden;
+}
+.content_box .input_white,
+.content_box .dropbtn_white {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-color: #ededed;
+  background: 0 0;
+}
+.area_code_list + input {
+  padding-left: 72px;
+}
+.input_white,
+.dropbtn_white {
+  border-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+.input,
+.dropbtn {
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  height: 44px;
+  line-height: 44px\9;
+  vertical-align: middle;
+  color: #333;
+  border-width: 1px;
+  border-style: solid;
+  outline: 0;
+}
+.area_code[data-v-2ddd9490] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  float: left;
+  width: 50px;
+  height: 44px;
+  padding-right: 22px;
+  line-height: 44px;
+  cursor: default;
+}
+
+*[data-v-2ddd9490] {
+  margin: 0;
+  padding: 0;
+}
+.area_code {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  float: left;
+  width: 50px;
+  height: 44px;
+  padding-right: 22px;
+  line-height: 44px;
+  cursor: default;
+}
+
+.area_code {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  float: left;
+  width: 50px;
+  height: 44px;
+  padding-right: 22px;
+  line-height: 44px;
+  cursor: default;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial,
+    "Helvetica Neue", Helvetica;
+  color: #333;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+html {
+  font-size: 14px;
+}
+form {
+  display: block;
+  margin-top: 0em;
+}
+.area_code {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  float: left;
+  width: 50px;
+  height: 44px;
+  padding-right: 22px;
+  line-height: 44px;
+  cursor: default;
+}
+.area_code:after {
+  position: absolute;
+  right: 8px;
+  top: 19px;
+  display: block;
+  content: "";
+  width: 10px;
+  height: 5px;
+  background: url(//www.lgstatic.com/lg-passport-fed/static/pc/modules/common/img/code86_a209722.png)
+    no-repeat;
+}
+.area_code:after {
+  position: absolute;
+  right: 8px;
+  top: 19px;
+  display: block;
+  content: "";
+  width: 10px;
+  height: 5px;
+  background: url(//www.lgstatic.com/lg-passport-fed/static/pc/modules/common/img/code86_a209722.png)
+    no-repeat;
+}
+
+::selection {
+  color: #fff;
+  background-color: #00b38a;
+}
+.area_code_list {
+  position: absolute;
+  left: 0;
+  top: 46px;
+  z-index: 10;
+  display: none;
+  width: 200px;
+  max-height: 240px;
+  border: 1px solid #eee;
+  overflow-y: scroll;
+  background-color: #fff;
+}
+.area_code_list dl {
+  line-height: 36px;
+  cursor: default;
+}
+dl,
+dt,
+dd {
+  margin: 0;
+}
+.area_code_list dt {
+  padding: 0 12px;
+  color: #999;
+  background-color: #fbfbfb;
+}
+.area_code_list dd {
+  padding: 0 12px;
+  color: #555;
+}
+.area_code_list dd span {
+  float: right;
+}
+.area_code_list .tips {
+  color: #b5b5b5;
+  padding: 20px 12px;
+}
+.content_box .input {
+  box-sizing: border-box;
+  width: 290px;
+  border-radius: 0;
+}
+.content_box .input_item + .input_item {
+  margin-top: 20px;
+}
+
+.content_box .yzm {
+  position: absolute;
+  right: 0;
+  top: 1px;
+  z-index: 1;
+  width: 98px;
+  line-height: 38px;
+  color: #777;
+}
+.input_group img {
+  border: 0;
+  vertical-align: top;
+  display: inline-block;
+}
+a {
+  background-color: transparent;
+  outline: 0;
+  text-decoration: none;
+}
+.content_box .input_group > input.first_child {
+  padding-right: 80px;
+}
+.input_group > input:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.content_box .input {
+  box-sizing: border-box;
+  width: 290px;
+  border-radius: 0;
+}
+.content_box .input_white,
+.content_box .dropbtn_white {
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-color: #ededed;
+  background: 0 0;
+}
+.input_group input {
+  float: left;
+}
+
+.content_box .input_group > input.last_child {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  z-index: 2;
+  height: 43px;
+  font-size: 14px;
+  padding: 0;
+  border: 0;
+}
+.input_group > input:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn:hover,
+.btn.btn_active {
+  text-decoration: none;
+  color: #00b38a;
+  background-color: #fff;
+}
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
 input {
-  font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', SimSun;
+  font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", SimSun;
 }
 
 .sso_header {
@@ -280,7 +694,7 @@ input {
   text-align: center;
   color: #333;
 }
-
+/*  */
 .content_box .tab_active {
   position: absolute;
   left: 0;
@@ -288,8 +702,10 @@ input {
   z-index: 1;
   background-color: #00b38a;
   width: 150px;
-  height: 1px;
-  border: 1px solid #000;
+  height: 0px;
+  border: 1px solid #00b38a;
+  /*  */
+  display: block;
 }
 
 .content_box .tab_active:before,
@@ -299,7 +715,7 @@ input {
   top: -12px;
   left: 50%;
   margin-left: -3px;
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   line-height: 0;
@@ -308,6 +724,45 @@ input {
 }
 
 .content_box .tab_active:after {
+  z-index: 3;
+  top: -11px;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 6px solid transparent;
+  border-bottom-color: #fff;
+}
+
+/*  */
+.content_box .tab_active1 {
+  position: absolute;
+  left: 150px;
+  bottom: -1px;
+  z-index: 1;
+  background-color: #00b38a;
+  width: 150px;
+  height: 0px;
+  border: 1px solid #00b38a;
+  /*  */
+  /* display: none; */
+}
+
+.content_box .tab_active1:before,
+.content_box .tab_active1:after {
+  position: absolute;
+  z-index: 2;
+  top: -12px;
+  left: 50%;
+  margin-left: -3px;
+  content: "";
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 6px solid transparent;
+  border-bottom-color: #007b5f;
+}
+
+.content_box .tab_active1:after {
   z-index: 3;
   top: -11px;
   width: 0;
@@ -337,7 +792,7 @@ input {
 }
 .clearfix:before,
 .clearfix:after {
-  content: '';
+  content: "";
   display: table;
 }
 
@@ -438,7 +893,7 @@ input {
 
 .content_box .divider:after {
   position: absolute;
-  content: 'or';
+  content: "or";
   left: 50%;
   top: 50%;
   padding: 2px;
@@ -489,7 +944,7 @@ a {
 
 .clearfix:before,
 .clearfix:after {
-  content: '';
+  content: "";
   display: table;
 }
 

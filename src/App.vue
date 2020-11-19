@@ -9,8 +9,13 @@
 <script>
 import Home from '@/pages/Home'
 export default {
-  name: "App",
-};
+  name: 'App',
+
+  components: {
+    Home,
+  },
+}
+
 </script>
 <style scoped>
 </style>

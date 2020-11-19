@@ -220,7 +220,7 @@
                   <img :src="item.ImgUrl" alt="" />
                 </p>
                 <h3>{{ item.comName }}</h3>
-                <h4 class="companyList-top-one">{{ item.indusStage }}</h4>
+                <h4 class="companyList-top-one wordCut">{{ item.indusStage }}</h4>
                 <h4 class="companyList-top-two wordCut">
                   {{ item.advantage ? item.advantage : "无" }}
                 </h4>
@@ -612,11 +612,13 @@ export default {
 .companyList-top-one {
   margin: 3px auto 0;
   color: #999;
+  font-size: 14px;
 }
 
 .companyList-top-two {
   margin: 5px auto 0;
   color: #555;
+  font-size: 14px;
 }
 .wordCut {
   text-overflow: ellipsis;

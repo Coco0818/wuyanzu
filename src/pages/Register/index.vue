@@ -152,8 +152,10 @@
                     name="phone"
                     autocomplete="off"
                     class="error"
-                  /><span for="lp_phone" generated="true" class="error"
-                    >请输入手机号码</span
+                    v-model="phone"
+                     @blur="vefChange(phone)"
+                  /><span for="lp_phone" generated="true" class="phoneError" ref="tipsPhone"
+                    >手机号码输入有误</span
                   >
                 </li>
                 <li class="yzmli">
@@ -175,15 +177,19 @@
                 </li>
                 <li class="coderli">
                   <input
-                    placeholder="请输入手机验证码"
+                    placeholder="请设置你的密码"
+                    type="password"
+                    data-required="required"
                     id="lp_coder"
                     name="coder"
-                    autocomplete="on"
+                    autocomplete="off"
                     class="error"
-                  /><span for="lp_coder" generated="true" class="error"
-                    >请输入手机验证码</span
+                    v-model="password"
+                    @blur="vefChange(password)"
+                  /><span for="lp_coder" generated="true" class="error" ref="tipsPassword"
+                    >输入包含6-16位的数字和字母</span
                   >
-                  <span class="getcode">获取验证码</span>
+                  <!-- <span class="getcode">请设置你的密码</span> -->
                 </li>
                 <li class="verify_tips">
                   <p class="verify_tips_main">
@@ -202,6 +208,7 @@
                 data-lg-tj-id="1kxx"
                 data-lg-tj-no="0003"
                 data-lg-tj-cid="idnull"
+                @click="goRegister"
                 >立即注册</a
               >
               <div class="lp_agreeNotice_box">
@@ -272,16 +279,68 @@
   </div>
 </template>
 <script>
+
+// 引入登录接口
+import {reqRegister} from "../../api";
+
 export default {
-  name: 'Register',
-  methods: {
-    goLogin() {
-      this.$router.push('/login')
-    },
+  name: "Register",
+  data() {
+    return {
+      phone: null,
+      password: null
+    };
   },
-}
+
+  methods: {
+    // 跳转登录页面
+    goLogin() {
+      this.$router.push("/login");
+    },
+     // 验证手机号和密码
+    vefChange(e) {
+      // 手机号的正则
+      const vefPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
+      // 密码的正则--> 只能输入6到16位的数字+字母(两者都要有)
+      const vefPassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+      // 获取手机号和密码
+      const { phone, password } = this;
+      switch (e) {
+        case phone:
+          if (!vefPhone.test(phone)) {
+            // 获取提示验证错误的样式
+            this.$refs.tipsPhone.style.display = "block";
+          } else {
+            this.$refs.tipsPhone.style.display = "none";
+          }
+          break;
+        case password:
+          if (!vefPassword.test(password)) {
+            this.$refs.tipsPassword.style.display = "block";
+          } else {
+            this.$refs.tipsPassword.style.display = "none";
+          }
+          break;
+      }
+    },
+    // 注册
+   async goRegister(){
+      const { phone, password } = this;
+      // 发送请求
+      const result = await reqRegister(phone, password);
+      console.log(result);
+      if (result.code === 20000) {
+        // 登录成功，则跳转到详情页面
+        this.$router.push("/login");
+        // console.log(result.data);
+      } else {
+        alert("输入手机号或验证码错误");
+      }
+    }
+  },
+};
 </script>
-<style  rel="stylesheet" scoped>
+<style rel="stylesheet" scoped>
 * {
   padding: 0;
   margin: 0;
@@ -463,7 +522,7 @@ export default {
 }
 
 .middle-green:after {
-  content: '';
+  content: "";
   width: 24px;
   height: 3px;
   opacity: 0.3;
@@ -504,7 +563,7 @@ export default {
 
 .area_code:after {
   position: absolute;
-  content: '';
+  content: "";
   right: 8px;
   top: 14px;
   display: block;
@@ -553,7 +612,7 @@ export default {
   border-bottom: 1px solid #ff6a6a;
 }
 
-.middle-right form input:not([type='button']) {
+.middle-right form input:not([type="button"]) {
   display: block;
   width: 100%;
   height: 38px;
@@ -568,9 +627,16 @@ export default {
 .area_code_list + input {
   padding-left: 72px;
 }
-
+form span.phoneError{
+  display: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fd5f39;
+  position: absolute;
+  top: 40px;
+}
 form span.error {
-  display: block;
+  display: none;
   font-size: 12px;
   line-height: 20px;
   color: #fd5f39;
@@ -582,7 +648,7 @@ form span.error {
   display: none;
 }
 
-.middle-right form input:not([type='button']) {
+.middle-right form input:not([type="button"]) {
   display: block;
   width: 100%;
   height: 38px;
@@ -704,7 +770,7 @@ form span.error {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: ' ';
+  content: " ";
   clear: both;
   height: 0;
 }
@@ -765,7 +831,7 @@ form span.error {
   visibility: hidden;
   display: block;
   font-size: 0;
-  content: ' ';
+  content: " ";
   clear: both;
   height: 0;
 }

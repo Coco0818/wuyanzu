@@ -8,6 +8,7 @@ import Register from '@/pages/Register'
 import Login from '@/pages/Login'
 import Search from '@/pages/Search'
 import Company from '@/pages/Company'
+import Detail from '@/pages/Detail'
 
 // 暴露出去
 export default [
@@ -30,6 +31,10 @@ export default [
   {
     path: '/company',
     component: Company,
+  },
+  {
+    path: '/detail',
+    component: Detail,
   },
   {
     path: '/',

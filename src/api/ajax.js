@@ -7,9 +7,9 @@ import Nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 // 设置请求的时候被拦截器拦截下来添加上api前缀 和 请求超时时间
 const ajax = axios.create({
-  baseURL: '/api',  // 根路径
-  timeOut: 20000  // 超时时间
-})
+  baseURL: "/api", // 根路径
+  timeOut: 20000, // 超时时间
+});
 // 请求拦截器
 ajax.interceptors.request.use(config => {
   Nprogress.start() // 显示进度条
