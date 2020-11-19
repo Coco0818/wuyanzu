@@ -32,7 +32,10 @@
               <div class="job-ul-li-top">
                 <div class="job-position">
                   <div class="job-position-top">
-                    <a href="javascript:;" class="job-position-top-link"
+                    <a
+                      href="javascript:;"
+                      class="job-position-top-link"
+                      @click="goDetail(position._id)"
                       >{{ position.positionName }}[{{ position.city }}]</a
                     >
                     <span class="job-position-top-time">15:53发布</span>
@@ -133,6 +136,10 @@
                 <a href="javascript:;" class="recommend-comp_ul-li-a"
                   >易到用车</a
                 >
+                <<<<<<< HEAD
+                <div class="salary">25k-50k</div>
+                <div class="history-company-name">腾讯</div>
+                =======
               </li>
               <li class="recommend-comp_ul-li">
                 <a href="javascript:;" class="recommend-comp_ul-li-a">小红唇</a>
@@ -243,6 +250,7 @@
                 }}</a>
                 <div class="salary">{{ brower.Salary }}</div>
                 <div class="history-company-name">{{ brower.companyName }}</div>
+                >>>>>>> 0706d1955474e2085db824587343532a0d53fb53
               </div>
             </li>
           </ul>
@@ -286,6 +294,9 @@ export default {
     };
   },
   methods: {
+    goDetail(id) {
+      this.$router.push("/detail/" + id);
+    },
     // 分页
     handleSizeChange: function (size) {
       this.pagesize = size; //当前显示页数
