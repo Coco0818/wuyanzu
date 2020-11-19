@@ -1,45 +1,32 @@
 // 引入需要的路由组件
 
 // 引入主页
-import Home from "@/pages/Home";
+import Home from '@/pages/Home'
 // 引入注册组件
-import Register from "@/pages/Register";
+import Register from '@/pages/Register'
 // 引入登录组件
 import Login from '@/pages/Login'
 import Search from '@/pages/Search'
+
 import Company from '@/pages/Company'
+
 import Detail from '@/pages/Detail'
 
-import Search from "@/pages/Search";
-
-import Detail from "@/pages/Detail";
 // 暴露出去
 export default [
   {
-    path: "/",
+    path: '/',
     component: Home,
   },
   {
-    path: "/login",
+    path: '/login',
     component: Login,
   },
   {
-    path: "/register",
+    path: '/register',
     component: Register,
   },
   {
-<<<<<<< HEAD
-    path: "/search",
-    component: Search,
-  },
-  {
-    path: "/detail/:id",
-    component: Detail,
-  },
-  {
-    path: "/",
-    redirect: "/",
-=======
     path: '/search',
     component: Search,
   },
@@ -48,12 +35,11 @@ export default [
     component: Company,
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     component: Detail,
   },
   {
     path: '/',
     redirect: '/',
->>>>>>> 0706d1955474e2085db824587343532a0d53fb53
   },
-];
+]
