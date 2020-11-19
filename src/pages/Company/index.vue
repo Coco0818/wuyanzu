@@ -214,15 +214,15 @@
         <div class="companyList-container">
           <ul>
             <!-- 腾讯模块 star -->
-            <li v-for="item in newPageArr" :key="item.id">
+            <li v-for="item in allStation" :key="item.id">
               <div class="companyList-top">
                 <p>
                   <img :src="item.ImgUrl" alt="" />
                 </p>
                 <h3>{{ item.comName }}</h3>
-                <h4 class="companyList-top-one wordCut">{{ item.indusStage }}</h4>
+                <h4 class="companyList-top-one">{{ item.indusStage }}</h4>
                 <h4 class="companyList-top-two wordCut">
-                  {{ item.advantage ? item.advantage : "无" }}
+                  {{ item.advantage ? item.advantage : '无' }}
                 </h4>
               </div>
               <div class="companyList-bottom">
@@ -244,26 +244,369 @@
           </ul>
         </div>
         <!-- 公司列表 end -->
-        <!-- 分页 -->
-        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
+        <!-- 分页 占位后期饿了么UI组件补上 -->
+        <div class="companyList-pages company-fl">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage"
+            :page-size="pageSize"
+            layout="prev, pager, next, jumper"
+            :total="pageTotal"
+            background
+          >
+          </el-pagination>
+        </div>
         <!-- 热门内容 star-->
-        <HotContent />
+        <div class="company-hotList">
+          <dl>
+            <!-- 头部 -->
+            <dt>
+              <span
+                class="company-link"
+                @click="companyTodoList = 0"
+                :class="{ current: companyTodoList === 0 }"
+                >热门城市</span
+              >
+              <span
+                class="company-link"
+                @click="companyTodoList = 1"
+                :class="{ current: companyTodoList === 1 }"
+                >热门公司</span
+              >
+              <span
+                class="company-link"
+                @click="companyTodoList = 2"
+                :class="{ current: companyTodoList === 2 }"
+                >热门职位</span
+              >
+              <span
+                class="company-link"
+                @click="companyTodoList = 3"
+                :class="{ current: companyTodoList === 3 }"
+                >热门行业</span
+              >
+              <span
+                class="company-link"
+                @click="companyTodoList = 4"
+                :class="{ current: companyTodoList === 4 }"
+                >热门关键词</span
+              >
+            </dt>
+            <!-- 热门城市 star -->
+            <dd
+              class="company-dd-list company-default"
+              :class="{ show: companyTodoList === 0 }"
+            >
+              <a href="javascript:;">深圳人才网</a>
+              <a href="javascript:;">上海人才网</a>
+              <a href="javascript:;">广州人才网</a>
+              <a href="javascript:;">杭州人才网</a>
+              <a href="javascript:;">成都人才网</a>
+              <a href="javascript:;">南京人才网</a>
+              <a href="javascript:;">武汉人才网</a>
+              <a href="javascript:;">西安人才网</a>
+              <a href="javascript:;">长沙人才网</a>
+              <a href="javascript:;">苏州人才网</a>
+              <a href="javascript:;">天津人才网</a>
+              <a href="javascript:;">重庆人才网</a>
+
+              <a href="javascript:;" class="company-perples">深圳人才网</a>
+              <a href="javascript:;" class="company-perples">上海人才网</a>
+              <a href="javascript:;" class="company-perples">广州人才网</a>
+              <a href="javascript:;" class="company-perples">杭州人才网</a>
+              <a href="javascript:;" class="company-perples">成都人才网</a>
+              <a href="javascript:;" class="company-perples">南京人才网</a>
+              <a href="javascript:;" class="company-perples">武汉人才网</a>
+              <a href="javascript:;" class="company-perples">西安人才网</a>
+              <a href="javascript:;" class="company-perples">长沙人才网</a>
+              <a href="javascript:;" class="company-perples">苏州人才网</a>
+              <a href="javascript:;" class="company-perples">天津人才网</a>
+              <a href="javascript:;" class="company-perples">重庆人才网</a>
+
+              <a href="javascript:;" class="company-perples">深圳人才网</a>
+              <a href="javascript:;" class="company-perples">上海人才网</a>
+              <a href="javascript:;" class="company-perples">广州人才网</a>
+              <a href="javascript:;" class="company-perples">杭州人才网</a>
+              <a href="javascript:;" class="company-perples">成都人才网</a>
+              <a href="javascript:;" class="company-perples">南京人才网</a>
+              <a href="javascript:;" class="company-perples">武汉人才网</a>
+              <a href="javascript:;" class="company-perples">西安人才网</a>
+              <a href="javascript:;" class="company-perples">长沙人才网</a>
+              <a href="javascript:;" class="company-perples">苏州人才网</a>
+              <a href="javascript:;" class="company-perples">天津人才网</a>
+              <a href="javascript:;" class="company-perples">重庆人才网</a>
+
+              <a href="javascript:;" class="company-perples">深圳人才网</a>
+              <a href="javascript:;" class="company-perples">上海人才网</a>
+              <a href="javascript:;" class="company-perples">广州人才网</a>
+              <a href="javascript:;" class="company-perples">杭州人才网</a>
+              <a href="javascript:;" class="company-perples">成都人才网</a>
+              <a href="javascript:;" class="company-perples">南京人才网</a>
+              <a href="javascript:;" class="company-perples">武汉人才网</a>
+              <a href="javascript:;" class="company-perples">西安人才网</a>
+              <a href="javascript:;" class="company-perples">长沙人才网</a>
+              <a href="javascript:;" class="company-perples">苏州人才网</a>
+              <a href="javascript:;" class="company-perples">天津人才网</a>
+              <a href="javascript:;" class="company-perples">重庆人才网</a>
+            </dd>
+            <!-- 热门城市 end -->
+
+            <!-- 热门公司 star style="display:none"-->
+            <dd
+              class="company-dd-list company-default"
+              :class="{ show: companyTodoList === 1 }"
+            >
+              <a href="javascript:;">哔哩哔哩招聘</a>
+              <a href="javascript:;">字节跳动招聘</a>
+              <a href="javascript:;">字节跳动招聘</a>
+              <a href="javascript:;">小红书招聘</a>
+              <a href="javascript:;">小红书招聘</a>
+              <a href="javascript:;">拼多多招聘</a>
+              <a href="javascript:;">前端招聘</a>
+              <a href="javascript:;">跟谁学招聘</a>
+              <a href="javascript:;">知乎招聘</a>
+              <a href="javascript:;">火币招聘</a>
+              <a href="javascript:;">shopee招聘</a>
+              <a href="javascript:;">airbnb招聘</a>
+
+              <a href="javascript:;" class="company-perples">哔哩哔哩招聘</a>
+              <a href="javascript:;" class="company-perples">字节跳动招聘</a>
+              <a href="javascript:;" class="company-perples">字节跳动招聘</a>
+              <a href="javascript:;" class="company-perples">小红书招聘</a>
+              <a href="javascript:;" class="company-perples">小红书招聘</a>
+              <a href="javascript:;" class="company-perples">拼多多招聘</a>
+              <a href="javascript:;" class="company-perples">前端招聘</a>
+              <a href="javascript:;" class="company-perples">跟谁学招聘</a>
+              <a href="javascript:;" class="company-perples">知乎招聘</a>
+              <a href="javascript:;" class="company-perples">火币招聘</a>
+              <a href="javascript:;" class="company-perples">shopee招聘</a>
+              <a href="javascript:;" class="company-perples">airbnb招聘</a>
+
+              <a href="javascript:;" class="company-perples">哔哩哔哩招聘</a>
+              <a href="javascript:;" class="company-perples">字节跳动招聘</a>
+              <a href="javascript:;" class="company-perples">字节跳动招聘</a>
+              <a href="javascript:;" class="company-perples">小红书招聘</a>
+              <a href="javascript:;" class="company-perples">小红书招聘</a>
+            </dd>
+            <!-- 热门公司 end -->
+
+            <!-- 热门职业 star style="display:none"-->
+            <dd
+              class="company-dd-list company-default"
+              :class="{ show: companyTodoList === 2 }"
+            >
+              <a href="javascript:;">会计招聘</a>
+              <a href="javascript:;">淘宝客服招聘</a>
+              <a href="javascript:;">人力资源招聘</a>
+              <a href="javascript:;">Java招聘</a>
+              <a href="javascript:;">财务招聘</a>
+              <a href="javascript:;">拼多多招聘</a>
+              <a href="javascript:;">项目经理招聘</a>
+              <a href="javascript:;">新媒体运营招聘</a>
+              <a href="javascript:;">Python招聘</a>
+              <a href="javascript:;">出纳招聘</a>
+              <a href="javascript:;">产品经理招聘</a>
+              <a href="javascript:;">律师招聘</a>
+              <a href="javascript:;">模具设计招聘</a>
+
+              <a href="javascript:;" class="company-perples">会计招聘</a>
+              <a href="javascript:;" class="company-perples">淘宝客服招聘</a>
+              <a href="javascript:;" class="company-perples">人力资源招聘</a>
+              <a href="javascript:;" class="company-perples">Java招聘</a>
+              <a href="javascript:;" class="company-perples">财务招聘</a>
+              <a href="javascript:;" class="company-perples">拼多多招聘</a>
+              <a href="javascript:;" class="company-perples">项目经理招聘</a>
+              <a href="javascript:;" class="company-perples">新媒体运营招聘</a>
+              <a href="javascript:;" class="company-perples">Python招聘</a>
+              <a href="javascript:;" class="company-perples">出纳招聘</a>
+              <a href="javascript:;" class="company-perples">产品经理招聘</a>
+              <a href="javascript:;" class="company-perples">律师招聘</a>
+              <a href="javascript:;" class="company-perples">模具设计招聘</a>
+
+              <a href="javascript:;" class="company-perples">会计招聘</a>
+              <a href="javascript:;" class="company-perples">淘宝客服招聘</a>
+              <a href="javascript:;" class="company-perples">人力资源招聘</a>
+              <a href="javascript:;" class="company-perples">Java招聘</a>
+              <a href="javascript:;" class="company-perples">财务招聘</a>
+              <a href="javascript:;" class="company-perples">拼多多招聘</a>
+              <a href="javascript:;" class="company-perples">项目经理招聘</a>
+              <a href="javascript:;" class="company-perples">新媒体运营招聘</a>
+              <a href="javascript:;" class="company-perples">Python招聘</a>
+              <a href="javascript:;" class="company-perples">出纳招聘</a>
+              <a href="javascript:;" class="company-perples">产品经理招聘</a>
+              <a href="javascript:;" class="company-perples">律师招聘</a>
+              <a href="javascript:;" class="company-perples">模具设计招聘</a>
+
+              <a href="javascript:;" class="company-perples">会计招聘</a>
+              <a href="javascript:;" class="company-perples">淘宝客服招聘</a>
+              <a href="javascript:;" class="company-perples">人力资源招聘</a>
+              <a href="javascript:;" class="company-perples">Java招聘</a>
+              <a href="javascript:;" class="company-perples">财务招聘</a>
+              <a href="javascript:;" class="company-perples">拼多多招聘</a>
+              <a href="javascript:;" class="company-perples">项目经理招聘</a>
+              <a href="javascript:;" class="company-perples">新媒体运营招聘</a>
+              <a href="javascript:;" class="company-perples">Python招聘</a>
+              <a href="javascript:;" class="company-perples">出纳招聘</a>
+              <a href="javascript:;" class="company-perples">产品经理招聘</a>
+              <a href="javascript:;" class="company-perples">律师招聘</a>
+              <a href="javascript:;" class="company-perples">模具设计招聘</a>
+            </dd>
+            <!-- 热门职业 end -->
+
+            <!-- 热门行业 star style="display:none"-->
+            <dd
+              class="company-dd-list company-default"
+              :class="{ show: companyTodoList === 3 }"
+            >
+              <a href="javascript:;">产品经理</a>
+              <a href="javascript:;">新媒体运营</a>
+              <a href="javascript:;">CTO</a>
+              <a href="javascript:;">数据分析师</a>
+              <a href="javascript:;">深度学习</a>
+              <a href="javascript:;">网络工程师</a>
+              <a href="javascript:;">数据挖掘</a>
+              <a href="javascript:;">网店运营</a>
+              <a href="javascript:;">嵌入式</a>
+              <a href="javascript:;">web前端</a>
+              <a href="javascript:;">图像识别</a>
+              <a href="javascript:;">产品运营</a>
+              <a href="javascript:;">运维工程师</a>
+              <a href="javascript:;">UI设计师</a>
+              <a href="javascript:;">原画师</a>
+
+              <a href="javascript:;" class="company-perples">产品经理</a>
+              <a href="javascript:;" class="company-perples">新媒体运营</a>
+              <a href="javascript:;" class="company-perples">CTO</a>
+              <a href="javascript:;" class="company-perples">数据分析师</a>
+              <a href="javascript:;" class="company-perples">深度学习</a>
+              <a href="javascript:;" class="company-perples">网络工程师</a>
+              <a href="javascript:;" class="company-perples">数据挖掘</a>
+              <a href="javascript:;" class="company-perples">网店运营</a>
+              <a href="javascript:;" class="company-perples">嵌入式</a>
+              <a href="javascript:;" class="company-perples">web前端</a>
+              <a href="javascript:;" class="company-perples">图像识别</a>
+              <a href="javascript:;" class="company-perples">产品运营</a>
+              <a href="javascript:;" class="company-perples">运维工程师</a>
+              <a href="javascript:;" class="company-perples">UI设计师</a>
+              <a href="javascript:;" class="company-perples">原画师</a>
+
+              <a href="javascript:;" class="company-perples">产品经理</a>
+              <a href="javascript:;" class="company-perples">新媒体运营</a>
+              <a href="javascript:;" class="company-perples">CTO</a>
+              <a href="javascript:;" class="company-perples">数据分析师</a>
+              <a href="javascript:;" class="company-perples">深度学习</a>
+              <a href="javascript:;" class="company-perples">网络工程师</a>
+              <a href="javascript:;" class="company-perples">数据挖掘</a>
+              <a href="javascript:;" class="company-perples">网店运营</a>
+              <a href="javascript:;" class="company-perples">嵌入式</a>
+              <a href="javascript:;" class="company-perples">web前端</a>
+              <a href="javascript:;" class="company-perples">图像识别</a>
+              <a href="javascript:;" class="company-perples">产品运营</a>
+              <a href="javascript:;" class="company-perples">运维工程师</a>
+              <a href="javascript:;" class="company-perples">UI设计师</a>
+              <a href="javascript:;" class="company-perples">原画师</a>
+
+              <a href="javascript:;" class="company-perples">产品经理</a>
+              <a href="javascript:;" class="company-perples">新媒体运营</a>
+              <a href="javascript:;" class="company-perples">CTO</a>
+              <a href="javascript:;" class="company-perples">数据分析师</a>
+              <a href="javascript:;" class="company-perples">深度学习</a>
+              <a href="javascript:;" class="company-perples">网络工程师</a>
+              <a href="javascript:;" class="company-perples">数据挖掘</a>
+              <a href="javascript:;" class="company-perples">网店运营</a>
+              <a href="javascript:;" class="company-perples">嵌入式</a>
+              <a href="javascript:;" class="company-perples">web前端</a>
+              <a href="javascript:;" class="company-perples">图像识别</a>
+              <a href="javascript:;" class="company-perples">产品运营</a>
+              <a href="javascript:;" class="company-perples">运维工程师</a>
+              <a href="javascript:;" class="company-perples">UI设计师</a>
+              <a href="javascript:;" class="company-perples">原画师</a>
+            </dd>
+            <!-- 热门行业 end -->
+
+            <!-- 热门热门关键词 star style="display:none"-->
+            <dd
+              class="company-dd-list company-default"
+              :class="{ show: companyTodoList === 4 }"
+            >
+              <a href="javascript:;">懒人听书</a>
+              <a href="javascript:;">威锋网</a>
+              <a href="javascript:;">55海淘</a>
+              <a href="javascript:;">红手指</a>
+              <a href="javascript:;">途虎养车</a>
+              <a href="javascript:;">17track</a>
+              <a href="javascript:;">csc</a>
+              <a href="javascript:;">三节课</a>
+              <a href="javascript:;">混沌大学</a>
+              <a href="javascript:;">咚漫</a>
+              <a href="javascript:;">乐有家</a>
+              <a href="javascript:;">魔趣</a>
+              <a href="javascript:;">网商园</a>
+              <a href="javascript:;">实验楼</a>
+              <a href="javascript:;">六间房</a>
+              <a href="javascript:;">umu</a>
+              <a href="javascript:;">dnspod</a>
+              <a href="javascript:;">720云</a>
+
+              <a href="javascript:;" class="company-perples">懒人听书</a>
+              <a href="javascript:;" class="company-perples">威锋网</a>
+              <a href="javascript:;" class="company-perples">55海淘</a>
+              <a href="javascript:;" class="company-perples">红手指</a>
+              <a href="javascript:;" class="company-perples">途虎养车</a>
+              <a href="javascript:;" class="company-perples">17track</a>
+              <a href="javascript:;" class="company-perples">csc</a>
+              <a href="javascript:;" class="company-perples">三节课</a>
+              <a href="javascript:;" class="company-perples">混沌大学</a>
+              <a href="javascript:;" class="company-perples">咚漫</a>
+              <a href="javascript:;" class="company-perples">乐有家</a>
+              <a href="javascript:;" class="company-perples">魔趣</a>
+              <a href="javascript:;" class="company-perples">网商园</a>
+              <a href="javascript:;" class="company-perples">实验楼</a>
+              <a href="javascript:;" class="company-perples">六间房</a>
+              <a href="javascript:;" class="company-perples">umu</a>
+              <a href="javascript:;" class="company-perples">dnspod</a>
+              <a href="javascript:;" class="company-perples">720云</a>
+
+              <a href="javascript:;" class="company-perples">懒人听书</a>
+              <a href="javascript:;" class="company-perples">威锋网</a>
+              <a href="javascript:;" class="company-perples">55海淘</a>
+              <a href="javascript:;" class="company-perples">红手指</a>
+              <a href="javascript:;" class="company-perples">途虎养车</a>
+              <a href="javascript:;" class="company-perples">17track</a>
+              <a href="javascript:;" class="company-perples">csc</a>
+              <a href="javascript:;" class="company-perples">三节课</a>
+              <a href="javascript:;" class="company-perples">混沌大学</a>
+              <a href="javascript:;" class="company-perples">咚漫</a>
+              <a href="javascript:;" class="company-perples">乐有家</a>
+              <a href="javascript:;" class="company-perples">魔趣</a>
+              <a href="javascript:;" class="company-perples">网商园</a>
+              <a href="javascript:;" class="company-perples">实验楼</a>
+              <a href="javascript:;" class="company-perples">六间房</a>
+              <a href="javascript:;" class="company-perples">umu</a>
+              <a href="javascript:;" class="company-perples">dnspod</a>
+              <a href="javascript:;" class="company-perples">720云</a>
+            </dd>
+            <!-- 热门热门关键词 end -->
+          </dl>
+        </div>
         <!-- 热门内容 end-->
       </div>
     </div>
+
+    <!-- 主体内容 end-->
   </div>
 </template>
 <script>
+import HotContent from '@/components/HotContent'
+
 // 引入api解构出接口
 // 引入api接口函数
-import { reqCompanys, reqFilters } from "../../api";
-// 引入热门模块
-import HotContent from "../Home/HotContent";
-
+import { reqCompanys, reqFilters } from '../../api'
 export default {
-  name: "Company",
-  components: {
-    HotContent
+  name: 'Company',
+  component: {
+    HotContent,
   },
   data() {
     return {
@@ -284,63 +627,41 @@ export default {
       filterThree: [],
       filterFour: [],
 
-      // 分页四个
-      PageOneArr: [],
-      PageTwoArr: [],
-      PageThreeArr: [],
-      PageFourArr: [],
-      // 存分页
-      AllPageArr: [],
-      // 新数据数组
-      newPageArr: []
-    };
+      companyTodoList: 0, // 热门城市公司下标
+    }
   },
   methods: {
     // 分页
     handleSizeChange: function (size) {
-      this.pagesize = size; //当前显示页数
+      this.pagesize = size //当前显示页数
+      console.log(this.pagesize) //每页下拉显示数据
     },
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage; //第几页
-      this.newPageArr = this.AllPageArr[currentPage - 1];
+      this.currentPage = currentPage //第几页
+      console.log(this.currentPage) //点击第几页
     },
   },
   async mounted() {
     // 请求所有公司岗位信息
-    const resultOne = await reqCompanys();
-    this.allStation = resultOne.data;
+    const resultOne = await reqCompanys()
+    this.allStation = resultOne.data
     // 轮播图每一屏的数据
-    this.newComArrOne = this.allStation.slice(0, 5);
-    this.newComArrTwo = this.allStation.slice(6, 11);
-    this.newComArrThree = this.allStation.slice(12, 17);
-    this.newComArrFour = this.allStation.slice(24, 29);
+    this.newComArrOne = this.allStation.slice(0, 5)
+    this.newComArrTwo = this.allStation.slice(6, 11)
+    this.newComArrThree = this.allStation.slice(12, 17)
+    this.newComArrFour = this.allStation.slice(24, 29)
 
     // 请求过滤数据
-    const resultTwo = await reqFilters();
-    this.allFilters = resultTwo.data;
-    this.filterOne = this.allFilters[0].cityName.slice(0, 15);
-    this.filterTwo = this.allFilters[0].componySize;
-    this.filterThree = this.allFilters[0].financeStages;
-    this.filterFour = this.allFilters[0].industry.slice(1, 11);
-
-     // 分页器四个
-    this.PageOneArr = this.allStation.slice(0, 8);
-    this.PageTwoArr = this.allStation.slice(9, 17);
-    this.PageThreeArr = this.allStation.slice(18, 26);
-    this.PageFourArr = this.allStation.slice(24, 32);
-
-    // 四个按钮总数组
-    this.AllPageArr = [
-      this.PageOneArr,
-      this.PageTwoArr,
-      this.PageThreeArr,
-      this.PageFourArr,
-    ];
-    // 默认第一页是大数组里的第一个数组
-    this.newPageArr = this.AllPageArr[0];
-
+    const resultTwo = await reqFilters()
+    this.allFilters = resultTwo.data
+    this.filterOne = this.allFilters[0].cityName.slice(0, 15)
+    this.filterTwo = this.allFilters[0].componySize
+    this.filterThree = this.allFilters[0].financeStages
+    this.filterFour = this.allFilters[0].industry.slice(1, 11)
+    // console.log(this.filterOne);
+    //  cityName componySize   financeStages  industry
   },
-};
+}
 </script>
 <style>
 /* 版心 */
@@ -370,7 +691,7 @@ export default {
 .company-container {
   width: 100%;
   height: 389px;
-  background: url("./images/ia_100000004.jpg") no-repeat;
+  background: url('./images/ia_100000004.jpg') no-repeat;
   background-size: 100% 389px;
 }
 
@@ -591,6 +912,7 @@ export default {
   text-align: center;
   border-bottom: 1px dashed #e0e0e0;
   position: relative;
+  font-size: 14px;
 }
 
 .companyList-top p {
@@ -612,13 +934,11 @@ export default {
 .companyList-top-one {
   margin: 3px auto 0;
   color: #999;
-  font-size: 14px;
 }
 
 .companyList-top-two {
   margin: 5px auto 0;
   color: #555;
-  font-size: 14px;
 }
 .wordCut {
   text-overflow: ellipsis;
@@ -649,7 +969,7 @@ export default {
   position: absolute;
   top: -10px;
   right: 0;
-  content: "";
+  content: '';
   height: 30px;
   width: 1px;
   background: #ededed;
@@ -657,11 +977,21 @@ export default {
 
 /* 公司列表 end */
 
+/* 分页 */
+
+.companyList-pages {
+  margin: 40px 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+}
 /* 热门内容 star */
 
 .company-hotList {
-  width: 100%;
-  margin-top: 52px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 100px;
   overflow: hidden;
 }
 
@@ -685,18 +1015,22 @@ export default {
 
 /* 点谁谁加下划线 */
 
-.company-hot-current {
+.current {
   display: inline-block;
   padding: 14px 0;
   border-bottom: 2px solid #333;
 }
 /* 内容 */
 .company-dd-list {
+  display: none;
   position: relative;
   width: 1120px;
   color: #555;
   font-size: 14px;
   overflow: hidden;
+}
+.show {
+  display: block;
 }
 .company-dd-list a {
   white-space: nowrap;
@@ -713,7 +1047,6 @@ export default {
 }
 /* 展开 */
 .company-nofollow {
-  width: 42px;
   height: 22px;
   position: absolute;
   right: 3px;
@@ -722,16 +1055,14 @@ export default {
   color: #999;
 }
 .company-nofollow i {
-  position: absolute;
-  top: 5px;
-  right: 0px;
-  font-size: 0;
-  height: 0;
-  width: 0;
-  border-width: 6px 6px 0;
-  border-style: solid dashed;
-  border-color: #00b38a transparent transparent;
-  overflow: hidden;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  background-image: url('./images/arrow_down2_eea7e54.png');
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+  background-size: 12px 6px;
 }
 /* 默认显示一行人才网,并高度99px */
 .company-default {

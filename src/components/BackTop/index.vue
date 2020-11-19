@@ -6,61 +6,61 @@
 </template>
 <script>
 export default {
-  name: "BackTop",
+  name: 'BackTop',
   mounted() {
-    window.addEventListener("scroll", this.scrollToTop);
+    window.addEventListener('scroll', this.scrollToTop)
   },
   destroyed() {
-    window.removeEventListener("scroll", this.scrollToTop);
+    window.removeEventListener('scroll', this.scrollToTop)
   },
   methods: {
     handleSizeChange(val) {
-      console.log(`每页 ${val} 条`);
+      console.log(`每页 ${val} 条`)
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+      console.log(`当前页: ${val}`)
     },
 
     // 点击图片回到顶部方法，加计时器是为了过渡顺滑
     backTop() {
-      const that = this;
+      const that = this
       let timer = setInterval(() => {
-        let ispeed = Math.floor(-that.scrollTop / 5);
+        let ispeed = Math.floor(-that.scrollTop / 10)
         document.documentElement.scrollTop = document.body.scrollTop =
-          that.scrollTop + ispeed;
+          that.scrollTop + ispeed
         if (that.scrollTop === 0) {
-          clearInterval(timer);
+          clearInterval(timer)
         }
-      }, 1000 / 100);
+      }, 1000 / 60)
     },
 
     // 为了计算距离顶部的高度，当高度大于60显示回顶部图标，小于60则隐藏
     scrollToTop() {
-      const that = this;
+      const that = this
       let scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
-        document.body.scrollTop;
-      that.scrollTop = scrollTop;
+        document.body.scrollTop
+      that.scrollTop = scrollTop
       if (that.scrollTop > 30) {
-        that.btnFlag = true;
+        that.btnFlag = true
       } else {
-        that.btnFlag = false;
+        that.btnFlag = false
       }
     },
   },
   data() {
     return {
       btnFlag: true,
-    };
+    }
   },
-};
+}
 </script>
 <style lang='less' rel='stylesheet/less' scoped>
 /* 回到顶部 */
 .backtop {
   display: block;
-  background: url("./images/回到顶部.png") left top no-repeat;
+  background: url('./images/回到顶部.png') left top no-repeat;
   width: 28px;
   height: 46px;
   position: fixed;

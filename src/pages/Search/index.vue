@@ -28,6 +28,7 @@
               class="job-ul-li"
               v-for="position in newSearchArr"
               :key="position._id"
+              @click="goDetail"
             >
               <div class="job-ul-li-top">
                 <div class="job-position">
@@ -259,7 +260,7 @@ import SearchKeyword from "@/components/SearchKeyword";
 import PositionHeader from "@/components/PositionHeader";
 import { reqPositions } from "@/api";
 export default {
-  name: "search",
+  name: 'search',
   components: {
     SearchKeyword,
     PositionHeader,
@@ -333,7 +334,7 @@ export default {
     this.newSearchArr = this.AllSearchArr[0];
     // console.log(this.companyArr);
   },
-};
+}
 </script>
 <style>
 .search-header {
@@ -400,6 +401,7 @@ export default {
 .search-content-left {
   width: 960px;
   margin-right: 40px;
+  margin-top: -30px;
 }
 .search-content-left .job {
   width: 960px;
@@ -652,7 +654,7 @@ export default {
 }
 
 .clearFix:after {
-  content: "\200B";
+  content: '\200B';
   display: block;
   height: 0;
   clear: both;
