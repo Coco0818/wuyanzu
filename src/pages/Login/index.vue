@@ -220,7 +220,7 @@ export default {
       isVefCode: false, //  验证码正则
       isPass: true, // 手机号码正则验证通过标识
       isPassCode: true, // 验证码正则验证通过标识
-      isYzm: false, // 验证码请求回来成功的标志
+      isYzm: null, // 验证码请求回来成功的验证码
     };
   },
   computed: {
@@ -297,7 +297,7 @@ export default {
             message: "已发送至手机",
             type: "success",
           });
-          this.isYzm = true;
+          this.isYzm = result.code;
         } else {
           this.$message.error("验证码获取错误");
         }
@@ -349,7 +349,7 @@ export default {
       // 获取手机号和密码
       const { phone, verifyCode, isPass, isPassCode, isYzm } = this;
       // 如果手机号码符合正则要求，则弹框提示,发送请求
-      if (isYzm) {
+      if (isYzm === 20000) {
         if (isPass && isPassCode) {
           // 发送请求
           const result = await reqVerifyCodeLogin(phone, verifyCode);
@@ -363,7 +363,7 @@ export default {
               // 登录成功，则跳转到详情页面
               this.$router.push("/");
             }, 3000);
-            this.isYzm = false;
+            this.isYzm = null;
           } else {
             this.$message.error("请重新输入");
           }
