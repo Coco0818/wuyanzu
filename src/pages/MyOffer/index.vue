@@ -2,7 +2,7 @@
   <div>
     <div class="registerComplete">
       <div class="header__2nPfm">
-        <a href="javascript:;">
+        <a href="javascript:;" @click="goHome">
           <img src="./images/ia_100000000.png" alt="" class="logo__2RHiR" />
         </a>
         <div class="right__1n3bv">
@@ -12,7 +12,7 @@
           </div>
           <div class="shu__g5LHN">|</div>
           <div class="info__2ZQPu">
-            <div class="name__1Dd1y">用户6910</div>
+            <div class="name__1Dd1y">{{ userName }}</div>
             <img src="./images/ia_100000003.png" alt="" class="arrow__1-4H-" />
           </div>
         </div>
@@ -176,7 +176,8 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   name: 'MyOffer',
   data() {
@@ -244,6 +245,9 @@ export default {
     ...mapState({
       myphone: (state) => state.users.myPhone,
     }),
+    ...mapGetters({
+      userName: 'getUserName',
+    }),
   },
   methods: {
     getSex(str) {
@@ -268,6 +272,9 @@ export default {
         path: '/education',
         query: { city, username, age, sex, identity, eMail },
       })
+    },
+    goHome() {
+      this.$router.push('/')
     },
 
     handleChange(value) {

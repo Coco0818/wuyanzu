@@ -64,4 +64,8 @@ export default [
     path: '/login',
     redirect: '/login',
   },
+  {
+    path: '/detail/:id',
+    component: Detail,
+  },
 ]

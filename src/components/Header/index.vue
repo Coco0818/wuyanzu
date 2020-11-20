@@ -61,10 +61,18 @@
               <a href="javascript:;">我的简历</a>
             </li>
             <li class="user">
-              <span>{{ userName }}</span>
-              <i></i>
+              <el-dropdown trigger="click" @command="logOut">
+                <span class="el-dropdown-link">
+                  {{ userName }}
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item>退出</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
             </li>
           </ul>
+          <!-- 未登录状态 -->
           <ul class="account-bar" v-else>
             <li class="upload">
               <a href="##">上传附件简历</a>
@@ -187,19 +195,25 @@ export default {
       // console.log(e.path[2].childNodes)
       const arr = [].slice.call(e.path[2].childNodes, 1)
       arr.forEach((item) => {
-        console.dir(item)
+        // console.dir(item)
         item.childNodes[0].className = ''
       })
       e.target.className = 'tabs-active'
     },
     goMyOffer() {
-      const myResumeInfo = this.$store.state.myResume.myResumeInfo
-      console.log(myResumeInfo)
-      if (myResumeInfo.name) {
+      const showResume = this.$store.state.users.showResume
+      // console.log(showResume)
+      if (showResume) {
         this.$router.push('/myresume')
       } else {
         this.$router.push('/myoffer')
       }
+    },
+    logOut() {
+      console.log(1)
+      this.$store.dispatch('deleteUserInfo')
+      localStorage.removeItem('token')
+      this.$router.push('/')
     },
   },
 }
@@ -311,9 +325,9 @@ export default {
                 left: -26px;
                 width: 18px;
                 height: 18px;
-                background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png)
-                  no-repeat;
-                background-size: 100% 100%;
+                // background: url(//www.lgstatic.com/lg-www-fed/common/widgets/header_c/modules/topbar/img/icon_login@2x_a6d7b9d.png)
+                // no-repeat;
+                // background-size: 100% 100%;
               }
             }
 
@@ -416,8 +430,8 @@ export default {
             }
             i {
               position: absolute;
-              top: 17px;
-              right: 0;
+              top: 18px;
+              right: -12px;
               font-size: 0;
               height: 0;
               width: 0;

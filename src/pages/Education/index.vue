@@ -3,7 +3,12 @@
     <div class="registerComplete">
       <div class="header__2nPfm">
         <a href="javascript:;">
-          <img src="./images/ia_100000000.png" alt="" class="logo__2RHiR" />
+          <img
+            @click="goHome"
+            src="./images/ia_100000000.png"
+            alt=""
+            class="logo__2RHiR"
+          />
         </a>
         <div class="right__1n3bv">
           <div class="qrcode__34frg">
@@ -12,7 +17,7 @@
           </div>
           <div class="shu__g5LHN">|</div>
           <div class="info__2ZQPu">
-            <div class="name__1Dd1y">用户6910</div>
+            <div class="name__1Dd1y">{{ userName }}</div>
             <img src="./images/ia_100000003.png" alt="" class="arrow__1-4H-" />
           </div>
         </div>
@@ -120,6 +125,7 @@
 <script>
 import MyOffer from '../MyOffer'
 import { reqUploadUserInfo } from '@/api'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Education',
   components: {
@@ -160,6 +166,11 @@ export default {
       ],
     }
   },
+  computed: {
+    ...mapGetters({
+      userName: 'getUserName',
+    }),
+  },
   methods: {
     handleChange(value) {
       this.education = value[0]
@@ -167,6 +178,10 @@ export default {
     goBack() {
       this.$router.back()
       console.log(this.$route)
+    },
+    goHome() {
+      console.log(1)
+      this.$router.push('/')
     },
     async goSearch() {
       this.success = false
@@ -183,7 +198,8 @@ export default {
         Salary: this.salary,
         profession: this.profession,
       }
-      await reqUploadUserInfo(userInfo, 13697083850)
+      const myPhone = this.$store.state.users.myPhone
+      await reqUploadUserInfo(userInfo, myPhone)
       setTimeout(() => {
         this.$destroy('MyOffer,Education')
         this.$router.push('/myresume')

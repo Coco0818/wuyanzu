@@ -202,11 +202,11 @@
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 // 引入登录接口
-import { reqLogin, reqgetCode, reqVerifyCodeLogin } from "../../api";
+import { reqLogin, reqgetCode, reqVerifyCodeLogin } from '../../api'
 export default {
-  name: "Login",
+  name: 'Login',
 
   data() {
     return {
@@ -221,7 +221,7 @@ export default {
       isPass: true, // 手机号码正则验证通过标识
       isPassCode: true, // 验证码正则验证通过标识
       isYzm: null, // 验证码请求回来成功的验证码
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -232,97 +232,101 @@ export default {
   methods: {
     // 点击0086选择区号
     viewAreaNum() {
-      this.$refs.AreaNum.style.display = "block";
+      this.$refs.AreaNum.style.display = 'block'
     },
     disviewAreaNum() {
-      this.$refs.AreaNum.style.display = "none";
+      this.$refs.AreaNum.style.display = 'none'
     },
 
     // 验证手机号和密码
     vefChange(e) {
       // 手机号的正则
-      const vefPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/;
+      const vefPhone = /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/
       // 密码的正则--> 只能输入6到16位的数字+字母(两者都要有)
-      const vefPassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
+      const vefPassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/
       // 验证码的正则
-      const vefCode = /^\d{6}$/;
+      const vefCode = /^\d{6}$/
       // 获取手机号和密码
-      const { phone, password, verifyCode } = this;
+      const { phone, password, verifyCode } = this
       switch (e) {
         case phone:
           // console.log(phone)
           if (!vefPhone.test(phone) || phone === null) {
             // 获取提示验证错误的样式
             // this.$refs.tipsPhone.style.display = "block";
-            this.isVefPhone = true;
-            this.isPass = false;
+            this.isVefPhone = true
+            this.isPass = false
           } else {
             // this.$refs.tipsPhone.style.display = "none";
-            this.isVefPhone = false;
-            this.isPass = true;
+            this.isVefPhone = false
+            this.isPass = true
           }
-          break;
+          break
         case password:
           if (!vefPassword.test(password) || password === null) {
-            this.isVefPassword = true;
+            this.isVefPassword = true
           } else {
-            this.isVefPassword = false;
+            this.isVefPassword = false
           }
-          break;
+          break
         case verifyCode:
           if (!vefCode.test(verifyCode) || verifyCode === null) {
-            this.isVefCode = true;
-            this.isPassCode = false;
+            this.isVefCode = true
+            this.isPassCode = false
           } else {
-            this.isVefCode = false;
-            this.isPassCode = true;
+            this.isVefCode = false
+            this.isPassCode = true
           }
-          break;
+          break
       }
     },
     // 跳转回到注册页面
     goRegister() {
-      this.$router.push("/register");
+      this.$router.push('/register')
     },
     //获取验证码
     async getVerifyCode() {
-      const { phone, isPass } = this;
+      const { phone, isPass } = this
       // 如果手机号码符合正则要求，则弹框提示,发送请求
       if (isPass) {
         // 发送请求
-        const result = await reqgetCode(phone);
-        console.log(result);
+        const result = await reqgetCode(phone)
+        console.log(result)
         if (result.code === 20000) {
           this.$message({
-            message: "已发送至手机",
-            type: "success",
-          });
-          this.isYzm = result.code;
+            message: '已发送至手机',
+            type: 'success',
+          })
+          this.isYzm = result.code
         } else {
-          this.$message.error("验证码获取错误");
+          this.$message.error('验证码获取错误')
         }
       } else {
-        this.$message.error("手机号输入错误，请重新输入");
+        this.$message.error('手机号输入错误，请重新输入')
       }
     },
     // 点击密码登录，发送请求，登录成功跳转回详情页组件
     async goLogin() {
       // 调用密码登录接口
       // 获取手机号和密码
-      const { phone, password } = this;
-      await this.$store.dispatch("getUserInfo", { phone, password });
-      console.log(this.$store.state.users.myPhone);
+      const { phone, password } = this
+      await this.$store.dispatch('getUserInfo', { phone, password })
+      console.log(this.$store.state.users.myPhone)
       if (this.$store.state.users.myPhone) {
         this.$message({
-          message: "登录成功，即将跳转首页",
-          type: "success",
-        });
+          message: '登录成功，即将跳转首页',
+          type: 'success',
+        })
+        const token = this.$store.state.users.token
+        console.log(token)
+
+        localStorage.setItem('token', token)
         setTimeout(() => {
           // 登录成功，则跳转到详情页面
-          this.$router.push("/");
-        }, 3000);
+          this.$router.push('/')
+        }, 3000)
       } else {
-        this.$message.error("手机号或密码错误，请重新输入");
+        this.$message.error('手机号或密码错误，请重新输入')
       }
       // 发送请求
       // const result = await reqLogin(phone, password)
@@ -347,35 +351,35 @@ export default {
     async goVerifyCodeLogin() {
       // 调用密码登录接口
       // 获取手机号和密码
-      const { phone, verifyCode, isPass, isPassCode, isYzm } = this;
+      const { phone, verifyCode, isPass, isPassCode, isYzm } = this
       // 如果手机号码符合正则要求，则弹框提示,发送请求
       if (isYzm === 20000) {
         if (isPass && isPassCode) {
           // 发送请求
-          const result = await reqVerifyCodeLogin(phone, verifyCode);
-          console.log(result);
+          const result = await reqVerifyCodeLogin(phone, verifyCode)
+          console.log(result)
           if (result.code === 20000) {
             this.$message({
-              message: "登录成功,即将跳转到首页",
-              type: "success",
-            });
+              message: '登录成功,即将跳转到首页',
+              type: 'success',
+            })
             setTimeout(() => {
               // 登录成功，则跳转到详情页面
-              this.$router.push("/");
-            }, 3000);
-            this.isYzm = null;
+              this.$router.push('/')
+            }, 3000)
+            this.isYzm = null
           } else {
-            this.$message.error("请重新输入");
+            this.$message.error('请重新输入')
           }
         } else {
-          this.$message.error("手机号或验证码输入错误，请重新输入");
+          this.$message.error('手机号或验证码输入错误，请重新输入')
         }
       } else {
-        this.$message.error("请先获取验证码");
+        this.$message.error('请先获取验证码')
       }
     },
   },
-};
+}
 </script>
 <style rel="stylesheet" scoped>
 * {
@@ -493,8 +497,8 @@ li {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Hiragino Sans GB", "Microsoft Yahei", SimSun, Arial,
-    "Helvetica Neue", Helvetica;
+  font-family: 'Hiragino Sans GB', 'Microsoft Yahei', SimSun, Arial,
+    'Helvetica Neue', Helvetica;
   color: #333;
   word-wrap: break-word;
   -webkit-font-smoothing: antialiased;
@@ -523,7 +527,7 @@ form {
   right: 8px;
   top: 19px;
   display: block;
-  content: "";
+  content: '';
   width: 10px;
   height: 5px;
   background: url(//www.lgstatic.com/lg-passport-fed/static/pc/modules/common/img/code86_a209722.png)
@@ -534,7 +538,7 @@ form {
   right: 8px;
   top: 19px;
   display: block;
-  content: "";
+  content: '';
   width: 10px;
   height: 5px;
   background: url(//www.lgstatic.com/lg-passport-fed/static/pc/modules/common/img/code86_a209722.png)
@@ -657,16 +661,16 @@ a {
 label,
 select,
 button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-input[type="radio"],
-input[type="checkbox"] {
+input[type='button'],
+input[type='reset'],
+input[type='submit'],
+input[type='radio'],
+input[type='checkbox'] {
   cursor: pointer;
 }
 
 input {
-  font-family: Arial, "Hiragino Sans GB", "Microsoft Yahei", SimSun;
+  font-family: Arial, 'Hiragino Sans GB', 'Microsoft Yahei', SimSun;
 }
 
 .sso_header {
@@ -783,7 +787,7 @@ input {
   top: -12px;
   left: 50%;
   margin-left: -3px;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   line-height: 0;
@@ -822,7 +826,7 @@ input {
   top: -12px;
   left: 50%;
   margin-left: -3px;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   line-height: 0;
@@ -860,7 +864,7 @@ input {
 }
 .clearfix:before,
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -961,7 +965,7 @@ input {
 
 .content_box .divider:after {
   position: absolute;
-  content: "or";
+  content: 'or';
   left: 50%;
   top: 50%;
   padding: 2px;
@@ -1012,7 +1016,7 @@ a {
 
 .clearfix:before,
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
 }
 

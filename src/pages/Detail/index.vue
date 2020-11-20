@@ -35,7 +35,7 @@
 
           <div class="position-deal">
             <a class="jd_collection">收藏</a>
-            <a class="send-CV-btn">投个简历</a>
+            <a class="send-CV-btn" @click="open">投个简历</a>
           </div>
           <!-- 简历状态 -->
           <div class="resume-select">
@@ -322,9 +322,23 @@ export default {
   async beforeCreate() {},
   async created() {},
   // 页面渲染完成后发送请求详情页数据
+  methods: {
+    open() {
+      this.$alert('确定要选择这家公司嘛', '投递简历', {
+        confirmButtonText: '确定',
+        callback: (action) => {
+          this.$message({
+            type: 'success ',
+            message: '明天来上班',
+          })
+        },
+      })
+    },
+  },
   async mounted() {
     const id = this.$route.params.id
     const result = await reqDetail(id)
+    console.log(result)
     this.detailInfo = result.data[0]
     console.log(this.detailInfo)
     /* const result = await reqPositions();
