@@ -42,21 +42,21 @@
   </div>
 </template>
 <script>
-import HotContent from '@/components/HotContent'
-import TypNav from './TypNav'
-import JobTap from './JobTap'
+import HotContent from "@/components/HotContent";
+import TypNav from "./TypNav";
+import JobTap from "./JobTap";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     HotContent,
     TypNav,
     JobTap,
   },
   data() {
-    return {}
+    return {};
   },
   methods: {},
-}
+};
 </script>
 <style lang='less' scoped>
 a:hover {
@@ -95,6 +95,7 @@ a:hover {
   height: 46px;
   padding: 15px 55px;
   border: 0;
+  outline: none;
 }
 .search-button:hover {
   background-color: #00a58a;
