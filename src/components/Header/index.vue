@@ -5,25 +5,38 @@
       <div class="inner">
         <!-- 左边 -->
         <div class="l-bar">
-          <a href="" class="logo"></a>
+          <router-link class="logo" to="/"></router-link>
           <ul class="l-bar-tabs" @click="sum">
             <li class="bar-city">
               <span>深圳站</span>
               <i></i>
             </li>
             <li>
-              <a href="javascript:;" @click="goHome" class="tabs-active"
+              <a
+                href="javascript:;"
+                @click="goHome"
+                :class="routePath === '/' ? 'tabs-active' : ''"
                 >首页</a
               >
             </li>
             <li>
-              <a href="javascript:;" @click="goCompany">公司</a>
+              <a
+                href="javascript:;"
+                @click="goCompany"
+                :class="routePath === '/company' ? 'tabs-active' : ''"
+                >公司</a
+              >
             </li>
             <li>
               <a href="javascript:;">校园招聘</a>
             </li>
             <li>
-              <a href="" @click="goSearch">职位</a>
+              <a
+                href=""
+                @click="goSearch"
+                :class="routePath === '/search' ? 'tabs-active' : ''"
+                >职位</a
+              >
             </li>
             <li>
               <a href="">言职</a>
@@ -133,6 +146,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      routePath: '/',
       centerDialogVisible: false,
     }
   },
@@ -145,7 +159,12 @@ export default {
       userName: 'getUserName',
     }),
   },
-
+  watch: {
+    $route() {
+      this.routePath = this.$route.path
+    },
+  },
+  mounted() {},
   methods: {
     goLogin() {
       this.$router.push('/login')

@@ -118,7 +118,7 @@
             </li>
           </ul>
           <!-- 公共按钮 -->
-          <a class="list-more" href="##" @click="$router.push('/search')"
+          <a class="list-more" @click="$router.push('/search')"
             >查看更多</a
           >
         </div>
