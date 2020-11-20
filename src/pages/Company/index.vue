@@ -214,7 +214,7 @@
         <div class="companyList-container">
           <ul>
             <!-- 腾讯模块 star -->
-            <li v-for="item in allStation" :key="item.id">
+            <li v-for="item in newPageArr" :key="item.id">
               <div class="companyList-top">
                 <p>
                   <img :src="item.ImgUrl" alt="" />
@@ -244,19 +244,8 @@
           </ul>
         </div>
         <!-- 公司列表 end -->
-        <!-- 分页 占位后期饿了么UI组件补上 -->
-        <div class="companyList-pages company-fl">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-size="pageSize"
-            layout="prev, pager, next, jumper"
-            :total="pageTotal"
-            background
-          >
-          </el-pagination>
-        </div>
+      <!-- 分页 -->
+        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
         <!-- 热门内容 star-->
         <div class="company-hotList">
           <dl>
@@ -590,6 +579,7 @@
             <!-- 热门热门关键词 end -->
           </dl>
         </div>
+        
         <!-- 热门内容 end-->
       </div>
     </div>
@@ -627,18 +617,25 @@ export default {
       filterThree: [],
       filterFour: [],
 
+      // 分页四个
+      PageOneArr: [],
+      PageTwoArr:[],
+      PageThreeArr:[],
+      PageFourArr:[],
+      AllPageArr:[],
+      newPageArr:[],
+
       companyTodoList: 0, // 热门城市公司下标
     }
   },
   methods: {
-    // 分页
+ // 分页
     handleSizeChange: function (size) {
-      this.pagesize = size //当前显示页数
-      console.log(this.pagesize) //每页下拉显示数据
+      this.pagesize = size; //当前显示页数
     },
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage //第几页
-      console.log(this.currentPage) //点击第几页
+      this.currentPage = currentPage; //第几页
+      this.newPageArr = this.AllPageArr[currentPage - 1];
     },
   },
   async mounted() {
@@ -658,8 +655,22 @@ export default {
     this.filterTwo = this.allFilters[0].componySize
     this.filterThree = this.allFilters[0].financeStages
     this.filterFour = this.allFilters[0].industry.slice(1, 11)
-    // console.log(this.filterOne);
-    //  cityName componySize   financeStages  industry
+
+      // 分页器四个
+    this.PageOneArr = this.allStation.slice(0, 8);
+    this.PageTwoArr = this.allStation.slice(9, 17);
+    this.PageThreeArr = this.allStation.slice(18, 26);
+    this.PageFourArr = this.allStation.slice(24, 32);
+
+    // 四个按钮总数组
+    this.AllPageArr = [
+      this.PageOneArr,
+      this.PageTwoArr,
+      this.PageThreeArr,
+      this.PageFourArr,
+    ];
+    // 默认第一页是大数组里的第一个数组
+    this.newPageArr = this.AllPageArr[0];
   },
 }
 </script>

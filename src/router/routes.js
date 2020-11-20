@@ -49,18 +49,6 @@ export default [
     component: Company,
   },
   {
-    path: '/detail/:id',
-    component: Detail,
-  },
-  {
-    path: '/search',
-    component: Search,
-  },
-  {
-    path: '/company',
-    component: Company,
-  },
-  {
     path: '/myoffer',
     component: MyOffer,
   },
