@@ -15,7 +15,9 @@ ajax.interceptors.request.use((config) => {
   Nprogress.start() // 显示进度条
   // console.log(config)
   const token = localStorage.getItem('token')
-  config.headers.Authorization = token
+  if (token) {
+    config.headers.Authorization = token
+  }
   return config // 把成功信息返回出去
 })
 // 响应拦截器

@@ -42,21 +42,25 @@
   </div>
 </template>
 <script>
-import HotContent from "@/components/HotContent";
-import TypNav from "./TypNav";
-import JobTap from "./JobTap";
+import HotContent from '@/components/HotContent'
+import TypNav from './TypNav'
+import JobTap from './JobTap'
+
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     HotContent,
     TypNav,
     JobTap,
   },
   data() {
-    return {};
+    return {}
   },
   methods: {},
-};
+  async mounted() {
+    this.$store.dispatch('mianLogin')
+  },
+}
 </script>
 <style lang='less' scoped>
 a:hover {
