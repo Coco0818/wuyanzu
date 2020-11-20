@@ -25,7 +25,7 @@ const MyOffer = () => import('@/pages/MyOffer')
 const Education = () => import('@/pages/Education')
 // 简历页面
 // import MyResume from '@/pages/MyResume'('
-const MyResume = () => import('@/pages/Education')
+const MyResume = () => import('@/pages/MyResume')
 // 暴露出去
 export default [
   {

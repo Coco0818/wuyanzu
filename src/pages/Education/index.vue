@@ -186,7 +186,7 @@ export default {
       await reqUploadUserInfo(userInfo, 13697083850)
       setTimeout(() => {
         this.$destroy('MyOffer,Education')
-        this.$router.push('/search')
+        this.$router.push('/myresume')
         this.success = true
       }, 3000)
     },

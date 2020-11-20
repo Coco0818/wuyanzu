@@ -130,11 +130,11 @@
 <script>
 import { mapGetters, mapState } from 'vuex'
 export default {
-  name: "Header",
+  name: 'Header',
   data() {
     return {
       centerDialogVisible: false,
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -148,7 +148,7 @@ export default {
 
   methods: {
     goLogin() {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
     goRegister() {
       this.$router.push('/register')
@@ -174,10 +174,16 @@ export default {
       e.target.className = 'tabs-active'
     },
     goMyOffer() {
-      this.$router.push('/myoffer')
+      const myResumeInfo = this.$store.state.myResume.myResumeInfo
+      console.log(myResumeInfo)
+      if (myResumeInfo.name) {
+        this.$router.push('/myresume')
+      } else {
+        this.$router.push('/myoffer')
+      }
     },
   },
-};
+}
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
 #header {
@@ -202,7 +208,7 @@ export default {
           float: left;
           width: 43px;
           height: 40px;
-          background-image: url("./images/logo.png");
+          background-image: url('./images/logo.png');
           background-repeat: no-repeat;
           background-position: -10px -1px;
           background-size: 64px 128px;
@@ -280,7 +286,7 @@ export default {
             .login {
               position: relative;
               &::before {
-                content: "";
+                content: '';
                 position: absolute;
                 top: 11px;
                 left: -26px;
@@ -474,20 +480,20 @@ export default {
           }
 
           .icon-item1 {
-            background-image: url("./images/icon1.png");
+            background-image: url('./images/icon1.png');
           }
           .icon-item2 {
-            background-image: url("./images/icon2.png");
+            background-image: url('./images/icon2.png');
           }
           .icon-item3 {
-            background-image: url("./images/icon3.png");
+            background-image: url('./images/icon3.png');
           }
           .icon-item4 {
             margin-bottom: 80px;
-            background-image: url("./images/icon4.png");
+            background-image: url('./images/icon4.png');
           }
           .icon-item5 {
-            background-image: url("./images/icon5.png");
+            background-image: url('./images/icon5.png');
           }
         }
       }

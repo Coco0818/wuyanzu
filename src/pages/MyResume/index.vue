@@ -188,22 +188,25 @@
 </template>
 <script>
 import { reqMyResume } from '@/api'
+import { mapState } from 'vuex'
 export default {
   name: 'MyResume',
   data() {
     return {
-      myResumeInfo: {},
-      headPic: {},
+      // myResumeInfo: {},
+      // headPic: {},
     }
   },
+  computed: {
+    ...mapState({
+      myResumeInfo: (state) => state.myResume.myResumeInfo,
+      headPic: (state) => state.myResume.headPic,
+    }),
+  },
   async mounted() {
-    const result = await reqMyResume(13697083850)
-    if (result.code === 20000) {
-      this.myResumeInfo = result.data[0]
-      this.headPic = result.data[1]
-    } else {
-      alert('请求失败')
-    }
+    const myPhone = this.$store.state.users.myPhone
+    console.log(myPhone)
+    this.$store.dispatch('getMyResumeInfo', { myPhone })
   },
 }
 </script>
