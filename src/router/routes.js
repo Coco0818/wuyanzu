@@ -10,11 +10,8 @@ import Search from '@/pages/Search'
 
 import Company from '@/pages/Company'
 
-<<<<<<< HEAD
-=======
 import Detail from '@/pages/Detail'
 
->>>>>>> master
 // 暴露出去
 export default [
   {
@@ -26,26 +23,6 @@ export default [
     component: Login,
   },
   {
-<<<<<<< HEAD
-    path: "/company",
-    components: Company
-  },
-  {
-    path: "/register",
-    component: Register,
-  },
-  {
-    path: "/search",
-    component: Search,
-  },
-  {
-    path: "/detail/:id",
-    component: Detail,
-  },
-  {
-    path: "/",
-    redirect: "/",
-=======
     path: '/register',
     component: Register,
   },
@@ -64,6 +41,5 @@ export default [
   {
     path: '/',
     redirect: '/',
->>>>>>> master
   },
 ]
