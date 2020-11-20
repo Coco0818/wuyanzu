@@ -165,7 +165,7 @@
                     type="button"
                     class="btn btn_active last_child sense_msg_code"
                     value="获取验证码"
-                    @click="goVerifyCodeLogin"
+                    @click="getVerifyCode"
                   />
                 </div>
                 <span class="input_tips" :class="isVefCode ? 'vefShow' : ''"
@@ -277,6 +277,19 @@ export default {
     // 跳转回到注册页面
     goRegister() {
       this.$router.push('/register')
+    },
+    //获取验证码
+    async getVerifyCode() {
+      const { phone } = this
+      // 发送请求
+      const result = await reqgetCode(phone)
+      console.log(result)
+      if (result.code === 20000) {
+        // 登录成功，则跳转到详情页面
+        alert('已成功发送到手机')
+      } else {
+        alert('输入手机号或验证码错误')
+      }
     },
     // 点击密码登录，发送请求，登录成功跳转回详情页组件
     async goLogin() {
