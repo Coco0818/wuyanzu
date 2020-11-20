@@ -244,19 +244,8 @@
           </ul>
         </div>
         <!-- 公司列表 end -->
-        <!-- 分页 占位后期饿了么UI组件补上 -->
-        <div class="companyList-pages company-fl">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="currentPage"
-            :page-size="pageSize"
-            layout="prev, pager, next, jumper"
-            :total="pageTotal"
-            background
-          >
-          </el-pagination>
-        </div>
+      <!-- 分页 -->
+        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
         <!-- 热门内容 star-->
         <div class="company-hotList">
           <dl>
@@ -590,8 +579,7 @@
             <!-- 热门热门关键词 end -->
           </dl>
         </div>
-        <!-- 分页 -->
-        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
+        
         <!-- 热门内容 end-->
       </div>
     </div>
