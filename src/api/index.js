@@ -24,7 +24,7 @@ export const reqLogin = (phone, password) =>
   ajax.post(`/login`, { phone, password })
 
 // 点击获取验证码
-export const reqgetCode = (phone) => ajax.post(`/getCode`, phone)
+export const reqgetCode = (phone) => ajax.post(`/getCode`, {phone})
 
 // 验证码登录
 export const reqVerifyCodeLogin = (phone, verifyCode) =>
