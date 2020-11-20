@@ -118,9 +118,7 @@
             </li>
           </ul>
           <!-- 公共按钮 -->
-          <a class="list-more" @click="$router.push('/search')"
-            >查看更多</a
-          >
+          <a class="list-more" @click="$router.push('/search')">查看更多</a>
         </div>
         <!-- 最新职位 -->
         <div class="hot-list" v-else>
@@ -241,7 +239,7 @@
           <!-- 公司列表 -->
           <div class="companyList-container">
             <ul>
-              <li v-for="inter in internetCompanyInfo" :key="inter.id">
+              <li v-for="(inter, index) in internetCompanyInfo" :key="inter.id">
                 <div class="companyList-top">
                   <p>
                     <img :src="inter.ImgUrl" alt="" />
@@ -309,6 +307,7 @@ export default {
       this.newCompanyList = result.data.slice(6, 12)
       this.companyRank = result.data.slice(12, 18)
     },
+
     showHr(index) {
       this.hrShow = index
     },

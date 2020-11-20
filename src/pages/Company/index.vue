@@ -244,8 +244,11 @@
           </ul>
         </div>
         <!-- 公司列表 end -->
-      <!-- 分页 -->
-        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
+        <!-- 分页 -->
+        <Pagination
+          :handleSizeChange="handleSizeChange"
+          :handleCurrentChange="handleCurrentChange"
+        />
         <!-- 热门内容 star-->
         <div class="company-hotList">
           <dl>
@@ -579,7 +582,7 @@
             <!-- 热门热门关键词 end -->
           </dl>
         </div>
-        
+
         <!-- 热门内容 end-->
       </div>
     </div>
@@ -619,23 +622,26 @@ export default {
 
       // 分页四个
       PageOneArr: [],
-      PageTwoArr:[],
-      PageThreeArr:[],
-      PageFourArr:[],
-      AllPageArr:[],
-      newPageArr:[],
+      PageTwoArr: [],
+      PageThreeArr: [],
+      PageFourArr: [],
+      AllPageArr: [],
+      newPageArr: [],
 
       companyTodoList: 0, // 热门城市公司下标
     }
   },
   methods: {
- // 分页
+    // 分页
     handleSizeChange: function (size) {
-      this.pagesize = size; //当前显示页数
+      this.pagesize = size //当前显示页数
     },
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage; //第几页
-      this.newPageArr = this.AllPageArr[currentPage - 1];
+      this.currentPage = currentPage //第几页
+      this.newPageArr = this.AllPageArr[currentPage - 1]
+    },
+    sum(index) {
+      console.log(index)
     },
   },
   async mounted() {
@@ -656,11 +662,11 @@ export default {
     this.filterThree = this.allFilters[0].financeStages
     this.filterFour = this.allFilters[0].industry.slice(1, 11)
 
-      // 分页器四个
-    this.PageOneArr = this.allStation.slice(0, 8);
-    this.PageTwoArr = this.allStation.slice(9, 17);
-    this.PageThreeArr = this.allStation.slice(18, 26);
-    this.PageFourArr = this.allStation.slice(24, 32);
+    // 分页器四个
+    this.PageOneArr = this.allStation.slice(0, 8)
+    this.PageTwoArr = this.allStation.slice(9, 17)
+    this.PageThreeArr = this.allStation.slice(18, 26)
+    this.PageFourArr = this.allStation.slice(24, 32)
 
     // 四个按钮总数组
     this.AllPageArr = [
@@ -668,9 +674,9 @@ export default {
       this.PageTwoArr,
       this.PageThreeArr,
       this.PageFourArr,
-    ];
+    ]
     // 默认第一页是大数组里的第一个数组
-    this.newPageArr = this.AllPageArr[0];
+    this.newPageArr = this.AllPageArr[0]
   },
 }
 </script>
