@@ -118,7 +118,9 @@
             </li>
           </ul>
           <!-- 公共按钮 -->
-          <a class="list-more" href="##">查看更多</a>
+          <a class="list-more" href="##" @click="$router.push('/search')"
+            >查看更多</a
+          >
         </div>
         <!-- 最新职位 -->
         <div class="hot-list" v-else>
@@ -218,7 +220,9 @@
             </li>
           </ul>
           <!-- 公共按钮 -->
-          <a class="list-more" href="##">查看更多</a>
+          <a class="list-more" href="##" @click="$router.push('/search')"
+            >查看更多</a
+          >
         </div>
       </div>
     </div>
@@ -268,7 +272,9 @@
         </div>
       </div>
     </div>
-    <a class="list-more2" href="##">查看更多</a>
+    <a class="list-more2" href="##" @click="$router.push('/company')"
+      >查看更多</a
+    >
   </div>
 </template>
 <script>

@@ -1,41 +1,40 @@
 <template>
-    <!-- 公司列表 star -->
-      <div class="companyList-container">
-        <ul>
-          <!-- 腾讯模块 star -->
-          <li>
-            <div class="companyList-top">
-              <p>
-                <img src="../../public/Company-Image/ia_100000025.jpg" alt="">
-              </p>
-              <h3>腾讯</h3>
-              <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
-              <h4 class="companyList-top-two">用户为本，科技向善</h4>
-            </div>
-            <div class="companyList-bottom">
-              <a href="javascript:;">
-                <p class="companyList-green">133</p>
-                <p class="companyList-line">面试评价</p>
-              </a>
-              <a href="javascript:;">
-                <p class="companyList-green">2586</p>
-                <p class="companyList-line">在招职位</p>
-              </a>
-              <a href="javascript:;">
-                <p class="companyList-green">57%</p>
-                <p>简历处理率</p>
-              </a>
-            </div>
-          </li>
-          <!-- 腾讯模块 end -->
-
-        </ul>
-      </div>
-      <!-- 公司列表 end -->
+  <!-- 公司列表 star -->
+  <div class="companyList-container">
+    <ul>
+      <!-- 腾讯模块 star -->
+      <li>
+        <div class="companyList-top">
+          <p>
+            <img src="../../public/Company-Image/ia_100000025.jpg" alt="" />
+          </p>
+          <h3>腾讯</h3>
+          <h4 class="companyList-top-one">社交/上市公司/2000人以上</h4>
+          <h4 class="companyList-top-two">用户为本，科技向善</h4>
+        </div>
+        <div class="companyList-bottom">
+          <a href="javascript:;">
+            <p class="companyList-green">133</p>
+            <p class="companyList-line">面试评价</p>
+          </a>
+          <a href="javascript:;">
+            <p class="companyList-green">2586</p>
+            <p class="companyList-line">在招职位</p>
+          </a>
+          <a href="javascript:;">
+            <p class="companyList-green">57%</p>
+            <p>简历处理率</p>
+          </a>
+        </div>
+      </li>
+      <!-- 腾讯模块 end -->
+    </ul>
+  </div>
+  <!-- 公司列表 end -->
 </template>
 <script>
 export default {
-  name: 'CompanyList'
+  name: 'CompanyList',
 }
 </script>
 <style scoped>
@@ -57,11 +56,11 @@ export default {
   height: 270px;
   margin-top: 16px;
   margin-right: 16px;
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
 }
 
 .companyList-container ul li:hover {
-  box-shadow: 0 0 10px 0 rgba(56, 81, 76, .12);
+  box-shadow: 0 0 10px 0 rgba(56, 81, 76, 0.12);
 }
 
 /* 企业LOGO 上 */
@@ -70,7 +69,7 @@ export default {
   margin: 0 13px;
   padding: 20px 0 14px;
   text-align: center;
-  border-bottom: 1px dashed #E0E0E0;
+  border-bottom: 1px dashed #e0e0e0;
   position: relative;
 }
 
@@ -123,10 +122,10 @@ export default {
   position: absolute;
   top: -10px;
   right: 0;
-  content: "";
+  content: '';
   height: 30px;
   width: 1px;
-  background: #EDEDED;
+  background: #ededed;
 }
 
 /* 公司列表 end */

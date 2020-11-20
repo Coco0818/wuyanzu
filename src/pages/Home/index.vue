@@ -35,14 +35,14 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-
       <JobTap />
     </div>
     <HotContent />
+    <BackTop />
   </div>
 </template>
 <script>
-import HotContent from './HotContent'
+import HotContent from '@/components/HotContent'
 import TypNav from './TypNav'
 import JobTap from './JobTap'
 export default {
@@ -66,12 +66,12 @@ a:hover {
 .search-wrapper {
   background: #f2f5f4;
   padding: 30px 0 28px;
-  min-width: 1200px;
+  width: 100%;
   display: flex;
 }
 .search-keyword {
   display: flex;
-  margin: 0 auto;
+  margin: 0 500px;
 }
 .search-input {
   display: inline-block;

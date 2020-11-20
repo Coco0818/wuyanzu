@@ -6,22 +6,24 @@
         <!-- 左边 -->
         <div class="l-bar">
           <a href="" class="logo"></a>
-          <ul class="l-bar-tabs">
+          <ul class="l-bar-tabs" @click="sum">
             <li class="bar-city">
               <span>深圳站</span>
               <i></i>
             </li>
-            <li class="tabs-active">
-              <a href="">首页</a>
+            <li>
+              <a href="javascript:;" @click="goHome" class="tabs-active"
+                >首页</a
+              >
             </li>
             <li>
-              <a href="">公司</a>
+              <a href="javascript:;" @click="goCompany">公司</a>
             </li>
             <li>
-              <a href="">校园招聘</a>
+              <a href="javascript:;">校园招聘</a>
             </li>
             <li>
-              <a href="javascript:;" @click="goSearch">职位</a>
+              <a href="" @click="goSearch">职位</a>
             </li>
             <li>
               <a href="">言职</a>
@@ -37,7 +39,20 @@
         <!-- 右边 -->
         <div class="r-bar">
           <!--  未登录状态 -->
-          <ul class="account-bar">
+          <!-- 登录状态 -->
+          <ul class="account-bar" v-if="myPhone">
+            <li class="msg">
+              <a href="" class="iconfont icon-lingdang"></a>
+            </li>
+            <li @click="goMyOffer">
+              <a href="javascript:;">我的简历</a>
+            </li>
+            <li class="user">
+              <span>{{ userName }}</span>
+              <i></i>
+            </li>
+          </ul>
+          <ul class="account-bar" v-else>
             <li class="upload">
               <a href="##">上传附件简历</a>
             </li>
@@ -51,19 +66,7 @@
               <a href="##" @click="goRegister">注册</a>
             </li>
           </ul>
-          <!-- 登录状态 -->
-          <!-- <ul class="account-bar">
-            <li class="msg">
-              <a href="" class="iconfont icon-lingdang"></a>
-            </li>
-            <li>
-              <a href="">我的简历</a>
-            </li>
-            <li class="user">
-              <span>布丁Coco</span>
-              <i></i>
-            </li>
-          </ul> -->
+
           <a href="##" class="r-os">进入企业版</a>
         </div>
       </div>
@@ -71,11 +74,53 @@
       <div class="r-nav">
         <div class="nav-wrap" style="height: 2700px">
           <div class="inner-nav">
-            <a href="" class="nav-item icon-item1"></a>
-            <a href="" class="nav-item icon-item2"></a>
-            <a href="" class="nav-item icon-item3"></a>
-            <a href="" class="nav-item icon-item4"></a>
-            <a href="" class="nav-item icon-item5"></a>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="收藏职位"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item1"> </a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="投递记录"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item2"></a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="职位订阅"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item3"></a>
+            </el-tooltip>
+            <el-tooltip
+              class="item"
+              effect="light"
+              content="面试邀约"
+              placement="left-start"
+            >
+              <a href="" class="nav-item icon-item4"></a>
+            </el-tooltip>
+
+            <el-tooltip class="item" placement="left-start" effect="light">
+              <div slot="content" class="share-app">
+                <div class="download-app">
+                  <img
+                    src="./images/download.png"
+                    alt=""
+                    style="width: 172px; height: 172px"
+                  />
+                </div>
+                <div class="scan" style="text-align: center">扫码下载APP</div>
+              </div>
+              <!-- <el-button>Top center</el-button> -->
+              <a href="" class="nav-item icon-item5"></a>
+            </el-tooltip>
           </div>
         </div>
       </div>
@@ -83,6 +128,7 @@
   </header>
 </template>
 <script>
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: "Header",
   data() {
@@ -90,13 +136,46 @@ export default {
       centerDialogVisible: false,
     };
   },
+  computed: {
+    ...mapState({
+      myPhone: (state) => state.users.myPhone,
+    }),
+
+    ...mapGetters({
+      userName: 'getUserName',
+    }),
+  },
+
   methods: {
     goLogin() {
       this.$router.push("/login");
     },
     goRegister() {
       this.$router.push('/register')
-    }
+    },
+    goHome() {
+      this.$router.push('/')
+    },
+    goSearch() {
+      this.$router.push('/search')
+    },
+    goCompany() {
+      this.$router.push('/company')
+    },
+    sum(e) {
+      e.preventDefault()
+      // console.log(e)
+      // console.log(e.path[2].childNodes)
+      const arr = [].slice.call(e.path[2].childNodes, 1)
+      arr.forEach((item) => {
+        console.dir(item)
+        item.childNodes[0].className = ''
+      })
+      e.target.className = 'tabs-active'
+    },
+    goMyOffer() {
+      this.$router.push('/myoffer')
+    },
   },
 };
 </script>
@@ -181,7 +260,6 @@ export default {
         .account-bar {
           float: left;
           margin-right: 52px;
-
           li {
             position: relative;
             text-align: center;
@@ -356,6 +434,45 @@ export default {
             height: 24px;
             background-size: 100% 100%;
           }
+          .item {
+            .share-app {
+              top: -40px;
+              left: -210px;
+              position: absolute;
+              z-index: 1;
+              visibility: hidden;
+              opacity: 0;
+              background-color: #fff;
+              padding: 8px;
+              padding-bottom: 12px;
+              transition: opacity 0.3s;
+              .download-app {
+                img {
+                  border-radius: 2px;
+                  padding-bottom: 12px;
+                  font-size: 16px;
+                  color: #333;
+                  text-align: center;
+                  background-color: #fff;
+                  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+                  width: 172px;
+                  height: 172px;
+                  background-image: url('./images/download.png');
+                  background-size: 100% 100%;
+                  margin: 0 auto;
+                }
+              }
+              .scan {
+                margin-top: 20px;
+                margin-bottom: 5px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #0c0c0c;
+                text-align: center;
+              }
+            }
+          }
+
           .icon-item1 {
             background-image: url("./images/icon1.png");
           }
