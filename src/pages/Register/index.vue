@@ -330,11 +330,18 @@ export default {
       const result = await reqRegister(phone, password);
       console.log(result);
       if (result.code === 20000) {
-        // 登录成功，则跳转到详情页面
-        this.$router.push("/login");
+         this.$message({
+            message: "注册成功",
+            type: "success",
+          });
+        // 登录成功，则跳转到登录页面
+         setTimeout(() => {
+          // 登录成功，则跳转到首页
+          this.$router.push("/login");
+        }, 3000); 
         // console.log(result.data);
       } else {
-        alert("输入手机号或验证码错误");
+         this.$message.error("注册失败,请重新注册");
       }
     }
   },

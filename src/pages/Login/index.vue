@@ -211,9 +211,9 @@ export default {
   data() {
     return {
       // phone: 13120202020,
-      phone: null,
-      password: null,
-      verifyCode: null,
+      phone: null, // 手机号
+      password: null, // 密码
+      verifyCode: null, // 手机短信验证码
       isPhoneLogin: true, // 密码登录页面/验证码登录页面切换
       isVefPhone: false, //  手机号码正则
       isVefPassword: false, // 密码正则
@@ -305,7 +305,7 @@ export default {
         this.$message.error("手机号输入错误，请重新输入");
       }
     },
-    // 点击密码登录，发送请求，登录成功跳转回详情页组件
+    // 点击密码登录，发送请求，登录成功跳转回首页
     async goLogin() {
       // 调用密码登录接口
       // 获取手机号和密码
@@ -318,34 +318,16 @@ export default {
           type: "success",
         });
         setTimeout(() => {
-          // 登录成功，则跳转到详情页面
+          // 登录成功，则跳转到首页
           this.$router.push("/");
         }, 3000);
       } else {
         this.$message.error("手机号或密码错误，请重新输入");
       }
-      // 发送请求
-      // const result = await reqLogin(phone, password)
-      // console.log(result)
-      // if (result.code === 20000) {
-      //   this.$message({
-      //     message: '登录成功，即将跳转首页',
-      //     type: 'success',
-      //   })
-      //   setTimeout(() => {
-      //     // 登录成功，则跳转到详情页面
-      //     this.$router.push('/')
-      //   }, 3000)
-      // 登录成功会返回一个成功的手机号
-      //   this.myPhone = result.data.phone
-      //   // console.log(result.data.phone)
-      // } else {
-      //   alert('输入手机号或密码错误')
-      // }
     },
     // 点击验证码登录
     async goVerifyCodeLogin() {
-      // 调用密码登录接口
+      // 调用验证码接口
       // 获取手机号和密码
       const { phone, verifyCode, isPass, isPassCode, isYzm } = this;
       // 如果手机号码符合正则要求，则弹框提示,发送请求
@@ -360,12 +342,12 @@ export default {
               type: "success",
             });
             setTimeout(() => {
-              // 登录成功，则跳转到详情页面
+              // 登录成功，则跳转到主页
               this.$router.push("/");
             }, 3000);
             this.isYzm = null;
           } else {
-            this.$message.error("请重新输入");
+            this.$message.error("请重新输入验证码");
           }
         } else {
           this.$message.error("手机号或验证码输入错误，请重新输入");
