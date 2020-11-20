@@ -5,25 +5,38 @@
       <div class="inner">
         <!-- 左边 -->
         <div class="l-bar">
-          <a href="" class="logo"></a>
+          <router-link class="logo" to="/"></router-link>
           <ul class="l-bar-tabs" @click="sum">
             <li class="bar-city">
               <span>深圳站</span>
               <i></i>
             </li>
             <li>
-              <a href="javascript:;" @click="goHome" class="tabs-active"
+              <a
+                href="javascript:;"
+                @click="goHome"
+                :class="routePath === '/' ? 'tabs-active' : ''"
                 >首页</a
               >
             </li>
             <li>
-              <a href="javascript:;" @click="goCompany">公司</a>
+              <a
+                href="javascript:;"
+                @click="goCompany"
+                :class="routePath === '/company' ? 'tabs-active' : ''"
+                >公司</a
+              >
             </li>
             <li>
               <a href="javascript:;">校园招聘</a>
             </li>
             <li>
-              <a href="" @click="goSearch">职位</a>
+              <a
+                href=""
+                @click="goSearch"
+                :class="routePath === '/search' ? 'tabs-active' : ''"
+                >职位</a
+              >
             </li>
             <li>
               <a href="">言职</a>
@@ -128,11 +141,12 @@
   </header>
 </template>
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "Header",
   data() {
     return {
+      routePath: "/",
       centerDialogVisible: false,
     };
   },
@@ -142,39 +156,44 @@ export default {
     }),
 
     ...mapGetters({
-      userName: 'getUserName',
+      userName: "getUserName",
     }),
   },
-
+  watch: {
+    $route() {
+      this.routePath = this.$route.path;
+    },
+  },
+  mounted() {},
   methods: {
     goLogin() {
+      if (this.$route.path === "/login") return;
       this.$router.push("/login");
     },
     goRegister() {
-      this.$router.push('/register')
+      if (this.$route.path === "/register") return;
+      this.$router.push("/register");
     },
     goHome() {
-      this.$router.push('/')
+      this.$router.push("/");
     },
     goSearch() {
-      this.$router.push('/search')
+      if (this.$route.path === "/search") return;
+      this.$router.push("/search");
     },
     goCompany() {
-      this.$router.push('/company')
+      if (this.$route.path === "/company") return;
+      this.$router.push("/company");
     },
     sum(e) {
-      e.preventDefault()
+      e.preventDefault();
       // console.log(e)
       // console.log(e.path[2].childNodes)
-      const arr = [].slice.call(e.path[2].childNodes, 1)
+      const arr = [].slice.call(e.path[2].childNodes, 1);
       arr.forEach((item) => {
-        console.dir(item)
-        item.childNodes[0].className = ''
-      })
-      e.target.className = 'tabs-active'
-    },
-    goMyOffer() {
-      this.$router.push('/myoffer')
+        item.childNodes[0].className = "";
+      });
+      e.target.className = "tabs-active";
     },
   },
 };
@@ -457,7 +476,7 @@ export default {
                   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
                   width: 172px;
                   height: 172px;
-                  background-image: url('./images/download.png');
+                  background-image: url("./images/download.png");
                   background-size: 100% 100%;
                   margin: 0 auto;
                 }
