@@ -7,7 +7,6 @@ const Home = () => import('@/pages/Home')
 // import Register from '@/pages/Register'
 const Register = () => import('@/pages/Register')
 // 引入登录组件
-<<<<<<< HEAD
 // import Login from '@/pages/Login'
 const Login = () => import('@/pages/Login')
 // import Company from '@/pages/Company'
@@ -27,15 +26,6 @@ const Education = () => import('@/pages/Education')
 // 简历页面
 // import MyResume from '@/pages/MyResume'('
 const MyResume = () => import('@/pages/Education')
-=======
-import Login from '@/pages/Login'
-import Search from '@/pages/Search'
-
-import Company from '@/pages/Company'
-
-import Detail from '@/pages/Detail'
-
->>>>>>> LHS
 // 暴露出去
 export default [
   {
@@ -49,21 +39,6 @@ export default [
   {
     path: '/register',
     component: Register,
-<<<<<<< HEAD
-  },
-  {
-    path: '/search',
-    component: Search,
-  },
-  {
-    path: '/company',
-    component: Company,
-  },
-  {
-    path: '/detail/:id',
-    component: Detail,
-=======
->>>>>>> LHS
   },
   {
     path: '/search',
@@ -78,7 +53,6 @@ export default [
     component: MyOffer,
   },
   {
-<<<<<<< HEAD
     path: '/education',
     component: Education,
   },
@@ -89,9 +63,5 @@ export default [
   {
     path: '/login',
     redirect: '/login',
-=======
-    path: '/',
-    redirect: '/',
->>>>>>> LHS
   },
 ]
