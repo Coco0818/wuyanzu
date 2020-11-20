@@ -5,25 +5,25 @@
     <div class="position-content clearfix ">
       <div class="position-content-l">
         <div class="job-name" title="前端工程师">
-          <h4 class="company">字节跳动招聘</h4>
+          <h4  v-if="detail" class="company">{{detail[0].companyName}}招聘</h4>
           <h1 class="name">
             <span class="position-name-wrap">
-              <span class="position-head-wrap-name">前端工程师</span>
+              <span class="position-head-wrap-name">{{detail[0].positionName}}</span>
             </span>
           </h1>
           <div class="marEdit"></div>
         </div>
         <dd class="job_request">
           <h3>
-            <span class="salary">20k-40k </span>
-            <span>/深圳 /</span>
-            <span> 经验1-3年 /</span>
-            <span>本科及以上 /</span>
+      <span  class="position-salary">{{detail[0].Salary}}</span>
+      <span >/{{detail[0].city}} /</span>
+            <span >{{detail[0]. workingExperience }}/</span>
+            <span>{{detail[0].Education}}/</span>
             <span>全职</span>
           </h3>
           <!-- 职位标签 -->
           <ul class="position-label clearfix">
-            <li class="labels">web前端</li>
+          <li class="labels">{{detail[0].industrySector[0]}}</li>
           </ul>
           <p class="publish_time">03:49&nbsp; 发布于拉勾网</p>
         </dd>
@@ -60,13 +60,12 @@
         <dt class="join_tc_icon">
           <dd class="job-advantage">
             <span class="advantage">职位诱惑：</span>
-            <p>大公司待遇好</p>
+        <p >{{detail[0].jobTemptation}}</p>
           </dd>
           <dd class="job_bt">
             <h3 class="description">职位描述：</h3>
             <div class="job-detail">
-              <p>熟悉JAVA,Spring，SpringBoot，SpringMVC，Zookeeper，微服务，Redis/Mybatis</p>
-              <p>熟悉Oracle、MySQL等当前主流数据库中至少一种</p>
+            <p>{{detail[0].jobDescription}}</p>
             </div>
           </dd>
           <dd class="job-addres">
@@ -82,7 +81,7 @@
           <dd class="jd_publisher">
             <h3>职位发布者:</h3>
             <div class="border">
-              <img src="./images/ia_100000012.png" alt="">
+              <!-- <img   :src="www.lgstatic.com/thumbnail_120x120/i/image/M00/46/E3/Cgp3O1eN2JaAESTsAABXU_egeWg508.png" alt=""> -->
               <div class="publisher_name">
                 <a title="杨琳姐">
                   <span class="name">杨林杰</span>
@@ -136,7 +135,7 @@
             <div class="job_company_content">
               <h3>
                 <em class="fl-cn">
-                  创维电器
+              {{detail[0].companyName}}
                 </em>
                 <i class="icon-approve icon-glyph-valid"></i>
               </h3>
@@ -152,15 +151,15 @@
             </li>
             <li>
               <i class="icon-glyph-fourSquare iconfont">&#xe680;</i>
-              <h4 class="c_feature_name">上市公司</h4>
+              <h4 class="c_feature_name">{{detail[0].FinancingStage}}</h4>
             </li>
             <li>
               <i class="icon-glyph-fourSquare iconfont">&#xe647;</i>
-              <h4 class="c_feature_name">创维集团(上市公司)</h4>
+              <h4 class="c_feature_name">{{detail[0].StaffSize}}</h4>
             </li>
             <li>
               <i class="icon-glyph-fourSquare iconfont">&#xe652;</i>
-              <h4 class="c_feature_name">http://www.skypad.cn</h4>
+              <h4 class="c_feature_name">{{detail[0].companyUrl}}</h4>
             </li>
           </ul>
         </dd>
@@ -306,19 +305,24 @@
 import{mapState} from "vuex"
 export default {
   name: 'Detail',
-  data(){
-    return{jobDetail:{}};
+  data () {
+    return {
+      
+    }
   },
-  methods:{
-    
-  },
-  mounted(){
-    this.$store.dispatch('getPositions')
-  },
-  computed:{
+   computed:{
     ...mapState({
-      positions:(state)=>state.positions.positions
-    })
+      detail:(state)=>state.JobDetail.detail
+    }),
+    ...mapState({
+      positions:(state)=>state.JobDetail.positions
+    }),
+    ...mapState({
+      cateGorys:(state)=>state.JobDetail.cateGorys
+    }),
+    ...mapState({
+      companys:(state)=>state.JobDetail.companys
+    }),
   }
 }
 </script>
