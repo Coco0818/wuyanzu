@@ -218,6 +218,9 @@ export default {
       isVefPhone: false, //  手机号码正则
       isVefPassword: false, // 密码正则
       isVefCode: false, //  验证码正则
+      isPass: true, // 手机号码正则验证通过标识
+      isPassCode: true, // 验证码正则验证通过标识
+      isYzm: null, // 验证码请求回来成功的验证码
     };
   },
   computed: {
@@ -248,28 +251,31 @@ export default {
       switch (e) {
         case phone:
           // console.log(phone)
-          if (!vefPhone.test(phone)) {
+          if (!vefPhone.test(phone) || phone === null) {
             // 获取提示验证错误的样式
             // this.$refs.tipsPhone.style.display = "block";
             this.isVefPhone = true;
-            // console.log(121);
+            this.isPass = false;
           } else {
             // this.$refs.tipsPhone.style.display = "none";
             this.isVefPhone = false;
+            this.isPass = true;
           }
           break;
         case password:
-          if (!vefPassword.test(password)) {
+          if (!vefPassword.test(password) || password === null) {
             this.isVefPassword = true;
           } else {
             this.isVefPassword = false;
           }
           break;
         case verifyCode:
-          if (!vefCode.test(verifyCode)) {
+          if (!vefCode.test(verifyCode) || verifyCode === null) {
             this.isVefCode = true;
+            this.isPassCode = false;
           } else {
             this.isVefCode = false;
+            this.isPassCode = true;
           }
           break;
       }
@@ -280,15 +286,23 @@ export default {
     },
     //获取验证码
     async getVerifyCode() {
-      const { phone } = thiszz;
-      // 发送请求
-      const result = await reqgetCode(phone);
-      console.log(result);
-      if (result.code === 20000) {
-        // 登录成功，则跳转到详情页面
-        alert("已成功发送到手机");
+      const { phone, isPass } = this;
+      // 如果手机号码符合正则要求，则弹框提示,发送请求
+      if (isPass) {
+        // 发送请求
+        const result = await reqgetCode(phone);
+        console.log(result);
+        if (result.code === 20000) {
+          this.$message({
+            message: "已发送至手机",
+            type: "success",
+          });
+          this.isYzm = result.code;
+        } else {
+          this.$message.error("验证码获取错误");
+        }
       } else {
-        alert("输入手机号或验证码错误");
+        this.$message.error("手机号输入错误，请重新输入");
       }
     },
     // 点击密码登录，发送请求，登录成功跳转回详情页组件
@@ -333,15 +347,31 @@ export default {
     async goVerifyCodeLogin() {
       // 调用密码登录接口
       // 获取手机号和密码
-      const { phone, verifyCode } = this;
-      // 发送请求
-      const result = await reqVerifyCodeLogin(phone, verifyCode);
-      console.log(result);
-      if (result.code === 20000) {
-        // 登录成功，则跳转到详情页面
-        this.$router.push("/");
+      const { phone, verifyCode, isPass, isPassCode, isYzm } = this;
+      // 如果手机号码符合正则要求，则弹框提示,发送请求
+      if (isYzm === 20000) {
+        if (isPass && isPassCode) {
+          // 发送请求
+          const result = await reqVerifyCodeLogin(phone, verifyCode);
+          console.log(result);
+          if (result.code === 20000) {
+            this.$message({
+              message: "登录成功,即将跳转到首页",
+              type: "success",
+            });
+            setTimeout(() => {
+              // 登录成功，则跳转到详情页面
+              this.$router.push("/");
+            }, 3000);
+            this.isYzm = null;
+          } else {
+            this.$message.error("请重新输入");
+          }
+        } else {
+          this.$message.error("手机号或验证码输入错误，请重新输入");
+        }
       } else {
-        alert("输入手机号或验证码错误");
+        this.$message.error("请先获取验证码");
       }
     },
   },
