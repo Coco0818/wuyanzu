@@ -590,6 +590,8 @@
             <!-- 热门热门关键词 end -->
           </dl>
         </div>
+        <!-- 分页 -->
+        <Pagination :handleSizeChange="handleSizeChange" :handleCurrentChange="handleCurrentChange"/>
         <!-- 热门内容 end-->
       </div>
     </div>
