@@ -629,14 +629,13 @@ export default {
     }
   },
   methods: {
-    // 分页
+ // 分页
     handleSizeChange: function (size) {
-      this.pagesize = size //当前显示页数
-      console.log(this.pagesize) //每页下拉显示数据
+      this.pagesize = size; //当前显示页数
     },
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage //第几页
-      console.log(this.currentPage) //点击第几页
+      this.currentPage = currentPage; //第几页
+      this.newPageArr = this.AllPageArr[currentPage - 1];
     },
   },
   async mounted() {
