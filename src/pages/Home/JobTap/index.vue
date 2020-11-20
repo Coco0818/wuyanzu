@@ -39,7 +39,7 @@
                 <div class="pli-head">
                   <div class="pli-name">
                     <h2 class="dib">
-                      <a href="">{{ item.positionName }}</a>
+                      <a href="javascript:;" @click="gotoDetail(item._id)">{{ item.positionName }}</a>
                     </h2>
                     <span class="dib create-item"
                       >&nbsp;&nbsp;[13:13发布]&nbsp;&nbsp;</span
@@ -314,6 +314,11 @@ export default {
     leaveHr() {
       this.hrShow = -1
     },
+    // 跳转到Detail页面并把id传递过去
+    gotoDetail(id){
+      this.$router.push('/detail/' + id)
+    }
+    
   },
 }
 </script>

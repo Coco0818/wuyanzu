@@ -39,11 +39,11 @@
           </div>
           <!-- 简历状态 -->
           <div class="resume-select">
-            <a class="resume-select-fl" href="###" target="_blank">
+            <a class="resume-select-fl" href="javascript:;" >
               <i class="fl-img"></i>
               <span>完善在线简历</span>
             </a>
-            <a class="resume-select-ri" href="###" target="_blank">
+            <a class="resume-select-ri" href="javascript:;">
               <i class="ri-img"></i>
               <span>上传附件</span>
             </a>
@@ -112,12 +112,12 @@
             <dl class="popular_company">
               <dt>推荐公司：</dt>
               <dd>
-                <a target="_blank" href="javascript:;">瑞可甜心</a>
-                <a target="_blank" href="javascript:;">北京微橡科技有限公司</a>
-                <a target="_blank" href="javascript:;">峰尚</a>
-                <a target="_blank" href="javascript:;">天云软件</a>
-                <a target="_blank" href="javascript:;">健翔医院</a>
-                <a target="_blank" href="javascript:;">愿程教育</a>
+                <a href="javascript:;">瑞可甜心</a>
+                <a href="javascript:;">北京微橡科技有限公司</a>
+                <a href="javascript:;">峰尚</a>
+                <a href="javascript:;">天云软件</a>
+                <a href="javascript:;">健翔医院</a>
+                <a href="javascript:;">愿程教育</a>
               </dd>
             </dl>
           </div>
@@ -182,7 +182,7 @@
               <ul class="similar_list reset">
                 <!--source=rec-->
                 <li class="similar_list_item  clearfix" data-jobid="7330519">
-                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="0"
+                  <a class="position_link clearfix" href="javascript:;" data-index="0"
                     data-lg-tj-id="9600" data-lg-tj-no="0001" data-lg-tj-cid="7330519" data-lg-tj-abt="default|0"
                     data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
                     data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
@@ -205,7 +205,7 @@
                   </a>
                 </li>
                 <li class="similar_list_item  clearfix" data-jobid="7910234">
-                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="1"
+                  <a class="position_link clearfix" href="javascript:;"  data-index="1"
                     data-lg-tj-id="9600" data-lg-tj-no="0002" data-lg-tj-cid="7910234" data-lg-tj-abt="default|0"
                     data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
                     data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
@@ -228,7 +228,7 @@
                   </a>
                 </li>
                 <li class="similar_list_item  clearfix" data-jobid="7924719">
-                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="2"
+                  <a class="position_link clearfix" href="javascript:;"  data-index="2"
                     data-lg-tj-id="9600" data-lg-tj-no="0003" data-lg-tj-cid="7924719" data-lg-tj-abt="default|0"
                     data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
                     data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
@@ -251,7 +251,7 @@
                   </a>
                 </li>
                 <li class="similar_list_item  clearfix" data-jobid="7044080">
-                  <a class="position_link clearfix" href="javascript" target="_blank" data-index="3" data-lg-tj-id="9600"
+                  <a class="position_link clearfix" href="javascript:;"  data-index="3" data-lg-tj-id="9600"
                     data-lg-tj-no="0004" data-lg-tj-cid="7044080" data-lg-tj-abt="default|0"
                     data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
                     data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
@@ -274,7 +274,7 @@
                   </a>
                 </li>
                 <li class="similar_list_item  clearfix" data-jobid="6652238">
-                  <a class="position_link clearfix" href="javascript:;" target="_blank" data-index="4"
+                  <a class="position_link clearfix" href="javascript:;" data-index="4"
                     data-lg-tj-id="9600" data-lg-tj-no="0005" data-lg-tj-cid="6652238" data-lg-tj-abt="default|0"
                     data-lg-webtj-_show_id="107f46364fd74f6dbaf1422f3d79a1fb"
                     data-lg-webtj-_search_type="position_similar" data-lg-webtj-_content_type="jd">
@@ -297,7 +297,7 @@
                   </a>
                 </li>
               </ul>
-              <a href="javascript:;" class="jobs_similar_footer" target="_blank" data-lg-tj-id="9700"
+              <a href="javascript:;" class="jobs_similar_footer"  data-lg-tj-id="9700"
                 data-lg-tj-no="idnull" data-lg-tj-cid="idnull">查看更多相似职位</a>
             </div>
           </div>
@@ -337,10 +337,12 @@ export default {
   },
   async mounted() {
     const id = this.$route.params.id
+    console.log(this.$route,123123);
+    console.log(id);
     const result = await reqDetail(id)
-    console.log(result)
+    // console.log(result)
     this.detailInfo = result.data[0]
-    console.log(this.detailInfo)
+    // console.log(this.detailInfo)
     /* const result = await reqPositions();
     //  console.log(result);
      if(result.code===20000){

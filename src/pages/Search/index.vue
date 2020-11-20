@@ -28,7 +28,6 @@
               class="job-ul-li"
               v-for="position in newSearchArr"
               :key="position._id"
-              @click="goDetail"
             >
               <div class="job-ul-li-top">
                 <div class="job-position">
@@ -291,6 +290,7 @@ export default {
   },
   methods: {
     goDetail(id) {
+      console.log(id);
       this.$router.push("/detail/" + id);
     },
     // 分页
@@ -301,7 +301,6 @@ export default {
       this.currentPage = currentPage; //第几页
       this.newSearchArr = this.AllSearchArr[currentPage - 1];
     },
-
     // 推荐公司显示和隐藏
     showRecoment(visible) {
       this.recomentIsShow = visible;
